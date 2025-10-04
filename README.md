@@ -8,7 +8,7 @@ The slides can be seen here:<br>
 <https://indrajeetpatil.github.io/to-comment-or-not/>
 
 <a href="https://indrajeetpatil.github.io/to-comment-or-not/" target="_blank">
-<img src="media/cat.png" alt="introductory slide" width="400"/>
+<img src="media/pipe.jpg" alt="introductory slide" width="400"/>
 </a>
 
 # Feedback
