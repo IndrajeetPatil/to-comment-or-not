@@ -1,0 +1,54 @@
+.footer > p {
+  font-size: 15px;
+}
+
+/* Styling for tables with code blocks */
+.smaller table {
+  font-size: 0.6em;
+}
+
+.smaller table code {
+  font-size: 0.9em;
+  line-height: 1.4;
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.smaller table pre {
+  margin: 0;
+  padding: 6px;
+  background-color: transparent;
+}
+
+.smaller td {
+  vertical-align: top;
+  padding: 10px 8px;
+}
+
+/* Improve code block rendering in tables */
+.smaller table .sourceCode {
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  padding: 4px 6px;
+}
+
+/* Increase font size for code in callout blocks */
+.callout pre code {
+  font-size: 0.85em !important;
+  line-height: 1.4;
+}
+
+.callout .sourceCode {
+  font-size: 0.85em !important;
+}
+
+/* Override smaller font size for callout blocks in .smaller slides */
+.smaller .callout pre code {
+  font-size: 0.95em !important;
+  line-height: 1.5;
+}
+
+.smaller .callout .sourceCode {
+  font-size: 0.95em !important;
+}
