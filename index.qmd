@@ -1,0 +1,1208 @@
+---
+format:
+  revealjs:
+    css: style.css
+    theme: simple
+    slide-number: true
+    code-line-numbers: false
+    preview-links: auto
+    keyboard: true
+    touch: true
+    help: true
+    include-in-header: meta-tags.html
+    link-external-newwindow: true
+execute:
+  echo: true
+  eval: false
+keywords: ["comments", "software-engineering", "computer-science", "software-development", "code-documentation"]
+description-meta: "A comprehensive guide to code commenting best practices for software development. Learn when, how, and why to write effective comments that enhance code clarity and maintainability."
+license: "CC0 1.0 Universal"
+pagetitle: "To Comment or Not To Comment"
+author-meta: "Indrajeet Patil"
+date-meta: "`r Sys.time()`"
+lang: "en"
+dir: "ltr"
+image: "media/pipe.jpg"
+image-alt: "Preview image for presentation about code commenting best practices"
+canonical-url: "https://indrajeetpatil.github.io/to-comment-or-not/"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+## To Comment or Not To Comment {style="margin-top: 1em; margin-bottom: 2.5em;"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {style="margin-top: 2em; margin-bottom: 1em;"}
+
+::: {style="font-size: 0.9em; font-weight: bold;"}
+Navigating the Art and Science of Code Comments
+:::
+
+::: {style="font-size: 0.8em; margin-top: 1em;"}
+Indrajeet Patil
+:::
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+![](media/pipe.jpg){width="100%" fig-alt="René Magritte's 'The Treachery of Images' painting showing a pipe with text 'Ceci n'est pas une pipe' (This is not a pipe)"}
+
+:::
+
+::::
+
+::: {.footer style="text-align: center; font-size: 0.55em; color: #999; position: absolute; bottom: 20px; left: 0; right: 0;"}
+Source code: [github.com/IndrajeetPatil/to-comment-or-not](https://github.com/IndrajeetPatil/to-comment-or-not/)
+:::
+
+## What You'll Learn {.smaller}
+
+- Why commenting matters for code quality and maintainability
+- When to comment and when not to comment
+- Common commenting pitfalls to avoid
+- Practical strategies for writing clear, helpful, and meaningful comments^†^
+- Tools and techniques for better documentation practices
+
+<br>
+
+::: {style="background-color: #FFFBC1; padding: 20px; border-radius: 25px;text-align: center;"}
+
+🎯 **Goal**
+
+Transform commenting from an afterthought into a deliberate practice.
+
+:::
+
+
+::: {.aside style="font-size: 0.6em; position: absolute; bottom: 10px; left: 50px;"}
+
+^†^Despite Python examples, all the mentioned strategies are **language-agnostic**.
+
+:::
+
+# "Code tells you how; comments tell you why."
+\- Jeff Atwood
+
+
+# Why Comments Matter
+
+_Good comments act as guideposts for navigating complex code._
+
+## Why It's Challenging {.smaller}
+
+Multiple pressures during development make thoughtful commenting difficult.
+
+. . .
+
+```{mermaid}
+%%| eval: true
+%%| echo: false
+flowchart TD
+    A[Deadline Pressure] --> D[High Cognitive Load]
+    B[Complex Problem Solving] --> D
+    C[Implementation Focus] --> D
+
+    D --> E[Commenting Shortcuts]
+
+    E --> F[No Comments]
+    E --> G[Obvious Comments]
+
+    H[Comment Rot] --> I[Outdated Comments]
+
+    style A fill:#f8f9fa,color:#000
+    style B fill:#f8f9fa,color:#000
+    style C fill:#f8f9fa,color:#000
+    style D fill:#fff3e0,color:#000
+    style E fill:#ffebee,color:#000
+    style F fill:#ffcdd2,color:#000
+    style G fill:#ffcdd2,color:#000
+    style H fill:#ef9a9a,color:#000
+    style I fill:#ffcdd2,color:#000
+```
+
+# Documentation vs. Comments
+
+## Documentation vs. Comments {.smaller}
+
+:::: {.columns}
+
+::: {.column width='60%'}
+
+```{python}
+def apply_discount(order_total, customer_tier, is_bulk_order):
+    """Apply tiered discount based on customer and order type.
+
+    Args:
+        order_total: Pre-discount order amount
+        customer_tier: 'bronze', 'silver', 'gold', 'platinum'
+        is_bulk_order: True if order quantity > 100 items
+
+    Returns:
+        Final discounted amount
+    """
+    # Base discount rates per tier (as of Q4 2024 policy)
+    tier_discounts = {
+        'bronze': 0.02, 'silver': 0.05,
+        'gold': 0.10, 'platinum': 0.15
+    }
+
+    base_discount = tier_discounts.get(customer_tier, 0)
+
+    # Bulk orders get additional 5% off per marketing policy
+    # but total discount cannot exceed 25% per finance rules
+    if is_bulk_order:
+        total_discount = min(base_discount + 0.05, 0.25)
+    else:
+        total_discount = base_discount
+
+    return order_total * (1 - total_discount)
+```
+
+:::
+
+::: {.column width='40%'}
+
+**Documentation** (Docstrings)
+
+- API contract
+- How to *use* the function
+- Parameters & returns
+- For function *users*
+
+**Comments** (Inline)
+
+- Implementation details
+- *Why* it works this way
+- Business rules & context
+- For code *maintainers*
+
+:::
+
+::::
+
+::: {style="background-color: #FFFBC1; padding: 10px; border-radius: 25px; text-align: center; margin-top: 15px;"}
+
+**Documentation for public interface, comments for private implementation.**
+
+:::
+
+## Aside: Examples of Comment Patterns {.smaller style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #6c757d;"}
+
+::: {style="font-size: 0.75em; line-height: 1.4;"}
+
+::: {style="background-color: #e3f2fd; padding: 12px; border-radius: 8px; margin-bottom: 15px;"}
+**Function Documentation Patterns**
+
+| Language | Style | Example |
+|----------|-------|----------|
+| **Python** | Docstrings | `"""Calculate tax based on income."""` |
+| **JavaScript** | JSDoc | `/** @param {number} income - Gross income */` |
+| **Java** | Javadoc | `/** Returns the calculated tax amount. */` |
+| **C#** | XML Comments | `/// <summary>Calculates tax</summary>` |
+| **Go** | Package comments | `// Package tax provides tax calculations` |
+:::
+
+::: {style="background-color: #f3e5f5; padding: 12px; border-radius: 8px; margin-bottom: 15px;"}
+**Inline Comment Patterns**
+
+| Purpose | Pattern | Example |
+|---------|---------|----------|
+| **Business Rule** | `# Business rule:` | `# Business rule: VIP customers get 10% discount` |
+| **Workaround** | `# HACK:` or `# WORKAROUND:` | `# HACK: API doesn't support bulk delete` |
+| **Performance** | `# Performance:` | `# Performance: Cache results for 5 minutes` |
+| **Security** | `# Security:` | `# Security: Validate input against XSS` |
+| **TODO/FIXME** | `# TODO:` | `# TODO: Refactor to use async/await` |
+:::
+
+::: {style="margin-top: 15px; padding: 8px; background-color: rgba(108, 117, 125, 0.1); border-radius: 6px; text-align: center; font-size: 1.1em;"}
+**Consistency within each project matters more than following external standards**
+:::
+
+:::
+
+# Do's and Don'ts
+
+
+# The Don'ts
+
+Follow this principle instead of memorizing rules:
+
+::: {style="background-color: #FFFBC1; padding: 10px; border-radius: 25px; text-align: center; font-size: 2rem;"}
+
+**Comments must provide value for the *reader*, not just satisfy the *writer*.**
+
+:::
+
+## {.smaller}
+
+**Don't state the obvious**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+# increment counter
+counter += 1
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+# Reset retry count after successful connection
+counter = 0
+```
+
+:::
+
+:::
+
+::::
+
+**Don't repeat variable names**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+# user name variable
+user_name = "john"
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+# Store normalised username for database
+user_name = normalize(input)
+```
+
+:::
+
+:::
+
+::::
+
+**Don't explain language syntax**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+# if statement checks condition
+if user.is_active():
+    process(user)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+# Only process active users per business rule
+if user.is_active():
+    process(user)
+```
+
+:::
+
+:::
+
+::::
+
+## {.smaller}
+
+**Don't write misleading comments**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+# Calculate average
+return median(values)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+# Calculate median using quickselect
+return median(values)
+```
+
+:::
+
+:::
+
+::::
+
+**Don't keep outdated comments**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+# TODO: fix this hack (3 years old)
+legacy_workaround()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+refactored_solution()
+```
+
+:::
+
+:::
+
+::::
+
+**Don't use unclear references**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+# See the function above
+apply_discount()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+# See calculate_discount() method above
+apply_discount()
+```
+
+:::
+
+:::
+
+::::
+
+## {.smaller}
+
+**Don't comment out dead code**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+# old_function()
+# legacy_code = True
+new_function()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+new_function()
+```
+
+:::
+
+:::
+
+::::
+
+**Don't write temporary comments**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+# FIXME: broken, fix later
+# TODO: optimize this
+hacky_solution()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+# See issue #1234 for optimization plan
+# https://github.com/user/repo/issues/1234
+proper_solution()
+```
+
+:::
+
+:::
+
+::::
+
+**Don't confuse docs with comments**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+"""Implementation uses binary search
+for O(log n) complexity"""
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+"""Find user by ID."""
+# Use binary search for O(log n) lookup
+```
+
+:::
+
+:::
+
+::::
+
+## {.smaller}
+
+**Don't use profanity or humour**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+# This is a clusterfuck
+process_legacy_data()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+# Complex legacy integration, needs refactoring
+process_legacy_data()
+```
+
+:::
+
+:::
+
+::::
+
+**Don't use inside jokes**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+# Here be dragons
+complex_algorithm()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+# Warning: complex algorithm, see docs
+complex_algorithm()
+```
+
+:::
+
+:::
+
+::::
+
+**Don't vent frustrations**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Bad"}
+
+```{python}
+# Stupid requirement from management
+validate_input()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Good"}
+
+```{python}
+# Business requirement: process within 24h
+validate_input()
+```
+
+:::
+
+:::
+
+::::
+
+# The Do's
+
+Follow this principle instead of memorizing rules:
+
+::: {style="background-color: #FFFBC1; padding: 10px; border-radius: 25px; text-align: center; font-size: 2rem;"}
+
+**Good comments explain the why and provide essential context.**
+
+:::
+
+## Explain the Why {.smaller}
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Comments describe 'what'"}
+
+```{python}
+# Set timeout to 30
+timeout = 30
+
+# Connect to database
+db.connect()
+
+# Loop through users
+for user in users:
+    process(user)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Comments explain 'why'"}
+
+```{python}
+# Timeout increased to handle slow network
+# conditions in international deployments
+timeout = 30
+
+# Retry connection to handle transient failures
+db.connect_with_retry()
+
+# Process users in batches to avoid memory issues
+for user in users:
+    process(user)
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Good comments explain business logic, design decisions, and non-obvious requirements.**
+
+:::
+
+
+## Explain Constraints and Assumptions {.smaller}
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Vague"}
+
+```{python}
+# as per spec
+if len(data) == 0:
+    return None
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Specific"}
+
+```{python}
+# Return None for empty datasets per
+# API specification v2.1 section 4.3
+if len(data) == 0:
+    return None
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Too generic"}
+
+```{python}
+# handle the data
+data = clean_input(raw_data)
+result = process(data)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Provides context"}
+
+```{python}
+# Input must be UTF-8 encoded strings
+# Assumes data fits in memory (<1GB)
+data = clean_input(raw_data)
+result = process(data)
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Precise comments save debugging time and prevent misuse of APIs.**
+
+:::
+
+## Organize Tests Structurally {.smaller}
+
+. . .
+
+Instead of using section comments to organize tests, use file structure or test classes.
+
+:::: {.columns}
+
+::: {.column width='33%'}
+
+:::{.callout-caution icon=false title="❌ Bad: Section comments"}
+
+```{.python filename="tests/test_calculator.py"}
+# ==================
+# Basic tests
+# ==================
+def test_addition():
+    ...
+
+def test_subtraction():
+    ...
+
+# ==================
+# Edge cases
+# ==================
+def test_zero_division():
+    ...
+
+def test_negative_numbers():
+    ...
+```
+
+:::
+
+:::
+
+::: {.column width='33%'}
+
+:::{.callout-tip icon=false title="✅ Good: Separate files"}
+
+```{.python filename="tests/test_basic_operations.py"}
+def test_addition():
+    ...
+
+def test_subtraction():
+    ...
+```
+
+<br>
+
+
+```{.python filename="tests/test_edge_cases.py"}
+def test_zero_division():
+    ...
+
+def test_negative_numbers():
+    ...
+```
+
+:::
+
+:::
+
+::: {.column width='33%'}
+
+:::{.callout-tip icon=false title="✅ Good: Test classes"}
+
+```{.python filename="tests/test_calculator.py"}
+class TestBasicOperations:
+    def test_addition(self):
+        ...
+
+    def test_subtraction(self):
+        ...
+
+class TestEdgeCases:
+    def test_zero_division(self):
+        ...
+
+    def test_negative_numbers(self):
+        ...
+```
+
+:::
+
+:::
+
+::::
+
+## Clarify Complex Conditionals {.smaller}
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Unclear complex condition"}
+
+```{python}
+if (user.age < 18 and
+    not user.has_guardian_consent and
+    user.account_type != 'premium'):
+    restrict_access = True
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Clear business rule"}
+
+```{python}
+# Minors need guardian consent unless premium
+if (user.age < 18 and
+    not user.has_guardian_consent and
+    user.account_type != 'premium'):
+    restrict_access = True
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Cryptic condition"}
+
+```{python}
+if not (status == 'active' and balance > 0):
+    return False
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Explains business logic"}
+
+```{python}
+# Account must be active AND have positive balance
+# to be eligible for new transactions
+if not (status == 'active' and balance > 0):
+    return False
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Complex conditionals should explain the business rule or decision criteria.**
+
+:::
+
+## Document Non-Obvious Algorithms {.smaller}
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ No algorithm explanation"}
+
+```{python}
+def find_median(arr):
+    """Find median value in array."""
+    arr.sort()
+    n = len(arr)
+    return arr[n//2] if n % 2 else (arr[n//2-1] + arr[n//2]) / 2
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Algorithm details explained"}
+
+```{python}
+def find_median(arr):
+    """Find median value in array."""
+    # Use sort-based approach: O(n log n) time, O(1) space
+    arr.sort()
+    n = len(arr)
+    # Return middle element for odd length,
+    # average of two middle for even length
+    return arr[n//2] if n % 2 else (arr[n//2-1] + arr[n//2]) / 2
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Algorithm comments should explain the approach and trade-offs.**
+
+:::
+
+# Tools & Techniques
+
+## Tool Limitations {.smaller}
+
+:::: {.columns}
+
+::: {.column width='50%' .fragment}
+
+**What tools <span style="background-color: #c8e6c9; padding: 2px 6px; border-radius: 4px;">CAN</span> do:**
+
+- Check comment formatting and style
+- Flag TODO/FIXME comments
+- Detect missing documentation
+- Generate basic API documentation
+
+:::
+
+::: {.column width='50%' .fragment}
+
+**What they <span style="background-color: #ffcdd2; padding: 2px 6px; border-radius: 4px;">CANNOT</span> do:**
+
+- Understand if comments explain the "why"
+- Assess comment usefulness and clarity
+- Determine if business context is missing
+- Evaluate comment accuracy after code changes
+- Judge whether comments add value
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-note title="The fundamental limitation"}
+
+**Tools can enforce *format* but not *value*.** Good commenting requires human judgment about what information is helpful.
+
+:::
+
+## AI as an Ally {.smaller}
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='60%'}
+
+**Why AI tools can help:**
+
+- Analyze code complexity and suggest documentation
+- Identify business logic that needs explanation
+- Check comment clarity and helpfulness
+- Generate initial documentation drafts
+
+:::
+
+::: {.column width='40%'}
+
+```{mermaid}
+%%| eval: true
+%%| echo: false
+flowchart TD
+    H[Human] --> L[Doc Tools]
+    A[AI] --> L[Doc Tools]
+    H -.->|Collaborates| A
+    A -.->|Feedback| H
+    L --> S[Quality Comments]
+
+    style H fill:#e3f2fd
+    style A fill:#f3e5f5
+    style L fill:#fff3e0
+    style S fill:#e8f5e8
+```
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip title="Symbiotic Commenting"}
+
+Write initial comments yourself. Then, ask AI tools to identify gaps, suggest improvements, or validate clarity.
+
+:::
+
+. . .
+
+::: {.callout-tip title="Cross-LLM Review"}
+
+Use a different LLM to evaluate comments than the one used to write the code.
+
+:::
+
+## Code Review Benefits {.smaller}
+
+. . .
+
+```{mermaid}
+%%| eval: true
+%%| echo: false
+flowchart TD
+    A[Code Review] --> B[Lower Cognitive Load]
+    B --> C[Fresh Perspective]
+    B --> D[Focus on Clarity]
+
+    C --> E[Question Assumptions]
+    C --> F[Spot Missing Context]
+    C --> O[Find Outdated Comments]
+    D --> G[Evaluate Intent]
+    D --> H[Assess Usefulness]
+
+    E --> I[Better Comments]
+    F --> I
+    G --> I
+    H --> I
+    O --> I
+
+    style A fill:#e3f2fd,color:#000
+    style B fill:#f3e5f5,color:#000
+    style C fill:#f8f9fa,color:#000
+    style D fill:#f8f9fa,color:#000
+    style E fill:#fff3e0,color:#000
+    style F fill:#fff3e0,color:#000
+    style G fill:#fff3e0,color:#000
+    style H fill:#fff3e0,color:#000
+    style O fill:#fff3e0,color:#000
+    style I fill:#e8f5e8,color:#000
+```
+
+. . .
+
+::: {style="background-color: #FFFBC1; padding: 10px; margin: 10px; border-radius: 25px;text-align: center; font-size: 1.2rem;"}
+
+**Code review transforms commenting from reactive to deliberate!**
+
+:::
+
+# The Benefits
+
+> "_Programs must be written for people to read, and only incidentally for machines to execute._"
+- Harold Abelson
+
+## Context and Understanding {.smaller}
+
+. . .
+
+- Well-written comments make **complex code comprehensible**.
+
+. . .
+
+- Writing thoughtful comments forces you to **articulate your reasoning** and design decisions, improving code quality.
+
+. . .
+
+- Explaining your code in comments **clarifies your own understanding** and reveals potential issues.
+
+. . .
+
+- Good comments **preserve business knowledge** and domain expertise for future developers.
+
+. . .
+
+- Strategic commenting **reduces onboarding time** for new team members.
+
+. . .
+
+- Consistent commenting practices **reduce cognitive overload** and make maintenance safer.
+
+## Worth Mastering
+
+Invest time in thoughtful comments early—they pay dividends by preserving knowledge and intent.
+
+**The more you practice, the better you'll get at knowing when and how to comment!**
+
+<br>
+
+::: {style="background-color: #FFFBC1; padding: 20px; border-radius: 25px;text-align: center;"}
+
+"_Documentation is a love letter that you write to your future self._" - Damian Conway
+
+:::
+
+# Thank You
+
+And Happy Commenting! 😊
+
+# For more {data-visibility="uncounted"}
+
+If you are interested in good programming and software development practices, check out my other [slide decks](https://sites.google.com/site/indrajeetspatilmorality/presentations).
+
+# Find me at... {data-visibility="uncounted"}
+
+{{< fa brands linkedin >}} [LinkedIn](https://www.linkedin.com/in/indrajeet-patil-ph-d-397865174/)
+
+{{< fa brands github >}} [GitHub](http://github.com/IndrajeetPatil)
+
+{{< fa solid link >}} [Website](https://sites.google.com/site/indrajeetspatilmorality/)
+
+{{< fa solid envelope >}} [E-mail](mailto:patilindrajeet.science@gmail.com)
+

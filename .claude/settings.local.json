@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:quarto.org)",
+      "Bash(quarto render:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
