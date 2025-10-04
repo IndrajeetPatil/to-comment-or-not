@@ -31,13 +31,13 @@ canonical-url: "https://indrajeetpatil.github.io/to-comment-or-not/"
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
-## To Comment or Not To Comment {style="margin-top: 1em; margin-bottom: 4em;"}
+## To Comment or Not To Comment {style="margin-top: 1em; margin-bottom: 2.5em;"}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
-::: {style="margin-top: 2em; margin-bottom: 1em;"}
+::: {style="margin-top: 2em; padding: 1.5em 0;"}
 
 ::: {style="font-size: 0.9em; font-weight: bold;"}
 Navigating the Art and Science of Code Comments
@@ -53,7 +53,11 @@ Indrajeet Patil
 
 ::: {.column width="50%"}
 
+::: {style="margin-top: 2em;"}
+
 ![](media/pipe.jpg){width="100%" fig-alt="René Magritte's 'The Treachery of Images' painting showing a pipe with text 'Ceci n'est pas une pipe' (This is not a pipe)"}
+
+:::
 
 :::
 
