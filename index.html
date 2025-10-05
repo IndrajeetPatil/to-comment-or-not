@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.9.2">
 
   <meta name="author" content="Indrajeet Patil">
-  <meta name="dcterms.date" content="2025-10-05 10:59:53.55629">
+  <meta name="dcterms.date" content="2025-10-05 11:05:25.509155">
   <meta name="keywords" content="comments, software-engineering, computer-science, software-development, code-documentation">
   <title>To Comment or Not To Comment</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -515,7 +515,7 @@
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median using quickselect</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median for anomaly detection</span></span>
 <span id="cb9-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> median(values)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -837,7 +837,7 @@
 <span id="cb26-2"><a href="" aria-hidden="true" tabindex="-1"></a>timeout <span class="op">=</span> <span class="dv">30</span></span>
 <span id="cb26-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to database</span></span>
-<span id="cb26-5"><a href="" aria-hidden="true" tabindex="-1"></a>db.<span class="ex">connect</span>()</span>
+<span id="cb26-5"><a href="" aria-hidden="true" tabindex="-1"></a>db.<span class="ex">connect</span>(retry<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb26-6"><a href="" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through users</span></span>
 <span id="cb26-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> user <span class="kw">in</span> users:</span>
@@ -860,8 +860,8 @@
 <span id="cb27-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># conditions in international deployments</span></span>
 <span id="cb27-3"><a href="" aria-hidden="true" tabindex="-1"></a>timeout <span class="op">=</span> <span class="dv">30</span></span>
 <span id="cb27-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Use retry to handle transient network failures</span></span>
-<span id="cb27-6"><a href="" aria-hidden="true" tabindex="-1"></a>db.<span class="ex">connect</span>()</span>
+<span id="cb27-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Retry enabled to handle transient network failures</span></span>
+<span id="cb27-6"><a href="" aria-hidden="true" tabindex="-1"></a>db.<span class="ex">connect</span>(retry<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb27-7"><a href="" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Process in batches to avoid memory issues</span></span>
 <span id="cb27-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> user <span class="kw">in</span> users:</span>
