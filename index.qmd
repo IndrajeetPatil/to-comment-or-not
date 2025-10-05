@@ -366,6 +366,7 @@ legacy_workaround()
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
+# Use new API endpoint per v3.0 migration
 refactored_solution()
 ```
 
@@ -397,7 +398,7 @@ apply_discount()
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
-# See calculate_discount() method above
+# See pricing.calculate_discount() for rate logic
 apply_discount()
 ```
 
@@ -464,8 +465,8 @@ hacky_solution()
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
-# See issue #1234 for optimization plan
-# https://github.com/user/repo/issues/1234
+# Current: linear scan (tracked in #1234)
+# Future: switch to hash lookup when ready
 proper_solution()
 ```
 
@@ -650,8 +651,8 @@ for user in users:
 # conditions in international deployments
 timeout = 30
 
-# Retry connection to handle transient failures
-db.connect_with_retry()
+# Use retry to handle transient network failures
+db.connect()
 
 # Process in batches to avoid memory issues
 for user in users:
@@ -884,95 +885,6 @@ def find_median(arr):
 **Algorithm comments should explain the approach and trade-offs.**
 
 :::
-
-## Organize Tests Structurally {.smaller}
-
-. . .
-
-Instead of using section comments to organize tests, use file structure or test classes.
-
-:::: {.columns}
-
-::: {.column width='33%'}
-
-:::{.callout-caution icon=false title="❌ Bad: Section comments"}
-
-```{.python filename="tests/test_calculator.py"}
-# ==================
-# Basic tests
-# ==================
-def test_addition():
-    ...
-
-def test_subtraction():
-    ...
-
-# ==================
-# Edge cases
-# ==================
-def test_zero_division():
-    ...
-
-def test_negative_numbers():
-    ...
-```
-
-:::
-
-:::
-
-::: {.column width='33%'}
-
-:::{.callout-tip icon=false title="✅ Good: Separate files"}
-
-```{.python filename="tests/test_basic_operations.py"}
-def test_addition():
-    ...
-
-def test_subtraction():
-    ...
-```
-
-<br>
-
-
-```{.python filename="tests/test_edge_cases.py"}
-def test_zero_division():
-    ...
-
-def test_negative_numbers():
-    ...
-```
-
-:::
-
-:::
-
-::: {.column width='33%'}
-
-:::{.callout-tip icon=false title="✅ Good: Test classes"}
-
-```{.python filename="tests/test_calculator.py"}
-class TestBasicOperations:
-    def test_addition(self):
-        ...
-
-    def test_subtraction(self):
-        ...
-
-class TestEdgeCases:
-    def test_zero_division(self):
-        ...
-
-    def test_negative_numbers(self):
-        ...
-```
-
-:::
-
-:::
-
-::::
 
 # Tools & Techniques
 
