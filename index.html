@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.9.2">
 
   <meta name="author" content="Indrajeet Patil">
-  <meta name="dcterms.date" content="2025-10-05 11:30:02.410099">
+  <meta name="dcterms.date" content="2025-10-05 11:36:24.078522">
   <meta name="keywords" content="comments, software-engineering, computer-science, software-development, code-documentation">
   <title>To Comment or Not To Comment</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1100,9 +1100,10 @@
 <span id="cb36-2"><a href="" aria-hidden="true" tabindex="-1"></a>    arr.sort()</span>
 <span id="cb36-3"><a href="" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
 <span id="cb36-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span>:</span>
-<span id="cb36-5"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arr[n<span class="op">//</span><span class="dv">2</span>]</span>
+<span id="cb36-5"><a href="" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> arr[n<span class="op">//</span><span class="dv">2</span>]</span>
 <span id="cb36-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb36-7"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (arr[n<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> arr[n<span class="op">//</span><span class="dv">2</span>]) <span class="op">/</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb36-7"><a href="" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> (arr[n<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> arr[n<span class="op">//</span><span class="dv">2</span>]) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb36-8"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1119,15 +1120,16 @@
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_median(arr):</span>
 <span id="cb37-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use sort-based approach:</span></span>
-<span id="cb37-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co">#   O(n log n) time, modifies input in-place</span></span>
+<span id="cb37-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># O(n log n) time, modifies input in-place</span></span>
 <span id="cb37-4"><a href="" aria-hidden="true" tabindex="-1"></a>    arr.sort()</span>
 <span id="cb37-5"><a href="" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
 <span id="cb37-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># odd length: middle element</span></span>
 <span id="cb37-7"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span>:</span>
-<span id="cb37-8"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arr[n<span class="op">//</span><span class="dv">2</span>]</span>
+<span id="cb37-8"><a href="" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> arr[n<span class="op">//</span><span class="dv">2</span>]</span>
 <span id="cb37-9"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># even length: average of two middle elements</span></span>
 <span id="cb37-10"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb37-11"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (arr[n<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> arr[n<span class="op">//</span><span class="dv">2</span>]) <span class="op">/</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb37-11"><a href="" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> (arr[n<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> arr[n<span class="op">//</span><span class="dv">2</span>]) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb37-12"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1214,15 +1216,13 @@
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
-    H[Human] --&gt; L[Doc Tools]
-    A[AI] --&gt; L[Doc Tools]
+    H[Human] --&gt; S[Quality Comments]
+    A[AI] --&gt; S[Quality Comments]
     H -.-&gt;|Collaborates| A
     A -.-&gt;|Feedback| H
-    L --&gt; S[Quality Comments]
 
     style H fill:#e3f2fd
     style A fill:#f3e5f5
-    style L fill:#fff3e0
     style S fill:#e8f5e8
 </pre>
 </div>
@@ -1359,10 +1359,6 @@
 <h2>Worth Mastering</h2>
 <p>Invest time in thoughtful comments early—they pay dividends by preserving knowledge and intent.</p>
 <p><strong>The more you practice, the better you’ll get at knowing when and how to comment!</strong></p>
-<p><br></p>
-<div style="background-color: #FFFBC1; padding: 20px; border-radius: 25px;text-align: center;">
-<p>“<em>Documentation is a love letter that you write to your future self.</em>” - Damian Conway</p>
-</div>
 </section></section>
 <section id="thank-you" class="title-slide slide level1 center">
 <h1>Thank You</h1>
