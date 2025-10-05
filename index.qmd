@@ -132,9 +132,7 @@ flowchart TD
     style I fill:#ffcdd2,color:#000
 ```
 
-# Documentation vs. Comments
-
-## Documentation vs. Comments {.smaller}
+## _N.B._ Documentation vs. Comments {.smaller}
 
 :::: {.columns}
 
@@ -174,14 +172,14 @@ def apply_discount(order_total, customer_tier, is_bulk_order):
 
 ::: {.column width='40%'}
 
-**Documentation** (Docstrings)
+**Documentation**
 
 - API contract
 - How to *use* the function
 - Parameters & returns
 - For function *users*
 
-**Comments** (Inline)
+**Comments**
 
 - Implementation details
 - *Why* it works this way
@@ -198,39 +196,6 @@ def apply_discount(order_total, customer_tier, is_bulk_order):
 
 :::
 
-## Aside: Examples of Comment Patterns {.smaller style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #6c757d;"}
-
-::: {style="font-size: 0.75em; line-height: 1.4;"}
-
-::: {style="background-color: #e3f2fd; padding: 12px; border-radius: 8px; margin-bottom: 15px;"}
-**Function Documentation Patterns**
-
-| Language | Style | Example |
-|----------|-------|----------|
-| **Python** | Docstrings | `"""Calculate tax based on income."""` |
-| **JavaScript** | JSDoc | `/** @param {number} income - Gross income */` |
-| **Java** | Javadoc | `/** Returns the calculated tax amount. */` |
-| **C#** | XML Comments | `/// <summary>Calculates tax</summary>` |
-| **Go** | Package comments | `// Package tax provides tax calculations` |
-:::
-
-::: {style="background-color: #f3e5f5; padding: 12px; border-radius: 8px; margin-bottom: 15px;"}
-**Inline Comment Patterns**
-
-| Purpose | Pattern | Example |
-|---------|---------|----------|
-| **Business Rule** | `# Business rule:` | `# Business rule: VIP customers get 10% discount` |
-| **Workaround** | `# HACK:` or `# WORKAROUND:` | `# HACK: API doesn't support bulk delete` |
-| **Performance** | `# Performance:` | `# Performance: Cache results for 5 minutes` |
-| **Security** | `# Security:` | `# Security: Validate input against XSS` |
-| **TODO/FIXME** | `# TODO:` | `# TODO: Refactor to use async/await` |
-:::
-
-::: {style="margin-top: 15px; padding: 8px; background-color: rgba(108, 117, 125, 0.1); border-radius: 6px; text-align: center; font-size: 1.1em;"}
-**Consistency within each project matters more than following external standards**
-:::
-
-:::
 
 # Do's and Don'ts
 
