@@ -398,7 +398,7 @@ apply_discount()
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
-# See pricing.calculate_discount() for rate logic
+# Rate logic in pricing.calculate_discount()
 apply_discount()
 ```
 
@@ -651,7 +651,8 @@ for user in users:
 # conditions in international deployments
 timeout = 30
 
-# Retry enabled to handle transient network failures
+# Retry enabled to handle observed
+# transient network failures
 db.connect(retry=True)
 
 # Process in batches to avoid memory issues
@@ -815,7 +816,7 @@ if not (status == 'active' and balance > 0):
 :::{.callout-tip icon=false title="✅ Explains business logic"}
 
 ```{python}
-# Account must be active AND have positive balance
+# Account must be active with positive balance
 # to be eligible for new transactions
 if not (status == 'active' and balance > 0):
     return False
@@ -847,10 +848,12 @@ if not (status == 'active' and balance > 0):
 
 ```{python}
 def find_median(arr):
-    """Find median value in array."""
     arr.sort()
     n = len(arr)
-    return arr[n//2] if n % 2 else (arr[n//2-1] + arr[n//2]) / 2
+    if n % 2:
+        return arr[n//2]
+    else:
+        return (arr[n//2-1] + arr[n//2]) / 2
 ```
 
 :::
@@ -863,13 +866,16 @@ def find_median(arr):
 
 ```{python}
 def find_median(arr):
-    """Find median value in array."""
-    # Use sort-based approach: O(n log n) time, O(1) space
+    # Use sort-based approach:
+    #   O(n log n) time, modifies input in-place
     arr.sort()
     n = len(arr)
-    # Return middle element for odd length,
-    # average of two middle for even length
-    return arr[n//2] if n % 2 else (arr[n//2-1] + arr[n//2]) / 2
+    # odd length: middle element
+    if n % 2:
+        return arr[n//2]
+    # even length: average of two middle elements
+    else:
+        return (arr[n//2-1] + arr[n//2]) / 2
 ```
 
 :::
