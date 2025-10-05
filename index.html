@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.9.2">
 
   <meta name="author" content="Indrajeet Patil">
-  <meta name="dcterms.date" content="2025-10-05 11:05:25.509155">
+  <meta name="dcterms.date" content="2025-10-05 11:30:02.410099">
   <meta name="keywords" content="comments, software-engineering, computer-science, software-development, code-documentation">
   <title>To Comment or Not To Comment</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -585,7 +585,7 @@
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># See pricing.calculate_discount() for rate logic</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Rate logic in pricing.calculate_discount()</span></span>
 <span id="cb13-2"><a href="" aria-hidden="true" tabindex="-1"></a>apply_discount()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -860,12 +860,13 @@
 <span id="cb27-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># conditions in international deployments</span></span>
 <span id="cb27-3"><a href="" aria-hidden="true" tabindex="-1"></a>timeout <span class="op">=</span> <span class="dv">30</span></span>
 <span id="cb27-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Retry enabled to handle transient network failures</span></span>
-<span id="cb27-6"><a href="" aria-hidden="true" tabindex="-1"></a>db.<span class="ex">connect</span>(retry<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb27-7"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Process in batches to avoid memory issues</span></span>
-<span id="cb27-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> user <span class="kw">in</span> users:</span>
-<span id="cb27-10"><a href="" aria-hidden="true" tabindex="-1"></a>    process(user)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Retry enabled to handle observed</span></span>
+<span id="cb27-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># transient network failures</span></span>
+<span id="cb27-7"><a href="" aria-hidden="true" tabindex="-1"></a>db.<span class="ex">connect</span>(retry<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb27-8"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Process in batches to avoid memory issues</span></span>
+<span id="cb27-10"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> user <span class="kw">in</span> users:</span>
+<span id="cb27-11"><a href="" aria-hidden="true" tabindex="-1"></a>    process(user)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1055,7 +1056,7 @@
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Account must be active AND have positive balance</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Account must be active with positive balance</span></span>
 <span id="cb35-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># to be eligible for new transactions</span></span>
 <span id="cb35-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> (status <span class="op">==</span> <span class="st">'active'</span> <span class="kw">and</span> balance <span class="op">&gt;</span> <span class="dv">0</span>):</span>
 <span id="cb35-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1096,10 +1097,12 @@
 <div class="callout-content">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_median(arr):</span>
-<span id="cb36-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Find median value in array."""</span></span>
-<span id="cb36-3"><a href="" aria-hidden="true" tabindex="-1"></a>    arr.sort()</span>
-<span id="cb36-4"><a href="" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
-<span id="cb36-5"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> arr[n<span class="op">//</span><span class="dv">2</span>] <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="cf">else</span> (arr[n<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> arr[n<span class="op">//</span><span class="dv">2</span>]) <span class="op">/</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb36-2"><a href="" aria-hidden="true" tabindex="-1"></a>    arr.sort()</span>
+<span id="cb36-3"><a href="" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
+<span id="cb36-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span>:</span>
+<span id="cb36-5"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arr[n<span class="op">//</span><span class="dv">2</span>]</span>
+<span id="cb36-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb36-7"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (arr[n<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> arr[n<span class="op">//</span><span class="dv">2</span>]) <span class="op">/</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1115,13 +1118,16 @@
 <div class="callout-content">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_median(arr):</span>
-<span id="cb37-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Find median value in array."""</span></span>
-<span id="cb37-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use sort-based approach: O(n log n) time, O(1) space</span></span>
+<span id="cb37-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use sort-based approach:</span></span>
+<span id="cb37-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co">#   O(n log n) time, modifies input in-place</span></span>
 <span id="cb37-4"><a href="" aria-hidden="true" tabindex="-1"></a>    arr.sort()</span>
 <span id="cb37-5"><a href="" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
-<span id="cb37-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Return middle element for odd length,</span></span>
-<span id="cb37-7"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># average of two middle for even length</span></span>
-<span id="cb37-8"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> arr[n<span class="op">//</span><span class="dv">2</span>] <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="cf">else</span> (arr[n<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> arr[n<span class="op">//</span><span class="dv">2</span>]) <span class="op">/</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb37-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># odd length: middle element</span></span>
+<span id="cb37-7"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span>:</span>
+<span id="cb37-8"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arr[n<span class="op">//</span><span class="dv">2</span>]</span>
+<span id="cb37-9"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># even length: average of two middle elements</span></span>
+<span id="cb37-10"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb37-11"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (arr[n<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> arr[n<span class="op">//</span><span class="dv">2</span>]) <span class="op">/</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
