@@ -88,7 +88,7 @@ Transform commenting from an afterthought into a deliberate practice.
 
 ::: {.aside style="font-size: 0.6em; position: absolute; bottom: 10px; left: 50px;"}
 
-^†^Despite Python examples, all the mentioned strategies are **language-agnostic**.
+^†^Despite Python examples, all the mentioned strategies are **language-agnostic**. None of this advice is dogma; there can be valid reasons and conventions to break these rules.
 
 :::
 
