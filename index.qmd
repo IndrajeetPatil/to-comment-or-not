@@ -132,9 +132,7 @@ flowchart TD
     style I fill:#ffcdd2,color:#000
 ```
 
-# Documentation vs. Comments
-
-## Documentation vs. Comments {.smaller}
+## _N.B._ Documentation vs. Comments {.smaller}
 
 :::: {.columns}
 
@@ -174,14 +172,14 @@ def apply_discount(order_total, customer_tier, is_bulk_order):
 
 ::: {.column width='40%'}
 
-**Documentation** (Docstrings)
+**Documentation**
 
 - API contract
 - How to *use* the function
 - Parameters & returns
 - For function *users*
 
-**Comments** (Inline)
+**Comments**
 
 - Implementation details
 - *Why* it works this way
@@ -198,39 +196,6 @@ def apply_discount(order_total, customer_tier, is_bulk_order):
 
 :::
 
-## Aside: Examples of Comment Patterns {.smaller style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #6c757d;"}
-
-::: {style="font-size: 0.75em; line-height: 1.4;"}
-
-::: {style="background-color: #e3f2fd; padding: 12px; border-radius: 8px; margin-bottom: 15px;"}
-**Function Documentation Patterns**
-
-| Language | Style | Example |
-|----------|-------|----------|
-| **Python** | Docstrings | `"""Calculate tax based on income."""` |
-| **JavaScript** | JSDoc | `/** @param {number} income - Gross income */` |
-| **Java** | Javadoc | `/** Returns the calculated tax amount. */` |
-| **C#** | XML Comments | `/// <summary>Calculates tax</summary>` |
-| **Go** | Package comments | `// Package tax provides tax calculations` |
-:::
-
-::: {style="background-color: #f3e5f5; padding: 12px; border-radius: 8px; margin-bottom: 15px;"}
-**Inline Comment Patterns**
-
-| Purpose | Pattern | Example |
-|---------|---------|----------|
-| **Business Rule** | `# Business rule:` | `# Business rule: VIP customers get 10% discount` |
-| **Workaround** | `# HACK:` or `# WORKAROUND:` | `# HACK: API doesn't support bulk delete` |
-| **Performance** | `# Performance:` | `# Performance: Cache results for 5 minutes` |
-| **Security** | `# Security:` | `# Security: Validate input against XSS` |
-| **TODO/FIXME** | `# TODO:` | `# TODO: Refactor to use async/await` |
-:::
-
-::: {style="margin-top: 15px; padding: 8px; background-color: rgba(108, 117, 125, 0.1); border-radius: 6px; text-align: center; font-size: 1.1em;"}
-**Consistency within each project matters more than following external standards**
-:::
-
-:::
 
 # Do's and Don'ts
 
@@ -401,6 +366,7 @@ legacy_workaround()
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
+# Use new API endpoint per v3.0 migration
 refactored_solution()
 ```
 
@@ -432,7 +398,7 @@ apply_discount()
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
-# See calculate_discount() method above
+# See pricing.calculate_discount() for rate logic
 apply_discount()
 ```
 
@@ -444,7 +410,7 @@ apply_discount()
 
 ## {.smaller}
 
-**Don't comment out dead code**
+**Don't retain dead code as comments**
 
 :::: {.columns}
 
@@ -499,8 +465,8 @@ hacky_solution()
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
-# See issue #1234 for optimization plan
-# https://github.com/user/repo/issues/1234
+# Current: linear scan (tracked in #1234)
+# Future: switch to hash lookup when ready
 proper_solution()
 ```
 
@@ -586,7 +552,7 @@ process_legacy_data()
 
 ```{python}
 # Here be dragons
-complex_algorithm()
+process_transaction()
 ```
 
 :::
@@ -598,8 +564,8 @@ complex_algorithm()
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
-# Warning: complex algorithm, see docs
-complex_algorithm()
+# Handles concurrent writes with optimistic locking
+process_transaction()
 ```
 
 :::
@@ -685,10 +651,10 @@ for user in users:
 # conditions in international deployments
 timeout = 30
 
-# Retry connection to handle transient failures
-db.connect_with_retry()
+# Use retry to handle transient network failures
+db.connect()
 
-# Process users in batches to avoid memory issues
+# Process in batches to avoid memory issues
 for user in users:
     process(user)
 ```
@@ -787,95 +753,6 @@ result = process(data)
 **Precise comments save debugging time and prevent misuse of APIs.**
 
 :::
-
-## Organize Tests Structurally {.smaller}
-
-. . .
-
-Instead of using section comments to organize tests, use file structure or test classes.
-
-:::: {.columns}
-
-::: {.column width='33%'}
-
-:::{.callout-caution icon=false title="❌ Bad: Section comments"}
-
-```{.python filename="tests/test_calculator.py"}
-# ==================
-# Basic tests
-# ==================
-def test_addition():
-    ...
-
-def test_subtraction():
-    ...
-
-# ==================
-# Edge cases
-# ==================
-def test_zero_division():
-    ...
-
-def test_negative_numbers():
-    ...
-```
-
-:::
-
-:::
-
-::: {.column width='33%'}
-
-:::{.callout-tip icon=false title="✅ Good: Separate files"}
-
-```{.python filename="tests/test_basic_operations.py"}
-def test_addition():
-    ...
-
-def test_subtraction():
-    ...
-```
-
-<br>
-
-
-```{.python filename="tests/test_edge_cases.py"}
-def test_zero_division():
-    ...
-
-def test_negative_numbers():
-    ...
-```
-
-:::
-
-:::
-
-::: {.column width='33%'}
-
-:::{.callout-tip icon=false title="✅ Good: Test classes"}
-
-```{.python filename="tests/test_calculator.py"}
-class TestBasicOperations:
-    def test_addition(self):
-        ...
-
-    def test_subtraction(self):
-        ...
-
-class TestEdgeCases:
-    def test_zero_division(self):
-        ...
-
-    def test_negative_numbers(self):
-        ...
-```
-
-:::
-
-:::
-
-::::
 
 ## Clarify Complex Conditionals {.smaller}
 
