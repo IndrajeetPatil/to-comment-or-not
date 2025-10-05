@@ -334,7 +334,7 @@ return median(values)
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
-# Calculate median using quickselect
+# Calculate median for anomaly detection
 return median(values)
 ```
 
@@ -631,7 +631,7 @@ Follow this principle instead of memorizing rules:
 timeout = 30
 
 # Connect to database
-db.connect()
+db.connect(retry=True)
 
 # Loop through users
 for user in users:
@@ -651,8 +651,8 @@ for user in users:
 # conditions in international deployments
 timeout = 30
 
-# Use retry to handle transient network failures
-db.connect()
+# Retry enabled to handle transient network failures
+db.connect(retry=True)
 
 # Process in batches to avoid memory issues
 for user in users:
