@@ -409,7 +409,7 @@ apply_discount()
 
 ## {.smaller}
 
-**Don't comment out dead code**
+**Don't retain dead code as comments**
 
 :::: {.columns}
 
@@ -551,7 +551,7 @@ process_legacy_data()
 
 ```{python}
 # Here be dragons
-complex_algorithm()
+process_transaction()
 ```
 
 :::
@@ -563,8 +563,8 @@ complex_algorithm()
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
-# Warning: complex algorithm, see docs
-complex_algorithm()
+# Handles concurrent writes with optimistic locking
+process_transaction()
 ```
 
 :::
@@ -653,7 +653,7 @@ timeout = 30
 # Retry connection to handle transient failures
 db.connect_with_retry()
 
-# Process users in batches to avoid memory issues
+# Process in batches to avoid memory issues
 for user in users:
     process(user)
 ```
