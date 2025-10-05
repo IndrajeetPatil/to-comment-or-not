@@ -753,95 +753,6 @@ result = process(data)
 
 :::
 
-## Organize Tests Structurally {.smaller}
-
-. . .
-
-Instead of using section comments to organize tests, use file structure or test classes.
-
-:::: {.columns}
-
-::: {.column width='33%'}
-
-:::{.callout-caution icon=false title="❌ Bad: Section comments"}
-
-```{.python filename="tests/test_calculator.py"}
-# ==================
-# Basic tests
-# ==================
-def test_addition():
-    ...
-
-def test_subtraction():
-    ...
-
-# ==================
-# Edge cases
-# ==================
-def test_zero_division():
-    ...
-
-def test_negative_numbers():
-    ...
-```
-
-:::
-
-:::
-
-::: {.column width='33%'}
-
-:::{.callout-tip icon=false title="✅ Good: Separate files"}
-
-```{.python filename="tests/test_basic_operations.py"}
-def test_addition():
-    ...
-
-def test_subtraction():
-    ...
-```
-
-<br>
-
-
-```{.python filename="tests/test_edge_cases.py"}
-def test_zero_division():
-    ...
-
-def test_negative_numbers():
-    ...
-```
-
-:::
-
-:::
-
-::: {.column width='33%'}
-
-:::{.callout-tip icon=false title="✅ Good: Test classes"}
-
-```{.python filename="tests/test_calculator.py"}
-class TestBasicOperations:
-    def test_addition(self):
-        ...
-
-    def test_subtraction(self):
-        ...
-
-class TestEdgeCases:
-    def test_zero_division(self):
-        ...
-
-    def test_negative_numbers(self):
-        ...
-```
-
-:::
-
-:::
-
-::::
-
 ## Clarify Complex Conditionals {.smaller}
 
 . . .
@@ -973,6 +884,95 @@ def find_median(arr):
 **Algorithm comments should explain the approach and trade-offs.**
 
 :::
+
+## Organize Tests Structurally {.smaller}
+
+. . .
+
+Instead of using section comments to organize tests, use file structure or test classes.
+
+:::: {.columns}
+
+::: {.column width='33%'}
+
+:::{.callout-caution icon=false title="❌ Bad: Section comments"}
+
+```{.python filename="tests/test_calculator.py"}
+# ==================
+# Basic tests
+# ==================
+def test_addition():
+    ...
+
+def test_subtraction():
+    ...
+
+# ==================
+# Edge cases
+# ==================
+def test_zero_division():
+    ...
+
+def test_negative_numbers():
+    ...
+```
+
+:::
+
+:::
+
+::: {.column width='33%'}
+
+:::{.callout-tip icon=false title="✅ Good: Separate files"}
+
+```{.python filename="tests/test_basic_operations.py"}
+def test_addition():
+    ...
+
+def test_subtraction():
+    ...
+```
+
+<br>
+
+
+```{.python filename="tests/test_edge_cases.py"}
+def test_zero_division():
+    ...
+
+def test_negative_numbers():
+    ...
+```
+
+:::
+
+:::
+
+::: {.column width='33%'}
+
+:::{.callout-tip icon=false title="✅ Good: Test classes"}
+
+```{.python filename="tests/test_calculator.py"}
+class TestBasicOperations:
+    def test_addition(self):
+        ...
+
+    def test_subtraction(self):
+        ...
+
+class TestEdgeCases:
+    def test_zero_division(self):
+        ...
+
+    def test_negative_numbers(self):
+        ...
+```
+
+:::
+
+:::
+
+::::
 
 # Tools & Techniques
 
