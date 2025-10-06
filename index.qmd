@@ -240,14 +240,14 @@ def has_premium_access(user):
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Comment explains complex logic"}
+:::{.callout-caution icon=false title="❌ Comment explains complex conditional"}
 
 ```{python}
-# Apply 10% discount if total > 100,
-# or 5% if > 50, but cap at 20
-discount = min(0.10 if total > 100 else
-              (0.05 if total > 50 else 0), 0.20)
-final = total * (1 - discount)
+# Apply discount if eligible: active account,
+# 3+ orders in last month, or loyalty member
+if (user.is_active and user.orders_last_month >= 3
+    or user.loyalty_status == 'member'):
+    apply_discount(user)
 ```
 
 :::
@@ -256,17 +256,17 @@ final = total * (1 - discount)
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Simplify logic, eliminate comment"}
+:::{.callout-tip icon=false title="✅ Well-named function obviates comment"}
 
 ```{python}
-def calculate_discount(total):
-    if total > 100:
-        return min(0.10, 0.20)
-    elif total > 50:
-        return min(0.05, 0.20)
-    return 0
+def is_discount_eligible(user):
+    frequent_buyer = (user.is_active and
+                     user.orders_last_month >= 3)
+    loyalty_member = user.loyalty_status == 'member'
+    return frequent_buyer or loyalty_member
 
-final = total * (1 - calculate_discount(total))
+if is_discount_eligible(user):
+    apply_discount(user)
 ```
 
 :::
@@ -683,7 +683,7 @@ validate_input()
 
 Whatever helps the reader understand the code more easily: the *what*, the *why*, and/or the *how*.
 
-## Explain the Why {.smaller}
+## Explain the Thought Process {.smaller}
 
 . . .
 
@@ -691,7 +691,7 @@ Whatever helps the reader understand the code more easily: the *what*, the *why*
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Comments unnecessarily describe 'what'"}
+:::{.callout-caution icon=false title="❌ Comments reiterate code"}
 
 ```{python}
 # Set timeout to 30
@@ -700,9 +700,9 @@ timeout = 30
 # Connect to database
 db.connect(retry=True)
 
-# Loop through users
-for user in users:
-    process(user)
+# as per spec
+if len(data) == 0:
+    return None
 ```
 
 :::
@@ -711,20 +711,21 @@ for user in users:
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Comments explain 'why'"}
+:::{.callout-tip icon=false title="✅ Comments explain rationale"}
 
 ```{python}
-# Timeout increased to handle slow network
-# conditions in international deployments
+# Timeout to handle slow network conditions 
+# in international deployments
 timeout = 30
 
 # Retry enabled to handle observed
 # transient network failures
 db.connect(retry=True)
 
-# Process in batches to avoid memory issues
-for user in users:
-    process(user)
+# Return None for empty datasets per
+# API specification v2.1 section 4.3
+if len(data) == 0:
+    return None
 ```
 
 :::
@@ -741,169 +742,9 @@ for user in users:
 
 :::
 
+## Document Non-Obvious Logic {.smaller}
 
-## Explain Constraints and Assumptions {.smaller}
-
-. . .
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Vague"}
-
-```{python}
-# as per spec
-if len(data) == 0:
-    return None
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Specific"}
-
-```{python}
-# Return None for empty datasets per
-# API specification v2.1 section 4.3
-if len(data) == 0:
-    return None
-```
-
-:::
-
-:::
-
-::::
-
-. . .
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Too generic"}
-
-```{python}
-# handle the data
-data = clean_input(raw_data)
-result = process(data)
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Provides context"}
-
-```{python}
-# Input must be UTF-8 encoded strings
-# Assumes data fits in memory (<1GB)
-data = clean_input(raw_data)
-result = process(data)
-```
-
-:::
-
-:::
-
-::::
-
-. . .
-
-::: {.callout-tip}
-
-**Precise comments save debugging time and prevent misuse of APIs.**
-
-:::
-
-## Clarify Complex Conditionals {.smaller}
-
-. . .
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Unclear complex condition"}
-
-```{python}
-if (user.age < 18 and
-    not user.has_guardian_consent and
-    user.account_type != 'premium'):
-    restrict_access = True
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Clear business rule"}
-
-```{python}
-# Minors need guardian consent unless premium
-if (user.age < 18 and
-    not user.has_guardian_consent and
-    user.account_type != 'premium'):
-    restrict_access = True
-```
-
-:::
-
-:::
-
-::::
-
-. . .
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Cryptic condition"}
-
-```{python}
-if not (status == 'active' and balance > 0):
-    return False
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Explains business logic"}
-
-```{python}
-# Account must be active with positive balance
-# to be eligible for new transactions
-if not (status == 'active' and balance > 0):
-    return False
-```
-
-:::
-
-:::
-
-::::
-
-. . .
-
-::: {.callout-tip}
-
-**Complex conditionals should explain the business rule or decision criteria.**
-
-:::
-
-## Document Non-Obvious Algorithms {.smaller}
+When code uses non-trivial algorithms, explain the approach and trade-offs—save future developers time.
 
 . . .
 
@@ -957,7 +798,7 @@ def find_median(arr):
 
 ::: {.callout-tip}
 
-**Algorithm comments should explain the approach and trade-offs.**
+**Comments that don't add any 'new information' are okay if they assist with readability.**
 
 :::
 
