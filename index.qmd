@@ -515,7 +515,7 @@ new_function()
 
 ::::
 
-**Don't write temporary comments**
+**Don't write vague action comments**
 
 :::: {.columns}
 
@@ -524,9 +524,8 @@ new_function()
 :::{.callout-caution icon=false title="❌ Bad"}
 
 ```{python}
-# FIXME: broken, fix later
 # TODO: optimize this
-hacky_solution()
+process_data()
 ```
 
 :::
@@ -538,9 +537,8 @@ hacky_solution()
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
-# Current: linear scan (tracked in #1234)
-# Future: switch to hash lookup when ready
-proper_solution()
+# TODO: Switch to binary search (issue #1234)
+process_data()
 ```
 
 :::
@@ -821,6 +819,62 @@ def is_power_of_two(n):
 ::: {.callout-tip}
 
 **Complex logic deserves explanation—clarity trumps brevity.**
+
+:::
+
+## Document Known Flaws {.smaller}
+
+It's acceptable to document known issues, limitations, or future improvements using action comments.
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Vague action comment"}
+
+```{python}
+# TODO: fix this
+def process_data(items):
+    return [x * 2 for x in items]
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Specific with tracking"}
+
+```{python}
+# TODO: Add validation for empty list (issue #847)
+def process_data(items):
+    return [x * 2 for x in items]
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-note}
+
+## Common Action Comment Tags
+
+| Tag | Purpose | Example |
+|-----|---------|---------|
+| `TODO` | Planned improvement or missing feature | `# TODO: Add caching (issue #123)` |
+| `FIXME` | Known bug that needs fixing | `# FIXME: Fails on negative input (#456)` |
+| `HACK` | Temporary workaround for a problem | `# HACK: API bug workaround (ticket #789)` |
+| `NOTE` | Important clarification or caveat | `# NOTE: Must run before init()` |
+| `OPTIMIZE` | Performance improvement opportunity | `# OPTIMIZE: Use binary search (#234)` |
+
+**Tip**: Use the [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) VS Code extension to highlight these tags in your editor.
 
 :::
 
