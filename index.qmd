@@ -744,7 +744,7 @@ if len(data) == 0:
 
 ## Document Non-Obvious Logic {.smaller}
 
-When code uses non-trivial algorithms, explain the approach and trade-offs—save future developers time.
+Complex logic benefits from explanation—even when developers could eventually figure it out.
 
 . . .
 
@@ -752,17 +752,12 @@ When code uses non-trivial algorithms, explain the approach and trade-offs—sav
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ No algorithm explanation"}
+:::{.callout-caution icon=false title="❌ Cryptic regex"}
 
 ```{python}
-def find_median(arr):
-    arr.sort()
-    n = len(arr)
-    if n % 2:
-        result = arr[n//2]
-    else:
-        result = (arr[n//2-1] + arr[n//2]) / 2
-    return result
+pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+if re.match(pattern, password):
+    return True
 ```
 
 :::
@@ -771,21 +766,48 @@ def find_median(arr):
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Algorithm details explained"}
+:::{.callout-tip icon=false title="✅ Regex requirements explained"}
 
 ```{python}
-def find_median(arr):
-    # Use sort-based approach:
-    # O(n log n) time, modifies input in-place
-    arr.sort()
-    n = len(arr)
-    # odd length: middle element
-    if n % 2:
-        result = arr[n//2]
-    # even length: average of two middle elements
-    else:
-        result = (arr[n//2-1] + arr[n//2]) / 2
-    return result
+# Password must have: uppercase letter, digit,
+# special char (@$!%*?&), min 8 characters
+pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+if re.match(pattern, password):
+    return True
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Unexplained bit manipulation"}
+
+```{python}
+def is_power_of_two(n):
+    return n > 0 and (n & (n - 1)) == 0
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Logic clarified"}
+
+```{python}
+def is_power_of_two(n):
+    # Powers of 2 have single bit set;
+    # n & (n-1) clears lowest bit, yields 0
+    return n > 0 and (n & (n - 1)) == 0
 ```
 
 :::
@@ -798,7 +820,7 @@ def find_median(arr):
 
 ::: {.callout-tip}
 
-**Comments that don't add any 'new information' are okay if they assist with readability.**
+**Complex logic deserves explanation—clarity trumps brevity.**
 
 :::
 
