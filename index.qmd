@@ -136,25 +136,25 @@ flowchart TD
 
 :::: {.columns}
 
-::: {.column width='60%'}
+::: {.column width='65%'}
 
-```{python}
-def is_valid_email(email):
-    """Check if email address is valid.
-
-    Returns:
-        True if valid, False otherwise
-    """
-    # RFC 5322 simplified: local@domain format
-    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    return re.match(pattern, email) is not None
-```
+<div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.8em; line-height: 1.6;">
+<span style="color: #0033cc;">def</span> is_valid_email(email):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #c8e6c9; padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">"""Check if email address is valid.</span><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #c8e6c9; padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">Returns:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #c8e6c9; padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">True if valid, False otherwise</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #c8e6c9; padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">"""</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #ffcdd2; padding: 2px 4px; border-radius: 3px; font-size: 0.95em;"># RFC 5322 simplified: local@domain format</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;pattern = <span style="color: #008000;">r'&#94;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&#36;'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0033cc;">return</span> re.match(pattern, email) <span style="color: #0033cc;">is not</span> <span style="color: #0033cc;">None</span>
+</div>
 
 :::
 
-::: {.column width='40%'}
+::: {.column width='35%'}
 
-::: {style="background-color: #e8f4f8; padding: 10px; border-radius: 10px; margin-bottom: 10px;"}
+::: {style="background-color: #c8e6c9; padding: 10px; border-radius: 10px; margin-bottom: 10px;"}
 **Documentation**
 
 - How to *use* the function
@@ -162,7 +162,7 @@ def is_valid_email(email):
 - For function *users*
 :::
 
-::: {style="background-color: #fff3e0; padding: 10px; border-radius: 10px;"}
+::: {style="background-color: #ffcdd2; padding: 10px; border-radius: 10px;"}
 **Comments**
 
 - *Why* it works this way
