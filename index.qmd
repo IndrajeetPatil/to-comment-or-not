@@ -196,17 +196,90 @@ def apply_discount(order_total, customer_tier, is_bulk_order):
 
 :::
 
+# What *Not* to Comment
 
-# Do's and Don'ts
+_Every comment distracts from reading code—make sure it's worth the interruption._
 
 
-# The Don'ts
+## Don't use crutch comments {.smaller}
 
-Follow this principle instead of memorizing rules:
+Crutch comments compensate for unclear code—fix the code instead.
 
-::: {style="background-color: #FFFBC1; padding: 10px; border-radius: 25px; text-align: center; font-size: 2rem;"}
+:::: {.columns}
 
-**Comments must provide value for the *reader*, not just satisfy the *writer*.**
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Comment compensates for bad naming"}
+
+```{python}
+# Check if user can access premium features
+def chk(u):
+    return u.tier == 'gold' or u.tier == 'platinum'
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Clear naming needs no comment"}
+
+```{python}
+def has_premium_access(user):
+    return user.tier in ['gold', 'platinum']
+```
+
+:::
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Comment explains complex logic"}
+
+```{python}
+# Apply 10% discount if total > 100,
+# or 5% if > 50, but cap at 20
+discount = min(0.10 if total > 100 else
+              (0.05 if total > 50 else 0), 0.20)
+final = total * (1 - discount)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Simplify logic, eliminate comment"}
+
+```{python}
+def calculate_discount(total):
+    if total > 100:
+        return min(0.10, 0.20)
+    elif total > 50:
+        return min(0.05, 0.20)
+    return 0
+
+final = total * (1 - calculate_discount(total))
+```
+
+:::
+
+:::
+
+::::
+
+::: {style="background-color: #e8f5e9; padding: 8px; border-radius: 10px; text-align: center; color: #2e7d32; font-size: 1.1em;"}
+
+$$
+\text{good code} > \text{bad code} + \text{comments}
+$$
 
 :::
 
@@ -606,7 +679,7 @@ validate_input()
 
 ::::
 
-# The Do's
+# What to Comment
 
 Follow this principle instead of memorizing rules:
 
