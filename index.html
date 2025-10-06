@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.9.2">
 
   <meta name="author" content="Indrajeet Patil">
-  <meta name="dcterms.date" content="2025-10-06 18:47:51.745289">
+  <meta name="dcterms.date" content="2025-10-06 20:11:56.22737">
   <meta name="keywords" content="comments, software-engineering, computer-science, software-development, code-documentation">
   <title>To Comment or Not To Comment</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -262,9 +262,9 @@
 <aside><div>
 <p><sup>†</sup>Despite Python examples, all the mentioned strategies are <strong>language-agnostic</strong>. None of this advice is dogma; there can be valid reasons and conventions to break these rules.</p>
 </div></aside></section>
-<section id="code-tells-you-how-comments-tell-you-why." class="title-slide slide level1 center">
-<h1>“Code tells you how; comments tell you why.”</h1>
-<p>- Jeff Atwood</p>
+<section id="the-purpose-of-commenting-is-to-help-the-reader-know-as-much-as-the-writer-did." class="title-slide slide level1 center">
+<h1>“The purpose of commenting is to help the reader know as much as the writer did.”</h1>
+<p>- Boswell &amp; Foucher</p>
 </section>
 
 <section>
@@ -408,41 +408,41 @@
 </div></div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div title="❌ Comment explains complex logic">
+<div title="❌ Comment explains complex conditional">
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>❌ Comment explains complex logic</strong></p>
+<p><strong>❌ Comment explains complex conditional</strong></p>
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply 10% discount if total &gt; 100,</span></span>
-<span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># or 5% if &gt; 50, but cap at 20</span></span>
-<span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a>discount <span class="op">=</span> <span class="bu">min</span>(<span class="fl">0.10</span> <span class="cf">if</span> total <span class="op">&gt;</span> <span class="dv">100</span> <span class="cf">else</span></span>
-<span id="cb4-4"><a href="" aria-hidden="true" tabindex="-1"></a>              (<span class="fl">0.05</span> <span class="cf">if</span> total <span class="op">&gt;</span> <span class="dv">50</span> <span class="cf">else</span> <span class="dv">0</span>), <span class="fl">0.20</span>)</span>
-<span id="cb4-5"><a href="" aria-hidden="true" tabindex="-1"></a>final <span class="op">=</span> total <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> discount)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply discount if eligible: active account,</span></span>
+<span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># 3+ orders in last month, or loyalty member</span></span>
+<span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (user.is_active <span class="kw">and</span> user.orders_last_month <span class="op">&gt;=</span> <span class="dv">3</span></span>
+<span id="cb4-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="kw">or</span> user.loyalty_status <span class="op">==</span> <span class="st">'member'</span>):</span>
+<span id="cb4-5"><a href="" aria-hidden="true" tabindex="-1"></a>    apply_discount(user)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div title="✅ Simplify logic, eliminate comment">
+<div title="✅ Well-named function obviates comment">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>✅ Simplify logic, eliminate comment</strong></p>
+<p><strong>✅ Well-named function obviates comment</strong></p>
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_discount(total):</span>
-<span id="cb5-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> total <span class="op">&gt;</span> <span class="dv">100</span>:</span>
-<span id="cb5-3"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">min</span>(<span class="fl">0.10</span>, <span class="fl">0.20</span>)</span>
-<span id="cb5-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> total <span class="op">&gt;</span> <span class="dv">50</span>:</span>
-<span id="cb5-5"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">min</span>(<span class="fl">0.05</span>, <span class="fl">0.20</span>)</span>
-<span id="cb5-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb5-7"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="" aria-hidden="true" tabindex="-1"></a>final <span class="op">=</span> total <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> calculate_discount(total))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_discount_eligible(user):</span>
+<span id="cb5-2"><a href="" aria-hidden="true" tabindex="-1"></a>    frequent_buyer <span class="op">=</span> (user.is_active <span class="kw">and</span></span>
+<span id="cb5-3"><a href="" aria-hidden="true" tabindex="-1"></a>                     user.orders_last_month <span class="op">&gt;=</span> <span class="dv">3</span>)</span>
+<span id="cb5-4"><a href="" aria-hidden="true" tabindex="-1"></a>    loyalty_member <span class="op">=</span> user.loyalty_status <span class="op">==</span> <span class="st">'member'</span></span>
+<span id="cb5-5"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> frequent_buyer <span class="kw">or</span> loyalty_member</span>
+<span id="cb5-6"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> is_discount_eligible(user):</span>
+<span id="cb5-8"><a href="" aria-hidden="true" tabindex="-1"></a>    apply_discount(user)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -710,7 +710,7 @@
 </div>
 </div>
 </div></div>
-<p><strong>Don’t write temporary comments</strong></p>
+<p><strong>Don’t write vague action comments</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div title="❌ Bad">
@@ -721,9 +721,8 @@
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: broken, fix later</span></span>
-<span id="cb20-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: optimize this</span></span>
-<span id="cb20-3"><a href="" aria-hidden="true" tabindex="-1"></a>hacky_solution()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: optimize this</span></span>
+<span id="cb20-2"><a href="" aria-hidden="true" tabindex="-1"></a>process_data()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -738,9 +737,8 @@
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Current: linear scan (tracked in #1234)</span></span>
-<span id="cb21-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Future: switch to hash lookup when ready</span></span>
-<span id="cb21-3"><a href="" aria-hidden="true" tabindex="-1"></a>proper_solution()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Switch to binary search (issue #1234)</span></span>
+<span id="cb21-2"><a href="" aria-hidden="true" tabindex="-1"></a>process_data()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -894,21 +892,18 @@
 <section>
 <section id="what-to-comment" class="title-slide slide level1 center">
 <h1>What to Comment</h1>
-<p>Follow this principle instead of memorizing rules:</p>
-<div style="background-color: #FFFBC1; padding: 10px; border-radius: 25px; text-align: center; font-size: 2rem;">
-<p><strong>Good comments explain the why and provide essential context.</strong></p>
-</div>
+<p>Whatever helps the reader understand the code more easily: the <em>what</em>, the <em>why</em>, and/or the <em>how</em>.</p>
 </section>
-<section id="explain-the-why" class="slide level2 smaller">
-<h2>Explain the Why</h2>
+<section id="explain-the-thought-process" class="slide level2 smaller">
+<h2>Explain the Thought Process</h2>
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div title="❌ Comments describe 'what'">
+<div title="❌ Comments reiterate code">
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>❌ Comments describe ‘what’</strong></p>
+<p><strong>❌ Comments reiterate code</strong></p>
 </div>
 <div class="callout-content">
 <div class="cell">
@@ -918,34 +913,35 @@
 <span id="cb30-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to database</span></span>
 <span id="cb30-5"><a href="" aria-hidden="true" tabindex="-1"></a>db.<span class="ex">connect</span>(retry<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb30-6"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through users</span></span>
-<span id="cb30-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> user <span class="kw">in</span> users:</span>
-<span id="cb30-9"><a href="" aria-hidden="true" tabindex="-1"></a>    process(user)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb30-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># as per spec</span></span>
+<span id="cb30-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(data) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb30-9"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div title="✅ Comments explain 'why'">
+<div title="✅ Comments explain rationale">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>✅ Comments explain ‘why’</strong></p>
+<p><strong>✅ Comments explain rationale</strong></p>
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Timeout increased to handle slow network</span></span>
-<span id="cb31-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># conditions in international deployments</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Timeout to handle slow network conditions </span></span>
+<span id="cb31-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># in international deployments</span></span>
 <span id="cb31-3"><a href="" aria-hidden="true" tabindex="-1"></a>timeout <span class="op">=</span> <span class="dv">30</span></span>
 <span id="cb31-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Retry enabled to handle observed</span></span>
 <span id="cb31-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># transient network failures</span></span>
 <span id="cb31-7"><a href="" aria-hidden="true" tabindex="-1"></a>db.<span class="ex">connect</span>(retry<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb31-8"><a href="" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Process in batches to avoid memory issues</span></span>
-<span id="cb31-10"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> user <span class="kw">in</span> users:</span>
-<span id="cb31-11"><a href="" aria-hidden="true" tabindex="-1"></a>    process(user)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb31-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Return None for empty datasets per</span></span>
+<span id="cb31-10"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># API specification v2.1 section 4.3</span></span>
+<span id="cb31-11"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(data) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb31-12"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -969,40 +965,42 @@
 </div>
 </div>
 </section>
-<section id="explain-constraints-and-assumptions" class="slide level2 smaller">
-<h2>Explain Constraints and Assumptions</h2>
+<section id="document-non-obvious-logic" class="slide level2 smaller">
+<h2>Document Non-Obvious Logic</h2>
+<p>Complex logic benefits from explanation—even when developers could eventually figure it out.</p>
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div title="❌ Vague">
+<div title="❌ Cryptic regex">
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>❌ Vague</strong></p>
+<p><strong>❌ Cryptic regex</strong></p>
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># as per spec</span></span>
-<span id="cb32-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(data) <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb32-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="vs">r'</span><span class="dv">^</span><span class="ex">(</span><span class="fu">?=</span><span class="dv">.</span><span class="op">*</span><span class="pp">[A-Z]</span><span class="ex">)(</span><span class="fu">?=</span><span class="dv">.</span><span class="op">*</span><span class="dv">\d</span><span class="ex">)(</span><span class="fu">?=</span><span class="dv">.</span><span class="op">*</span><span class="pp">[@$!%*?&amp;]</span><span class="ex">)</span><span class="pp">[A-Za-z</span><span class="dv">\d</span><span class="pp">@$!%*?&amp;]</span><span class="op">{8,}</span><span class="dv">$</span><span class="vs">'</span></span>
+<span id="cb32-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> re.match(pattern, password):</span>
+<span id="cb32-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div title="✅ Specific">
+<div title="✅ Regex requirements explained">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>✅ Specific</strong></p>
+<p><strong>✅ Regex requirements explained</strong></p>
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Return None for empty datasets per</span></span>
-<span id="cb33-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># API specification v2.1 section 4.3</span></span>
-<span id="cb33-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(data) <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb33-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Password must have: uppercase letter, digit,</span></span>
+<span id="cb33-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># special char (@$!%*?&amp;), min 8 characters</span></span>
+<span id="cb33-3"><a href="" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="vs">r'</span><span class="dv">^</span><span class="ex">(</span><span class="fu">?=</span><span class="dv">.</span><span class="op">*</span><span class="pp">[A-Z]</span><span class="ex">)(</span><span class="fu">?=</span><span class="dv">.</span><span class="op">*</span><span class="dv">\d</span><span class="ex">)(</span><span class="fu">?=</span><span class="dv">.</span><span class="op">*</span><span class="pp">[@$!%*?&amp;]</span><span class="ex">)</span><span class="pp">[A-Za-z</span><span class="dv">\d</span><span class="pp">@$!%*?&amp;]</span><span class="op">{8,}</span><span class="dv">$</span><span class="vs">'</span></span>
+<span id="cb33-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> re.match(pattern, password):</span>
+<span id="cb33-5"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1013,35 +1011,34 @@
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div title="❌ Too generic">
+<div title="❌ Unexplained bit manipulation">
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>❌ Too generic</strong></p>
+<p><strong>❌ Unexplained bit manipulation</strong></p>
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># handle the data</span></span>
-<span id="cb34-2"><a href="" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> clean_input(raw_data)</span>
-<span id="cb34-3"><a href="" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> process(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_power_of_two(n):</span>
+<span id="cb34-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> (n <span class="op">&amp;</span> (n <span class="op">-</span> <span class="dv">1</span>)) <span class="op">==</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div title="✅ Provides context">
+<div title="✅ Logic clarified">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>✅ Provides context</strong></p>
+<p><strong>✅ Logic clarified</strong></p>
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Input must be UTF-8 encoded strings</span></span>
-<span id="cb35-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Assumes data fits in memory (&lt;1GB)</span></span>
-<span id="cb35-3"><a href="" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> clean_input(raw_data)</span>
-<span id="cb35-4"><a href="" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> process(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_power_of_two(n):</span>
+<span id="cb35-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Powers of 2 have single bit set;</span></span>
+<span id="cb35-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># n &amp; (n-1) clears lowest bit, yields 0</span></span>
+<span id="cb35-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> (n <span class="op">&amp;</span> (n <span class="op">-</span> <span class="dv">1</span>)) <span class="op">==</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1059,48 +1056,46 @@
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Precise comments save debugging time and prevent misuse of APIs.</strong></p>
+<p><strong>Complex logic deserves explanation—clarity trumps brevity.</strong></p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="clarify-complex-conditionals" class="slide level2 smaller">
-<h2>Clarify Complex Conditionals</h2>
+<section id="document-known-flaws" class="slide level2 smaller">
+<h2>Document Known Flaws</h2>
+<p>It’s acceptable to document known issues, limitations, or future improvements using action comments.</p>
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div title="❌ Unclear complex condition">
+<div title="❌ Vague action comment">
 <div class="callout callout-caution no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>❌ Unclear complex condition</strong></p>
+<p><strong>❌ Vague action comment</strong></p>
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (user.age <span class="op">&lt;</span> <span class="dv">18</span> <span class="kw">and</span></span>
-<span id="cb36-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="kw">not</span> user.has_guardian_consent <span class="kw">and</span></span>
-<span id="cb36-3"><a href="" aria-hidden="true" tabindex="-1"></a>    user.account_type <span class="op">!=</span> <span class="st">'premium'</span>):</span>
-<span id="cb36-4"><a href="" aria-hidden="true" tabindex="-1"></a>    restrict_access <span class="op">=</span> <span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: fix this</span></span>
+<span id="cb36-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_data(items):</span>
+<span id="cb36-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> items]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div title="✅ Clear business rule">
+<div title="✅ Specific with tracking">
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>✅ Clear business rule</strong></p>
+<p><strong>✅ Specific with tracking</strong></p>
 </div>
 <div class="callout-content">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Minors need guardian consent unless premium</span></span>
-<span id="cb37-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (user.age <span class="op">&lt;</span> <span class="dv">18</span> <span class="kw">and</span></span>
-<span id="cb37-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="kw">not</span> user.has_guardian_consent <span class="kw">and</span></span>
-<span id="cb37-4"><a href="" aria-hidden="true" tabindex="-1"></a>    user.account_type <span class="op">!=</span> <span class="st">'premium'</span>):</span>
-<span id="cb37-5"><a href="" aria-hidden="true" tabindex="-1"></a>    restrict_access <span class="op">=</span> <span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add validation for empty list (issue #847)</span></span>
+<span id="cb37-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_data(items):</span>
+<span id="cb37-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> items]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1109,124 +1104,57 @@
 </div></div>
 </div>
 <div class="fragment">
-<div class="columns">
-<div class="column" style="width:50%;">
-<div title="❌ Cryptic condition">
-<div class="callout callout-caution no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>❌ Cryptic condition</strong></p>
-</div>
-<div class="callout-content">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> (status <span class="op">==</span> <span class="st">'active'</span> <span class="kw">and</span> balance <span class="op">&gt;</span> <span class="dv">0</span>):</span>
-<span id="cb38-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div title="✅ Explains business logic">
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>✅ Explains business logic</strong></p>
-</div>
-<div class="callout-content">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Account must be active with positive balance</span></span>
-<span id="cb39-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># to be eligible for new transactions</span></span>
-<span id="cb39-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> (status <span class="op">==</span> <span class="st">'active'</span> <span class="kw">and</span> balance <span class="op">&gt;</span> <span class="dv">0</span>):</span>
-<span id="cb39-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div></div>
-</div>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Tip</strong></p>
+<p><strong>Common Action Comment Tags</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Complex conditionals should explain the business rule or decision criteria.</strong></p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="document-non-obvious-algorithms" class="slide level2 smaller">
-<h2>Document Non-Obvious Algorithms</h2>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:50%;">
-<div title="❌ No algorithm explanation">
-<div class="callout callout-caution no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>❌ No algorithm explanation</strong></p>
-</div>
-<div class="callout-content">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_median(arr):</span>
-<span id="cb40-2"><a href="" aria-hidden="true" tabindex="-1"></a>    arr.sort()</span>
-<span id="cb40-3"><a href="" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
-<span id="cb40-4"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span>:</span>
-<span id="cb40-5"><a href="" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> arr[n<span class="op">//</span><span class="dv">2</span>]</span>
-<span id="cb40-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb40-7"><a href="" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> (arr[n<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> arr[n<span class="op">//</span><span class="dv">2</span>]) <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb40-8"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div title="✅ Algorithm details explained">
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>✅ Algorithm details explained</strong></p>
-</div>
-<div class="callout-content">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_median(arr):</span>
-<span id="cb41-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use sort-based approach:</span></span>
-<span id="cb41-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># O(n log n) time, modifies input in-place</span></span>
-<span id="cb41-4"><a href="" aria-hidden="true" tabindex="-1"></a>    arr.sort()</span>
-<span id="cb41-5"><a href="" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
-<span id="cb41-6"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># odd length: middle element</span></span>
-<span id="cb41-7"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span>:</span>
-<span id="cb41-8"><a href="" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> arr[n<span class="op">//</span><span class="dv">2</span>]</span>
-<span id="cb41-9"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># even length: average of two middle elements</span></span>
-<span id="cb41-10"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb41-11"><a href="" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> (arr[n<span class="op">//</span><span class="dv">2</span><span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> arr[n<span class="op">//</span><span class="dv">2</span>]) <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb41-12"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div></div>
-</div>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>Algorithm comments should explain the approach and trade-offs.</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 39%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tag</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>TODO</code></td>
+<td>Planned improvement or missing feature</td>
+<td><code># TODO: Add caching (issue #123)</code></td>
+</tr>
+<tr class="even">
+<td><code>FIXME</code></td>
+<td>Known bug that needs fixing</td>
+<td><code># FIXME: Fails on negative input (#456)</code></td>
+</tr>
+<tr class="odd">
+<td><code>HACK</code></td>
+<td>Temporary workaround for a problem</td>
+<td><code># HACK: API bug workaround (ticket #789)</code></td>
+</tr>
+<tr class="even">
+<td><code>NOTE</code></td>
+<td>Important clarification or caveat</td>
+<td><code># NOTE: Must run before init()</code></td>
+</tr>
+<tr class="odd">
+<td><code>OPTIMIZE</code></td>
+<td>Performance improvement opportunity</td>
+<td><code># OPTIMIZE: Use binary search (#234)</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tip</strong>: Use the <a href="https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments">Better Comments</a> VS Code extension to highlight these tags in your editor.</p>
 </div>
 </div>
 </div>
@@ -1397,9 +1325,7 @@
 <section>
 <section id="the-benefits" class="title-slide slide level1 center">
 <h1>The Benefits</h1>
-<blockquote>
-<p>“<em>Programs must be written for people to read, and only incidentally for machines to execute.</em>” - Harold Abelson</p>
-</blockquote>
+
 </section>
 <section id="context-and-understanding" class="slide level2 smaller">
 <h2>Context and Understanding</h2>
@@ -1411,11 +1337,6 @@
 <div class="fragment">
 <ul>
 <li>Writing thoughtful comments forces you to <strong>articulate your reasoning</strong> and design decisions, improving code quality.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>Explaining your code in comments <strong>clarifies your own understanding</strong> and reveals potential issues.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -1433,11 +1354,12 @@
 <li>Consistent commenting practices <strong>reduce cognitive overload</strong> and make maintenance safer.</li>
 </ul>
 </div>
-</section>
-<section id="worth-mastering" class="slide level2">
-<h2>Worth Mastering</h2>
-<p>Invest time in thoughtful comments early—they pay dividends by preserving knowledge and intent.</p>
-<p><strong>The more you practice, the better you’ll get at knowing when and how to comment!</strong></p>
+<div class="fragment">
+<p><br></p>
+<div style="background-color: #e8f5e9; padding: 15px; border-radius: 15px; text-align: center;">
+<p><strong>Invest time in thoughtful comments early—practice makes perfect.</strong></p>
+</div>
+</div>
 </section></section>
 <section id="thank-you" class="title-slide slide level1 center">
 <h1>Thank You</h1>

@@ -92,8 +92,8 @@ Transform commenting from an afterthought into a deliberate practice.
 
 :::
 
-# "Code tells you how; comments tell you why."
-\- Jeff Atwood
+# "The purpose of commenting is to help the reader know as much as the writer did."
+\- Boswell & Foucher
 
 
 # Why Comments Matter
@@ -240,14 +240,14 @@ def has_premium_access(user):
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Comment explains complex logic"}
+:::{.callout-caution icon=false title="❌ Comment explains complex conditional"}
 
 ```{python}
-# Apply 10% discount if total > 100,
-# or 5% if > 50, but cap at 20
-discount = min(0.10 if total > 100 else
-              (0.05 if total > 50 else 0), 0.20)
-final = total * (1 - discount)
+# Apply discount if eligible: active account,
+# 3+ orders in last month, or loyalty member
+if (user.is_active and user.orders_last_month >= 3
+    or user.loyalty_status == 'member'):
+    apply_discount(user)
 ```
 
 :::
@@ -256,17 +256,17 @@ final = total * (1 - discount)
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Simplify logic, eliminate comment"}
+:::{.callout-tip icon=false title="✅ Well-named function obviates comment"}
 
 ```{python}
-def calculate_discount(total):
-    if total > 100:
-        return min(0.10, 0.20)
-    elif total > 50:
-        return min(0.05, 0.20)
-    return 0
+def is_discount_eligible(user):
+    frequent_buyer = (user.is_active and
+                     user.orders_last_month >= 3)
+    loyalty_member = user.loyalty_status == 'member'
+    return frequent_buyer or loyalty_member
 
-final = total * (1 - calculate_discount(total))
+if is_discount_eligible(user):
+    apply_discount(user)
 ```
 
 :::
@@ -515,7 +515,7 @@ new_function()
 
 ::::
 
-**Don't write temporary comments**
+**Don't write vague action comments**
 
 :::: {.columns}
 
@@ -524,9 +524,8 @@ new_function()
 :::{.callout-caution icon=false title="❌ Bad"}
 
 ```{python}
-# FIXME: broken, fix later
 # TODO: optimize this
-hacky_solution()
+process_data()
 ```
 
 :::
@@ -538,9 +537,8 @@ hacky_solution()
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
-# Current: linear scan (tracked in #1234)
-# Future: switch to hash lookup when ready
-proper_solution()
+# TODO: Switch to binary search (issue #1234)
+process_data()
 ```
 
 :::
@@ -681,15 +679,9 @@ validate_input()
 
 # What to Comment
 
-Follow this principle instead of memorizing rules:
+Whatever helps the reader understand the code more easily: the *what*, the *why*, and/or the *how*.
 
-::: {style="background-color: #FFFBC1; padding: 10px; border-radius: 25px; text-align: center; font-size: 2rem;"}
-
-**Good comments explain the why and provide essential context.**
-
-:::
-
-## Explain the Why {.smaller}
+## Explain the Thought Process {.smaller}
 
 . . .
 
@@ -697,7 +689,7 @@ Follow this principle instead of memorizing rules:
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Comments describe 'what'"}
+:::{.callout-caution icon=false title="❌ Comments reiterate code"}
 
 ```{python}
 # Set timeout to 30
@@ -706,9 +698,9 @@ timeout = 30
 # Connect to database
 db.connect(retry=True)
 
-# Loop through users
-for user in users:
-    process(user)
+# as per spec
+if len(data) == 0:
+    return None
 ```
 
 :::
@@ -717,20 +709,21 @@ for user in users:
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Comments explain 'why'"}
+:::{.callout-tip icon=false title="✅ Comments explain rationale"}
 
 ```{python}
-# Timeout increased to handle slow network
-# conditions in international deployments
+# Timeout to handle slow network conditions 
+# in international deployments
 timeout = 30
 
 # Retry enabled to handle observed
 # transient network failures
 db.connect(retry=True)
 
-# Process in batches to avoid memory issues
-for user in users:
-    process(user)
+# Return None for empty datasets per
+# API specification v2.1 section 4.3
+if len(data) == 0:
+    return None
 ```
 
 :::
@@ -747,8 +740,9 @@ for user in users:
 
 :::
 
+## Document Non-Obvious Logic {.smaller}
 
-## Explain Constraints and Assumptions {.smaller}
+Complex logic benefits from explanation—even when developers could eventually figure it out.
 
 . . .
 
@@ -756,12 +750,12 @@ for user in users:
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Vague"}
+:::{.callout-caution icon=false title="❌ Cryptic regex"}
 
 ```{python}
-# as per spec
-if len(data) == 0:
-    return None
+pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+if re.match(pattern, password):
+    return True
 ```
 
 :::
@@ -770,13 +764,14 @@ if len(data) == 0:
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Specific"}
+:::{.callout-tip icon=false title="✅ Regex requirements explained"}
 
 ```{python}
-# Return None for empty datasets per
-# API specification v2.1 section 4.3
-if len(data) == 0:
-    return None
+# Password must have: uppercase letter, digit,
+# special char (@$!%*?&), min 8 characters
+pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
+if re.match(pattern, password):
+    return True
 ```
 
 :::
@@ -791,12 +786,11 @@ if len(data) == 0:
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Too generic"}
+:::{.callout-caution icon=false title="❌ Unexplained bit manipulation"}
 
 ```{python}
-# handle the data
-data = clean_input(raw_data)
-result = process(data)
+def is_power_of_two(n):
+    return n > 0 and (n & (n - 1)) == 0
 ```
 
 :::
@@ -805,94 +799,13 @@ result = process(data)
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Provides context"}
+:::{.callout-tip icon=false title="✅ Logic clarified"}
 
 ```{python}
-# Input must be UTF-8 encoded strings
-# Assumes data fits in memory (<1GB)
-data = clean_input(raw_data)
-result = process(data)
-```
-
-:::
-
-:::
-
-::::
-
-. . .
-
-::: {.callout-tip}
-
-**Precise comments save debugging time and prevent misuse of APIs.**
-
-:::
-
-## Clarify Complex Conditionals {.smaller}
-
-. . .
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Unclear complex condition"}
-
-```{python}
-if (user.age < 18 and
-    not user.has_guardian_consent and
-    user.account_type != 'premium'):
-    restrict_access = True
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Clear business rule"}
-
-```{python}
-# Minors need guardian consent unless premium
-if (user.age < 18 and
-    not user.has_guardian_consent and
-    user.account_type != 'premium'):
-    restrict_access = True
-```
-
-:::
-
-:::
-
-::::
-
-. . .
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Cryptic condition"}
-
-```{python}
-if not (status == 'active' and balance > 0):
-    return False
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Explains business logic"}
-
-```{python}
-# Account must be active with positive balance
-# to be eligible for new transactions
-if not (status == 'active' and balance > 0):
-    return False
+def is_power_of_two(n):
+    # Powers of 2 have single bit set;
+    # n & (n-1) clears lowest bit, yields 0
+    return n > 0 and (n & (n - 1)) == 0
 ```
 
 :::
@@ -905,11 +818,13 @@ if not (status == 'active' and balance > 0):
 
 ::: {.callout-tip}
 
-**Complex conditionals should explain the business rule or decision criteria.**
+**Complex logic deserves explanation—clarity trumps brevity.**
 
 :::
 
-## Document Non-Obvious Algorithms {.smaller}
+## Document Known Flaws {.smaller}
+
+It's acceptable to document known issues, limitations, or future improvements using action comments.
 
 . . .
 
@@ -917,17 +832,12 @@ if not (status == 'active' and balance > 0):
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ No algorithm explanation"}
+:::{.callout-caution icon=false title="❌ Vague action comment"}
 
 ```{python}
-def find_median(arr):
-    arr.sort()
-    n = len(arr)
-    if n % 2:
-        result = arr[n//2]
-    else:
-        result = (arr[n//2-1] + arr[n//2]) / 2
-    return result
+# TODO: fix this
+def process_data(items):
+    return [x * 2 for x in items]
 ```
 
 :::
@@ -936,21 +846,12 @@ def find_median(arr):
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Algorithm details explained"}
+:::{.callout-tip icon=false title="✅ Specific with tracking"}
 
 ```{python}
-def find_median(arr):
-    # Use sort-based approach:
-    # O(n log n) time, modifies input in-place
-    arr.sort()
-    n = len(arr)
-    # odd length: middle element
-    if n % 2:
-        result = arr[n//2]
-    # even length: average of two middle elements
-    else:
-        result = (arr[n//2-1] + arr[n//2]) / 2
-    return result
+# TODO: Add validation for empty list (issue #847)
+def process_data(items):
+    return [x * 2 for x in items]
 ```
 
 :::
@@ -961,9 +862,19 @@ def find_median(arr):
 
 . . .
 
-::: {.callout-tip}
+::: {.callout-note}
 
-**Algorithm comments should explain the approach and trade-offs.**
+## Common Action Comment Tags
+
+| Tag | Purpose | Example |
+|-----|---------|---------|
+| `TODO` | Planned improvement or missing feature | `# TODO: Add caching (issue #123)` |
+| `FIXME` | Known bug that needs fixing | `# FIXME: Fails on negative input (#456)` |
+| `HACK` | Temporary workaround for a problem | `# HACK: API bug workaround (ticket #789)` |
+| `NOTE` | Important clarification or caveat | `# NOTE: Must run before init()` |
+| `OPTIMIZE` | Performance improvement opportunity | `# OPTIMIZE: Use binary search (#234)` |
+
+**Tip**: Use the [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) VS Code extension to highlight these tags in your editor.
 
 :::
 
@@ -1105,9 +1016,6 @@ flowchart TD
 
 # The Benefits
 
-> "_Programs must be written for people to read, and only incidentally for machines to execute._"
-- Harold Abelson
-
 ## Context and Understanding {.smaller}
 
 . . .
@@ -1117,10 +1025,6 @@ flowchart TD
 . . .
 
 - Writing thoughtful comments forces you to **articulate your reasoning** and design decisions, improving code quality.
-
-. . .
-
-- Explaining your code in comments **clarifies your own understanding** and reveals potential issues.
 
 . . .
 
@@ -1134,11 +1038,15 @@ flowchart TD
 
 - Consistent commenting practices **reduce cognitive overload** and make maintenance safer.
 
-## Worth Mastering
+. . .
 
-Invest time in thoughtful comments early—they pay dividends by preserving knowledge and intent.
+<br>
 
-**The more you practice, the better you'll get at knowing when and how to comment!**
+::: {style="background-color: #e8f5e9; padding: 15px; border-radius: 15px; text-align: center;"}
+
+**Invest time in thoughtful comments early—practice makes perfect.**
+
+:::
 
 # Thank You
 

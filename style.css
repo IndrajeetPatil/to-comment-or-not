@@ -52,3 +52,12 @@
 .smaller .callout .sourceCode {
   font-size: 0.90em !important;
 }
+
+/* Increase font size for tables in callout blocks */
+.callout table {
+  font-size: 1.05em !important;
+}
+
+.smaller .callout table {
+  font-size: 1.0em !important;
+}
