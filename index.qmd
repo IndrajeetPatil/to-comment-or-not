@@ -92,8 +92,8 @@ Transform commenting from an afterthought into a deliberate practice.
 
 :::
 
-# "Code tells you how; comments tell you why."
-\- Jeff Atwood
+# "The purpose of commenting is to help the reader know as much as the writer did."
+\- Boswell & Foucher
 
 
 # Why Comments Matter
@@ -681,13 +681,7 @@ validate_input()
 
 # What to Comment
 
-Follow this principle instead of memorizing rules:
-
-::: {style="background-color: #FFFBC1; padding: 10px; border-radius: 25px; text-align: center; font-size: 2rem;"}
-
-**Good comments explain the why and provide essential context.**
-
-:::
+Whatever helps the reader understand the code more easily: the *what*, the *why*, and/or the *how*.
 
 ## Explain the Why {.smaller}
 
@@ -697,7 +691,7 @@ Follow this principle instead of memorizing rules:
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Comments describe 'what'"}
+:::{.callout-caution icon=false title="❌ Comments unnecessarily describe 'what'"}
 
 ```{python}
 # Set timeout to 30
@@ -1105,9 +1099,6 @@ flowchart TD
 
 # The Benefits
 
-> "_Programs must be written for people to read, and only incidentally for machines to execute._"
-- Harold Abelson
-
 ## Context and Understanding {.smaller}
 
 . . .
@@ -1117,10 +1108,6 @@ flowchart TD
 . . .
 
 - Writing thoughtful comments forces you to **articulate your reasoning** and design decisions, improving code quality.
-
-. . .
-
-- Explaining your code in comments **clarifies your own understanding** and reveals potential issues.
 
 . . .
 
@@ -1134,11 +1121,15 @@ flowchart TD
 
 - Consistent commenting practices **reduce cognitive overload** and make maintenance safer.
 
-## Worth Mastering
+. . .
 
-Invest time in thoughtful comments early—they pay dividends by preserving knowledge and intent.
+<br>
 
-**The more you practice, the better you'll get at knowing when and how to comment!**
+::: {style="background-color: #e8f5e9; padding: 15px; border-radius: 15px; text-align: center;"}
+
+**Invest time in thoughtful comments early—practice makes perfect.**
+
+:::
 
 # Thank You
 
