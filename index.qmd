@@ -480,7 +480,7 @@ Whatever helps the reader understand the code more easily: the *what*, the *why*
 :::{.callout-caution icon=false title="❌ Comments reiterate code"}
 
 ```{python}
-# Set timeout to 30
+# Timeout value is 30 seconds
 timeout = 30
 
 # Connect to database
@@ -500,7 +500,7 @@ if len(data) == 0:
 :::{.callout-tip icon=false title="✅ Comments explain rationale"}
 
 ```{python}
-# Timeout to handle slow network conditions 
+# Timeout to handle slow network conditions
 # in international deployments
 timeout = 30
 
@@ -886,7 +886,7 @@ apply_discount()
 :::{.callout-caution icon=false title="❌ Unprofessional"}
 
 ```{python}
-# This is a clusterfuck
+# This code is a mess
 process_legacy_data()
 ```
 
