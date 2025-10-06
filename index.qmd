@@ -259,7 +259,7 @@ if is_discount_eligible(user):
 
 ::::
 
-::: {style="background-color: #e8f5e9; padding: 8px; border-radius: 10px; text-align: center; color: #2e7d32; font-size: 1.1em;"}
+::: {style="background-color: #FFFBC1; padding: 4px; border-radius: 10px; text-align: center; font-size: 1em;"}
 
 $$
 \text{good code} > \text{bad code} + \text{comments}
@@ -369,104 +369,6 @@ if user.is_active():
 
 ## {.smaller}
 
-**Don't write misleading comments**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Bad"}
-
-```{python}
-# Calculate average
-return median(values)
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Good"}
-
-```{python}
-# Calculate median for anomaly detection
-return median(values)
-```
-
-:::
-
-:::
-
-::::
-
-**Don't keep outdated comments**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Bad"}
-
-```{python}
-# TODO: fix this hack (3 years old)
-legacy_workaround()
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Good"}
-
-```{python}
-# Use new API endpoint per v3.0 migration
-refactored_solution()
-```
-
-:::
-
-:::
-
-::::
-
-**Don't use unclear references**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Bad"}
-
-```{python}
-# See the function above
-apply_discount()
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Good"}
-
-```{python}
-# Rate logic in pricing.calculate_discount()
-apply_discount()
-```
-
-:::
-
-:::
-
-::::
-
-## {.smaller}
-
 **Don't retain dead code as comments**
 
 :::: {.columns}
@@ -555,104 +457,6 @@ for O(log n) complexity"""
 ```{python}
 """Find user by ID."""
 # Use binary search for O(log n) lookup
-```
-
-:::
-
-:::
-
-::::
-
-## {.smaller}
-
-**Don't use profanity or humour**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Bad"}
-
-```{python}
-# This is a clusterfuck
-process_legacy_data()
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Good"}
-
-```{python}
-# Complex legacy integration, needs refactoring
-process_legacy_data()
-```
-
-:::
-
-:::
-
-::::
-
-**Don't use inside jokes**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Bad"}
-
-```{python}
-# Here be dragons
-process_transaction()
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Good"}
-
-```{python}
-# Handles concurrent writes with optimistic locking
-process_transaction()
-```
-
-:::
-
-:::
-
-::::
-
-**Don't vent frustrations**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Bad"}
-
-```{python}
-# Stupid requirement from management
-validate_input()
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Good"}
-
-```{python}
-# Business requirement: process within 24h
-validate_input()
 ```
 
 :::
@@ -806,7 +610,7 @@ def is_power_of_two(n):
 
 :::
 
-## Document Known Flaws {.smaller}
+## Highlight Known Flaws {.smaller}
 
 It's acceptable to document known issues, limitations, or future improvements using action comments.
 
@@ -861,6 +665,313 @@ def process_data(items):
 **Tip**: Use the [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) VS Code extension to highlight these tags in your editor.
 
 :::
+
+# How to Comment
+
+_Keep them precise and compact._
+
+## {.smaller}
+
+**Use information-dense words**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Verbose"}
+
+```{python}
+# Store function results based on inputs
+# to avoid recomputing same values
+@save_results
+def calculate(x, y):
+    return x ** y
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Uses technical term"}
+
+```{python}
+# Memoize expensive computation
+@save_results
+def calculate(x, y):
+    return x ** y
+```
+
+:::
+
+:::
+
+::::
+
+**Avoid pronouns**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Ambiguous pronouns"}
+
+```{python}
+# Sync local cache with remote database
+# and invalidate it
+sync(local_cache, remote_db)
+invalidate()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Specific nouns"}
+
+```{python}
+# Sync local cache with remote database
+# and invalidate local cache
+sync(local_cache, remote_db)
+invalidate()
+```
+
+:::
+
+:::
+
+::::
+
+**Explain intent, not mechanics**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Lower-level details"}
+
+```{python}
+# Loop through array and add to sum
+total = sum(prices)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Higher-level intent"}
+
+```{python}
+# Calculate order total for tax computation
+total = sum(prices)
+```
+
+:::
+
+:::
+
+::::
+
+## {.smaller}
+
+**Be accurate**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Misleading comment"}
+
+```{python}
+# Calculate average
+return median(values)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Accurate description"}
+
+```{python}
+# Calculate median for anomaly detection
+return median(values)
+```
+
+:::
+
+:::
+
+::::
+
+**Keep comments updated**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Outdated comment"}
+
+```{python}
+# TODO: fix this hack (3 years old)
+legacy_workaround()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Current and relevant"}
+
+```{python}
+# Use new API endpoint per v2.0 migration
+refactored_solution()
+```
+
+:::
+
+:::
+
+::::
+
+**Use specific references**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Vague reference"}
+
+```{python}
+# See the function above
+apply_discount()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Clear reference"}
+
+```{python}
+# Rate logic in pricing.calculate_discount()
+apply_discount()
+```
+
+:::
+
+:::
+
+::::
+
+## {.smaller}
+
+**Maintain professional tone**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Unprofessional"}
+
+```{python}
+# This is a clusterfuck
+process_legacy_data()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Professional"}
+
+```{python}
+# Complex legacy integration, needs refactoring
+process_legacy_data()
+```
+
+:::
+
+:::
+
+::::
+
+**Avoid inside jokes**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Unclear to outsiders"}
+
+```{python}
+# Here be dragons
+process_transaction()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Clear explanation"}
+
+```{python}
+# Handles concurrent writes with optimistic locking
+process_transaction()
+```
+
+:::
+
+:::
+
+::::
+
+**Stay objective**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Emotional/subjective"}
+
+```{python}
+# Stupid requirement from management
+validate_input()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Factual"}
+
+```{python}
+# Business requirement: process within 24h
+validate_input()
+```
+
+:::
+
+:::
+
+::::
 
 # Tools & Techniques
 
