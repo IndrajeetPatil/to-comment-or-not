@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.9.2">
 
   <meta name="author" content="Indrajeet Patil">
-  <meta name="dcterms.date" content="2025-10-06 21:15:37.163935">
+  <meta name="dcterms.date" content="2025-10-06 21:28:17.085162">
   <meta name="keywords" content="comments, software-engineering, computer-science, software-development, code-documentation">
   <title>To Comment or Not To Comment</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1255,6 +1255,41 @@
 </div>
 </div>
 </div>
+</div>
+</div></div>
+</section>
+<section id="organize-long-functions" class="slide level2 smaller">
+<h2>Organize Long Functions</h2>
+<p>When a function is legitimately complex and shouldn’t be broken down further, use comments to delineate logical sections.</p>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Use section comments to:</strong></p>
+<ul>
+<li>Group related operations</li>
+<li>Mark distinct processing phases</li>
+<li>Improve readability of long functions</li>
+<li>Guide readers through complex logic</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_order(order):</span>
+<span id="cb43-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Validate order data</span></span>
+<span id="cb43-3"><a href="" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb43-4"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate pricing and discounts</span></span>
+<span id="cb43-6"><a href="" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb43-7"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check inventory availability</span></span>
+<span id="cb43-9"><a href="" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb43-10"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-11"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process payment</span></span>
+<span id="cb43-12"><a href="" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb43-13"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-14"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Update database and send confirmations</span></span>
+<span id="cb43-15"><a href="" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb43-16"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-17"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section></section>
