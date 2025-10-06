@@ -1345,9 +1345,7 @@ flowchart TD
 
 :::
 
-# The Benefits
-
-## Context and Understanding {.smaller}
+## Benefits: Context and Understanding {.smaller}
 
 . . .
 
