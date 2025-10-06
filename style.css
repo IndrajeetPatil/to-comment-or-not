@@ -45,10 +45,10 @@
 
 /* Override smaller font size for callout blocks in .smaller slides */
 .smaller .callout pre code {
-  font-size: 0.95em !important;
+  font-size: 0.90em !important;
   line-height: 1.5;
 }
 
 .smaller .callout .sourceCode {
-  font-size: 0.95em !important;
+  font-size: 0.90em !important;
 }
