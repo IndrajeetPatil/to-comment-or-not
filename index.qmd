@@ -182,7 +182,7 @@ flowchart TD
 
 ## _Aside:_ Cross-Language Examples {.smaller}
 
-Documentation and comment syntax varies across languages, but the distinction remains universal.
+Syntax varies by language; the distinction is universal.
 
 ::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 15px;"}
 
@@ -203,6 +203,10 @@ Documentation and comment syntax varies across languages, but the distinction re
 | **PHP** | `/** PHPDoc */` | `// comment` | phpDocumentor |
 | **Ruby** | `# YARD comment` | `# comment` | YARD, RDoc |
 
+:::
+
+::: {style="font-size: 0.65em; margin-top: 10px; color: #666;"}
+**Note:** Copyright notices and license information are typically part of documentation, not comments.
 :::
 
 # What *Not* to Comment
@@ -632,6 +636,93 @@ def is_power_of_two(n):
 ::: {.callout-tip}
 
 **Complex logic deserves explanation—clarity trumps brevity.**
+
+:::
+
+## Explain Unidiomatic Code {.smaller}
+
+When you intentionally deviate from language conventions, explain why the idiomatic approach doesn't work.
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ No explanation for unusual approach"}
+
+```{python}
+# Process items
+result = []
+for item in items:
+    if item > 0:
+        result.append(item * 2)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Explains deviation from idiom"}
+
+```{python}
+# Use explicit loop instead of list comprehension
+# to avoid memory issues with large datasets (10M+ items)
+result = []
+for item in items:
+    if item > 0:
+        result.append(item * 2)
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Unidiomatic without context"}
+
+```{python}
+file = open('data.txt', 'r')
+content = file.read()
+file.close()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Justifies non-Pythonic code"}
+
+```{python}
+# Cannot use context manager: file handle must remain
+# open for async callback (library limitation)
+file = open('data.txt', 'r')
+content = file.read()
+file.close()
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Unidiomatic code raises questions—answer them preemptively with comments.**
 
 :::
 
@@ -1216,6 +1307,29 @@ flowchart TD
 # Thank You
 
 And Happy Commenting! 😊
+
+# Further Reading {.smaller data-visibility="uncounted"}
+
+For a more detailed discussion about how to comment, see the following references.
+
+## References {.smaller data-visibility="uncounted"}
+
+:::{style="font-size: 25px;"}
+
+- McConnell, S. (2004). *Code Complete* (2nd ed.). Microsoft Press. (**pp. 777-818**)
+
+- Boswell, D., & Foucher, T. (2011). *The Art of Readable Code*. O'Reilly Media, Inc. (**pp. 45-65**)
+
+- Martin, R. C. (2009). *Clean Code*. Pearson Education. (**pp. 53-74**)
+
+- Goodliffe, P. (2007). *Code Craft*.  No Starch Press. (**pp. 73-88**)
+
+- Holovaty, A. (2009). [What to write in a comment](https://jacobian.org/2009/nov/10/what-to-write/)
+
+- Gregg, E. (2021). [Best practices for writing code comments](https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/)
+
+:::
+
 
 # For more {data-visibility="uncounted"}
 
