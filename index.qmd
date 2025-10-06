@@ -139,52 +139,36 @@ flowchart TD
 ::: {.column width='60%'}
 
 ```{python}
-def apply_discount(order_total, customer_tier, is_bulk_order):
-    """Apply tiered discount based on customer and order type.
-
-    Args:
-        order_total: Pre-discount order amount
-        customer_tier: 'bronze', 'silver', 'gold', 'platinum'
-        is_bulk_order: True if order quantity > 100 items
+def is_valid_email(email):
+    """Check if email address is valid.
 
     Returns:
-        Final discounted amount
+        True if valid, False otherwise
     """
-    # Base discount rates per tier (as of Q4 2024 policy)
-    tier_discounts = {
-        'bronze': 0.02, 'silver': 0.05,
-        'gold': 0.10, 'platinum': 0.15
-    }
-
-    base_discount = tier_discounts.get(customer_tier, 0)
-
-    # Bulk orders get additional 5% off per marketing policy
-    # but total discount cannot exceed 25% per finance rules
-    if is_bulk_order:
-        total_discount = min(base_discount + 0.05, 0.25)
-    else:
-        total_discount = base_discount
-
-    return order_total * (1 - total_discount)
+    # RFC 5322 simplified: local@domain format
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return re.match(pattern, email) is not None
 ```
 
 :::
 
 ::: {.column width='40%'}
 
+::: {style="background-color: #e8f4f8; padding: 10px; border-radius: 10px; margin-bottom: 10px;"}
 **Documentation**
 
-- API contract
 - How to *use* the function
 - Parameters & returns
 - For function *users*
+:::
 
+::: {style="background-color: #fff3e0; padding: 10px; border-radius: 10px;"}
 **Comments**
 
-- Implementation details
 - *Why* it works this way
 - Business rules & context
 - For code *maintainers*
+:::
 
 :::
 
