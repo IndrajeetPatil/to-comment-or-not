@@ -180,6 +180,31 @@ flowchart TD
 
 :::
 
+## _Aside:_ Cross-Language Examples {.smaller}
+
+Documentation and comment syntax varies across languages, but the distinction remains universal.
+
+::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 15px;"}
+
+| Language | Documentation | Comment | Documentation Tools |
+|----------|--------------|---------|---------------------|
+| **Python** | `"""docstring"""` | `# comment` | Sphinx, pdoc |
+| **JavaScript** | `/** JSDoc */` | `// comment` | JSDoc, TypeDoc |
+| **TypeScript** | `/** JSDoc */` | `// comment` | TypeDoc, TSDoc |
+| **Java** | `/** Javadoc */` | `// comment` | Javadoc |
+| **Kotlin** | `/** KDoc */` | `// comment` | Dokka |
+| **C** | `/** Doxygen */` | `/* comment */` | Doxygen |
+| **C++** | `/** Doxygen */` | `// comment` | Doxygen |
+| **Go** | `// Doc comment` | `// comment` | godoc, pkgsite |
+| **Rust** | `/// Doc comment` | `// comment` | rustdoc |
+| **Swift** | `/// Doc comment` | `// comment` | DocC |
+| **R** | `#' Roxygen` | `# comment` | roxygen2 |
+| **C#** | `/// XML Doc` | `// comment` | DocFX, Sandcastle |
+| **PHP** | `/** PHPDoc */` | `// comment` | phpDocumentor |
+| **Ruby** | `# YARD comment` | `# comment` | YARD, RDoc |
+
+:::
+
 # What *Not* to Comment
 
 _Every comment distracts from reading code—make sure it's worth the interruption._
