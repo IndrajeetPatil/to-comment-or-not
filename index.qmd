@@ -973,6 +973,51 @@ validate_input()
 
 ::::
 
+## Organize Long Functions {.smaller}
+
+When a function is legitimately complex and shouldn't be broken down further, use comments to delineate logical sections.
+
+<br>
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+**Use section comments to:**
+
+- Group related operations
+- Mark distinct processing phases
+- Improve readability of long functions
+- Guide readers through complex logic
+
+:::
+
+::: {.column width='50%'}
+
+```{python}
+def process_order(order):
+    # Validate order data
+    ...
+
+    # Calculate pricing and discounts
+    ...
+
+    # Check inventory availability
+    ...
+
+    # Process payment
+    ...
+
+    # Update database and send confirmations
+    ...
+
+    return result
+```
+
+:::
+
+::::
+
 # Tools & Techniques
 
 ## Tool Limitations {.smaller}
