@@ -770,6 +770,8 @@ def process_data(items):
 
 ## Common Action Comment Tags
 
+::: {style="font-size: 0.85em;"}
+
 | Tag | Purpose | Example |
 |-----|---------|---------|
 | `TODO` | Planned improvement or missing feature | `# TODO: Add caching (issue #123)` |
@@ -778,7 +780,80 @@ def process_data(items):
 | `NOTE` | Important clarification or caveat | `# NOTE: Must run before init()` |
 | `OPTIMIZE` | Performance improvement opportunity | `# OPTIMIZE: Use binary search (#234)` |
 
+:::
+
 **Tip**: Use the [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) VS Code extension to highlight these tags in your editor.
+
+:::
+
+## Link to Sources and References {.smaller}
+
+::: {style="background-color: #e3f2fd; padding: 15px; border-radius: 10px; margin-bottom: 15px;"}
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+::: {style="font-size: 0.85em;"}
+
+**Credit original sources**
+
+When adapting code from elsewhere, link to the source. This provides:
+
+- Credit to original authors
+- Context for future maintainers
+- Path to additional documentation
+
+:::
+
+:::
+
+::: {.column width='60%'}
+
+```{python}
+# Durstenfeld shuffle algorithm (in-place)
+# https://stackoverflow.com/a/12646864
+def shuffle(array):
+    for i in range(len(array) - 1, 0, -1):
+        j = random.randint(0, i)
+        array[i], array[j] = array[j], array[i]
+```
+
+:::
+
+::::
+
+:::
+
+::: {style="background-color: #fff3e0; padding: 15px; border-radius: 10px;"}
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+::: {style="font-size: 0.85em;"}
+
+**Link to external references**
+
+When implementing specs, algorithms, or standards, provide references where readers can learn more.
+
+:::
+
+:::
+
+::: {.column width='60%'}
+
+```{python}
+# ISO 8601 date parsing
+# https://en.wikipedia.org/wiki/ISO_8601
+def parse_iso_date(date_string):
+    pattern = r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$'
+    return datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
+```
+
+:::
+
+::::
 
 :::
 
@@ -1323,8 +1398,6 @@ For a more detailed discussion about how to comment, see the following reference
 - Martin, R. C. (2009). *Clean Code*. Pearson Education. (**pp. 53-74**)
 
 - Goodliffe, P. (2007). *Code Craft*.  No Starch Press. (**pp. 73-88**)
-
-- Holovaty, A. (2009). [What to write in a comment](https://jacobian.org/2009/nov/10/what-to-write/)
 
 - Gregg, E. (2021). [Best practices for writing code comments](https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/)
 
