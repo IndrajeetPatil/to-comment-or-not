@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.9.3">
 
   <meta name="author" content="Indrajeet Patil">
-  <meta name="dcterms.date" content="2025-10-07 15:54:46.890564">
+  <meta name="dcterms.date" content="2025-10-07 16:18:38.262206">
   <meta name="keywords" content="comments, software-engineering, computer-science, software-development, code-documentation">
   <title>To Comment or Not To Comment</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -754,6 +754,40 @@
 <section id="what-to-comment" class="title-slide slide level1 center">
 <h1>What to Comment</h1>
 <p>Whatever helps the reader understand the code more easily: the <em>what</em>, the <em>why</em>, and/or the <em>how</em>.</p>
+</section>
+<section id="section-2" class="slide level2 smaller">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<h3 id="comment-decision-workflow">Comment Decision Workflow</h3>
+<p>When encountering unclear code, prioritize refactoring over commenting. Only add comments for inherently non-obvious logic.</p>
+</div><div class="column" style="width:60%;">
+<div class="cell" data-reveal="true" data-eval="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    A[Code unclear?] --&gt; B{Can rename/&lt;br/&gt;refactor?}
+    B --&gt;|Yes| C[Rename/Refactor]
+    C --&gt; D{Still&lt;br/&gt;non-obvious?}
+    B --&gt;|No| D
+    D --&gt;|Yes| E[Comment WHY]
+    D --&gt;|No| F[No comment&lt;br/&gt;needed]
+
+    style A fill:#fff3e0,color:#000
+    style B fill:#e3f2fd,color:#000
+    style C fill:#c8e6c9,color:#000
+    style D fill:#e3f2fd,color:#000
+    style E fill:#fff9c4,color:#000
+    style F fill:#c8e6c9,color:#000
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="explain-the-thought-process" class="slide level2 smaller">
 <h2>Explain the Thought Process</h2>
@@ -1569,7 +1603,7 @@
 <h1>How to Comment</h1>
 <p><em>Keep them precise and compact.</em></p>
 </section>
-<section id="section-2" class="slide level2 smaller">
+<section id="section-3" class="slide level2 smaller">
 <h2></h2>
 <p><strong>Use information-dense words</strong></p>
 <div class="columns">
@@ -1686,7 +1720,7 @@
 </div>
 </div></div>
 </section>
-<section id="section-3" class="slide level2 smaller">
+<section id="section-4" class="slide level2 smaller">
 <h2></h2>
 <p><strong>Be accurate</strong></p>
 <div class="columns">
@@ -1795,7 +1829,7 @@
 </div>
 </div></div>
 </section>
-<section id="section-4" class="slide level2 smaller">
+<section id="section-5" class="slide level2 smaller">
 <h2></h2>
 <p><strong>Maintain professional tone</strong></p>
 <div class="columns">
@@ -2017,8 +2051,8 @@
 </div>
 </div>
 </section>
-<section id="code-review-benefits" class="slide level2 smaller">
-<h2>Code Review Benefits</h2>
+<section id="code-review" class="slide level2 smaller">
+<h2>Code Review</h2>
 <div class="fragment">
 <div class="cell" data-reveal="true" data-eval="true" data-layout-align="default">
 <div class="cell-output-display">
