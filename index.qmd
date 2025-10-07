@@ -206,7 +206,7 @@ Syntax varies by language; the distinction is universal.
 :::
 
 ::: {style="font-size: 0.65em; margin-top: 10px; color: #666;"}
-**Note:** Copyright notices and license information are typically part of documentation, not comments.
+**Note:** Copyright notices and license information are typically part of documentation and can be referenced in comments.
 :::
 
 # What *Not* to Comment
@@ -216,7 +216,7 @@ _Every comment distracts from reading code—make sure it's worth the interrupti
 
 ## Don't use crutch comments {.smaller}
 
-Crutch comments compensate for unclear code—fix the code instead.
+Fix the unclear code instead: good code > bad code + comments.
 
 :::: {.columns}
 
@@ -256,11 +256,9 @@ def has_premium_access(user):
 :::{.callout-caution icon=false title="❌ Comment explains complex conditional"}
 
 ```{python}
-# Apply discount if eligible: active account,
-# 3+ orders in last month, or loyalty member
-if (user.is_active and user.orders_last_month >= 3
-    or user.loyalty_status == 'member'):
-    apply_discount(user)
+# Process if valid: not expired and either paid or free trial
+if not item.expired and (item.paid or item.days_left > 0):
+    process(item)
 ```
 
 :::
@@ -272,14 +270,11 @@ if (user.is_active and user.orders_last_month >= 3
 :::{.callout-tip icon=false title="✅ Well-named function obviates comment"}
 
 ```{python}
-def is_discount_eligible(user):
-    frequent_buyer = (user.is_active and
-                     user.orders_last_month >= 3)
-    loyalty_member = user.loyalty_status == 'member'
-    return frequent_buyer or loyalty_member
+def is_valid_item(item):
+    return not item.expired and (item.paid or item.days_left > 0)
 
-if is_discount_eligible(user):
-    apply_discount(user)
+if is_valid_item(item):
+    process(item)
 ```
 
 :::
@@ -288,13 +283,43 @@ if is_discount_eligible(user):
 
 ::::
 
-::: {style="background-color: #FFFBC1; padding: 4px; border-radius: 10px; text-align: center; font-size: 1em;"}
+:::: {.columns}
 
-$$
-\text{good code} > \text{bad code} + \text{comments}
-$$
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Closing brace comments signal complexity"}
+
+Indicates overly complex, deeply nested code that needs refactoring into smaller, well-named functions.
+
+Example from <span style="background-color: #c8e6c9; padding: 2px 8px; border-radius: 4px; font-weight: bold;">JavaScript</span>.
 
 :::
+
+:::
+
+::: {.column width='50%'}
+
+::: {style="font-size: 0.75em;"}
+
+```javascript
+while (...) {
+    try {
+        if (...) {
+            for (...) {
+                ...
+            } // end for
+        } // end if
+    } catch {
+        ...
+    } // end try
+} // end while
+```
+
+:::
+
+:::
+
+::::
 
 ## {.smaller}
 
@@ -309,36 +334,7 @@ $$
 ```{python}
 # increment counter
 counter += 1
-```
 
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Good"}
-
-```{python}
-# Reset retry count after successful connection
-counter = 0
-```
-
-:::
-
-:::
-
-::::
-
-**Don't repeat variable names**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Bad"}
-
-```{python}
 # user name variable
 user_name = "john"
 ```
@@ -352,6 +348,9 @@ user_name = "john"
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
+# Reset retry count after successful connection
+counter = 0
+
 # Store normalised username for database
 user_name = normalize(input)
 ```
@@ -362,18 +361,21 @@ user_name = normalize(input)
 
 ::::
 
-**Don't explain language syntax**
+::: {style="background-color: #e3f2fd; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.8em;"}
+**Note**: "Obvious" depends on your audience. Code clear to senior developers may confuse juniors.<br> Consider team experience when deciding what needs explanation.
+:::
+
+**Don't write non-local comments**
 
 :::: {.columns}
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Bad"}
+:::{.callout-caution icon=false title="❌ Requires checking other files"}
 
 ```{python}
-# if statement checks condition
-if user.is_active():
-    process(user)
+# See UserService for validation logic
+user = create_user(data)
 ```
 
 :::
@@ -382,12 +384,12 @@ if user.is_active():
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Good"}
+:::{.callout-tip icon=false title="✅ Self-contained explanation"}
 
 ```{python}
-# Only process active users per business rule
-if user.is_active():
-    process(user)
+# Email validated before creation (RFC 5322)
+# Duplicates rejected via unique constraint
+user = create_user(data)
 ```
 
 :::
@@ -430,17 +432,19 @@ new_function()
 
 ::::
 
-**Don't write vague action comments**
+**Don't narrate git history**
 
 :::: {.columns}
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Bad"}
+:::{.callout-caution icon=false title="❌ Narrative changelog"}
 
 ```{python}
-# TODO: optimize this
-process_data()
+# Changed timeout from 5 to 10 on Jan 15
+# Updated to 30 on Feb 3 for prod issue
+# Reduced to 20 on Feb 10 per team discussion
+timeout = 20
 ```
 
 :::
@@ -449,11 +453,12 @@ process_data()
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Good"}
+:::{.callout-tip icon=false title="✅ Point to commit/issue"}
 
 ```{python}
-# TODO: Switch to binary search (issue #1234)
-process_data()
+# Timeout tuned for production load
+# See commit abc123f or issue #456
+timeout = 20
 ```
 
 :::
@@ -586,6 +591,7 @@ if re.match(pattern, password):
 ```{python}
 # Password must have: uppercase letter, digit,
 # special char (@$!%*?&), min 8 characters
+# Note: ASCII-only, no entropy check
 pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
 if re.match(pattern, password):
     return True
@@ -668,8 +674,8 @@ for item in items:
 :::{.callout-tip icon=false title="✅ Explains deviation from idiom"}
 
 ```{python}
-# Use explicit loop instead of list comprehension
-# to avoid memory issues with large datasets (10M+ items)
+# Use explicit loop to allow early break on error
+# (list comprehension evaluates all items upfront)
 result = []
 for item in items:
     if item > 0:
@@ -786,6 +792,88 @@ def process_data(items):
 
 :::
 
+## Aid Comprehension with Examples {.smaller}
+
+Even detailed comments can't convey understanding as effectively as well-chosen examples. Complement comments with concrete examples to clarify complex code.
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Comment without example"}
+
+```{python}
+# Modulo with negatives wraps backward, not toward zero
+index = position % array_length
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Comment with examples"}
+
+```{python}
+# Modulo with negatives wraps backward, not toward zero
+# -5 % 3 = 1 (not -2), 5 % 3 = 2
+# Useful for circular array indexing
+index = position % array_length
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Edge cases unclear"}
+
+```{python}
+# Calculate age, accounting for birthday occurrence
+age = today.year - born.year - \
+      ((today.month, today.day) < (born.month, born.day))
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Examples clarify edge cases"}
+
+```{python}
+# Calculate age, accounting for birthday occurrence
+# Born Feb 29, 2020, today Feb 28, 2024 -> 3 (not 4)
+# Born Jan 15, 2020, today Jan 14, 2024 -> 3 (not 4)
+age = today.year - born.year - \
+      ((today.month, today.day) < (born.month, born.day))
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Examples bridge the gap between abstract explanations and concrete understanding.**
+
+:::
+
 ## Link to Sources and References {.smaller}
 
 ::: {style="background-color: #e3f2fd; padding: 15px; border-radius: 10px; margin-bottom: 15px;"}
@@ -856,6 +944,275 @@ def parse_iso_date(date_string):
 ::::
 
 :::
+
+## Use Comments as Cautionary Text {.smaller}
+
+Comments can amplify the importance of something that might otherwise seem inconsequential, warning against seemingly obvious "improvements".
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ No warning about dead-end"}
+
+```{python}
+# Linear search through users
+for user in users:
+    if user.id == target_id:
+        return user
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Warns against futile optimization"}
+
+```{python}
+# Linear search through users
+# DON'T optimize: list is always <20 items
+# Binary search tested in PR #456: 0.01ms vs 0.009ms
+for user in users:
+    if user.id == target_id:
+        return user
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Missing context for constraint"}
+
+```{python}
+sleep(0.1)
+response = api.fetch(url)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Explains critical timing"}
+
+```{python}
+# WARNING: 100ms delay required by API rate limit
+# Removing causes 429 errors (see incident #2341)
+sleep(0.1)
+response = api.fetch(url)
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Cautionary comments prevent well-intentioned "fixes" that break subtle constraints.**
+
+:::
+
+## Explain Security-Sensitive Code {.smaller}
+
+Security-critical code often looks inefficient or overly complex. Comments must explain why "obvious" optimizations break security boundaries.
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ No warning about security boundary"}
+
+```{python}
+# Compare password hashes
+if user_hash == provided_hash:
+    return True
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Explains timing attack protection"}
+
+```{python}
+# Compare password hashes
+# WARNING: Use constant-time comparison
+# Regular == leaks timing info (CVE-2023-xxxx)
+if secrets.compare_digest(user_hash, provided_hash):
+    return True
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Unclear sanitization boundary"}
+
+```{python}
+output = user_input.replace('<', '&lt;')
+display(output)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Marks security boundary"}
+
+```{python}
+# SECURITY: HTML escape before display
+# Only '<' escaped; XSS still possible via other chars
+# TODO: Use proper HTML sanitization library
+output = user_input.replace('<', '&lt;')
+display(output)
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Security comments prevent dangerous "simplifications" that introduce vulnerabilities.**
+
+:::
+
+## Document Concurrency Invariants {.smaller}
+
+Concurrent code has hidden contracts. Comments must explain locking order, invariants, and why seemingly redundant checks matter.
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Unexplained lock usage"}
+
+```{python}
+with self.lock:
+    if self.state == 'ready':
+        self.state = 'processing'
+        return self.process()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Explains invariant and lock order"}
+
+```{python}
+# INVARIANT: state transitions require lock
+# Lock order: self.lock before db.lock (deadlock)
+# Double-check pattern: state may change during wait
+with self.lock:
+    if self.state == 'ready':
+        self.state = 'processing'
+        return self.process()
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Concurrency comments prevent race conditions from "optimizations" that remove "redundant" checks.**
+
+:::
+
+## Organize Long Functions {.smaller}
+
+When a function is legitimately complex and shouldn't be broken down further, use comments to delineate logical sections.
+
+::: {style="background-color: #fff9e6; padding: 10px; border-radius: 8px; margin: 15px 0; font-size: 0.85em;"}
+**Note**: Refactoring into smaller functions is still preferable unless there's a strong reason (tight I/O coupling, measured performance need, transaction boundaries).
+:::
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+::: {style="background-color: #f0f7ff; padding: 15px; border-radius: 10px;"}
+
+**Use section comments to:**
+
+- Group related operations
+- Mark distinct processing phases
+- Improve readability of long functions
+- Guide readers through complex logic
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+```{python}
+def process_order(order):
+    # Validate order data
+    ...
+
+    # Calculate pricing and discounts
+    ...
+
+    # Check inventory availability
+    ...
+
+    # Process payment
+    ...
+
+    # Update database and send confirmations
+    ...
+
+    return result
+```
+
+:::
+
+::::
 
 # How to Comment
 
@@ -1008,11 +1365,11 @@ return median(values)
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Outdated comment"}
+:::{.callout-caution icon=false title="❌ Comment lies after refactor"}
 
 ```{python}
-# TODO: fix this hack (3 years old)
-legacy_workaround()
+# Calculate average of all values
+return median(values)  # Changed from mean()!
 ```
 
 :::
@@ -1021,11 +1378,12 @@ legacy_workaround()
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Current and relevant"}
+:::{.callout-tip icon=false title="✅ Comment matches code"}
 
 ```{python}
-# Use new API endpoint per v2.0 migration
-refactored_solution()
+# Calculate median for robust aggregation
+# (changed from mean to handle outliers)
+return median(values)
 ```
 
 :::
@@ -1159,51 +1517,6 @@ validate_input()
 ```
 
 :::
-
-:::
-
-::::
-
-## Organize Long Functions {.smaller}
-
-When a function is legitimately complex and shouldn't be broken down further, use comments to delineate logical sections.
-
-<br>
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-**Use section comments to:**
-
-- Group related operations
-- Mark distinct processing phases
-- Improve readability of long functions
-- Guide readers through complex logic
-
-:::
-
-::: {.column width='50%'}
-
-```{python}
-def process_order(order):
-    # Validate order data
-    ...
-
-    # Calculate pricing and discounts
-    ...
-
-    # Check inventory availability
-    ...
-
-    # Process payment
-    ...
-
-    # Update database and send confirmations
-    ...
-
-    return result
-```
 
 :::
 
