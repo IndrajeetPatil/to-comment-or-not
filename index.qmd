@@ -323,7 +323,7 @@ while (...) {
 
 ## {.smaller}
 
-**Don't be redundant by stating the obvious**
+**Don't be redundant**
 
 :::: {.columns}
 
@@ -353,40 +353,6 @@ counter = 0
 
 # Store normalised username for database
 user_name = normalize(input)
-```
-
-:::
-
-:::
-
-::::
-
-**Don't explain language syntax**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Bad"}
-
-```{python}
-# if statement checks condition
-if user.is_active():
-    process(user)
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Good"}
-
-```{python}
-# Only process active users per business rule
-if user.is_active():
-    process(user)
 ```
 
 :::
@@ -428,9 +394,6 @@ user = create_user(data)
 
 ::::
 
-
-## {.smaller}
-
 **Don't retain dead code as comments**
 
 :::: {.columns}
@@ -455,6 +418,43 @@ new_function()
 
 ```{python}
 new_function()
+```
+
+:::
+
+:::
+
+::::
+
+## {.smaller}
+
+**Don't narrate git history**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Narrative changelog"}
+
+```{python}
+# Changed timeout from 5 to 10 on Jan 15
+# Updated to 30 on Feb 3 for prod issue
+# Reduced to 20 on Feb 10 per team discussion
+timeout = 20
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Point to commit/issue"}
+
+```{python}
+# Timeout tuned for production load
+# See commit abc123f or issue #456
+timeout = 20
 ```
 
 :::
@@ -619,6 +619,7 @@ if re.match(pattern, password):
 ```{python}
 # Password must have: uppercase letter, digit,
 # special char (@$!%*?&), min 8 characters
+# Note: ASCII-only, no entropy check
 pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'
 if re.match(pattern, password):
     return True
@@ -701,8 +702,8 @@ for item in items:
 :::{.callout-tip icon=false title="✅ Explains deviation from idiom"}
 
 ```{python}
-# Use explicit loop instead of list comprehension
-# to avoid memory issues with large datasets (10M+ items)
+# Use explicit loop to allow early break on error
+# (list comprehension evaluates all items upfront)
 result = []
 for item in items:
     if item > 0:
@@ -1002,7 +1003,7 @@ for user in users:
 ```{python}
 # Linear search through users
 # DON'T optimize: list is always <20 items
-# Binary search tried in PR #456, no benefit
+# Binary search tested in PR #456: 0.01ms vs 0.009ms
 for user in users:
     if user.id == target_id:
         return user
@@ -1060,7 +1061,9 @@ response = api.fetch(url)
 
 When a function is legitimately complex and shouldn't be broken down further, use comments to delineate logical sections.
 
-<br>
+::: {style="background-color: #fff9e6; padding: 10px; border-radius: 8px; margin: 15px 0; font-size: 0.85em;"}
+**Note**: Refactoring into smaller functions is still preferable unless there's a strong reason (tight I/O coupling, measured performance need, transaction boundaries).
+:::
 
 :::: {.columns}
 
@@ -1256,11 +1259,11 @@ return median(values)
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Outdated comment"}
+:::{.callout-caution icon=false title="❌ Comment lies after refactor"}
 
 ```{python}
-# TODO: fix this hack (3 years old)
-legacy_workaround()
+# Calculate average of all values
+return median(values)  # Changed from mean()!
 ```
 
 :::
@@ -1269,11 +1272,12 @@ legacy_workaround()
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Current and relevant"}
+:::{.callout-tip icon=false title="✅ Comment matches code"}
 
 ```{python}
-# Use new API endpoint per v2.0 migration
-refactored_solution()
+# Calculate median for robust aggregation
+# (changed from mean to handle outliers)
+return median(values)
 ```
 
 :::
