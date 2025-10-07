@@ -1935,6 +1935,8 @@ For a more detailed discussion about how to comment, see the following reference
 
 - Gregg, E. (2021). [Best practices for writing code comments](https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/)
 
+- [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings)
+
 :::
 
 
