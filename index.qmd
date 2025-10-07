@@ -503,6 +503,43 @@ for O(log n) complexity"""
 
 Whatever helps the reader understand the code more easily: the *what*, the *why*, and/or the *how*.
 
+## {.smaller}
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+### Comment Decision Workflow
+
+When encountering unclear code, prioritize refactoring over commenting. Only add comments for inherently non-obvious logic.
+
+:::
+
+::: {.column width='60%'}
+
+```{mermaid}
+%%| eval: true
+%%| echo: false
+flowchart TD
+    A[Code unclear?] --> B{Can rename/<br/>refactor?}
+    B -->|Yes| C[Rename/Refactor]
+    C --> D{Still<br/>non-obvious?}
+    B -->|No| D
+    D -->|Yes| E[Comment WHY]
+    D -->|No| F[No comment<br/>needed]
+
+    style A fill:#fff3e0,color:#000
+    style B fill:#e3f2fd,color:#000
+    style C fill:#c8e6c9,color:#000
+    style D fill:#e3f2fd,color:#000
+    style E fill:#fff9c4,color:#000
+    style F fill:#c8e6c9,color:#000
+```
+
+:::
+
+::::
+
 ## Explain the Thought Process {.smaller}
 
 . . .
@@ -1614,7 +1651,7 @@ Use a different LLM to evaluate comments than the one used to write the code.
 
 :::
 
-## Code Review Benefits {.smaller}
+## Code Review {.smaller}
 
 . . .
 
