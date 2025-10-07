@@ -964,6 +964,139 @@ def parse_iso_date(date_string):
 
 :::
 
+## Use Comments as Cautionary Text {.smaller}
+
+Comments can amplify the importance of something that might otherwise seem inconsequential, warning against seemingly obvious "improvements".
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ No warning about dead-end"}
+
+```{python}
+# Linear search through users
+for user in users:
+    if user.id == target_id:
+        return user
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Warns against futile optimization"}
+
+```{python}
+# Linear search through users
+# DON'T optimize: list is always <20 items
+# Binary search tried in PR #456, no benefit
+for user in users:
+    if user.id == target_id:
+        return user
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Missing context for constraint"}
+
+```{python}
+sleep(0.1)
+response = api.fetch(url)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Explains critical timing"}
+
+```{python}
+# WARNING: 100ms delay required by API rate limit
+# Removing causes 429 errors (see incident #2341)
+sleep(0.1)
+response = api.fetch(url)
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Cautionary comments prevent well-intentioned "fixes" that break subtle constraints.**
+
+:::
+
+## Organize Long Functions {.smaller}
+
+When a function is legitimately complex and shouldn't be broken down further, use comments to delineate logical sections.
+
+<br>
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+::: {style="background-color: #f0f7ff; padding: 15px; border-radius: 10px;"}
+
+**Use section comments to:**
+
+- Group related operations
+- Mark distinct processing phases
+- Improve readability of long functions
+- Guide readers through complex logic
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+```{python}
+def process_order(order):
+    # Validate order data
+    ...
+
+    # Calculate pricing and discounts
+    ...
+
+    # Check inventory availability
+    ...
+
+    # Process payment
+    ...
+
+    # Update database and send confirmations
+    ...
+
+    return result
+```
+
+:::
+
+::::
+
 # How to Comment
 
 _Keep them precise and compact._
@@ -1266,51 +1399,6 @@ validate_input()
 ```
 
 :::
-
-:::
-
-::::
-
-## Organize Long Functions {.smaller}
-
-When a function is legitimately complex and shouldn't be broken down further, use comments to delineate logical sections.
-
-<br>
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-**Use section comments to:**
-
-- Group related operations
-- Mark distinct processing phases
-- Improve readability of long functions
-- Guide readers through complex logic
-
-:::
-
-::: {.column width='50%'}
-
-```{python}
-def process_order(order):
-    # Validate order data
-    ...
-
-    # Calculate pricing and discounts
-    ...
-
-    # Check inventory availability
-    ...
-
-    # Process payment
-    ...
-
-    # Update database and send confirmations
-    ...
-
-    return result
-```
 
 :::
 
