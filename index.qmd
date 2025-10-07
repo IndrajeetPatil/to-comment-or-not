@@ -811,6 +811,88 @@ def process_data(items):
 
 :::
 
+## Aid Comprehension with Examples {.smaller}
+
+Even detailed comments can't convey understanding as effectively as well-chosen examples. Complement comments with concrete examples to clarify complex code.
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Comment without example"}
+
+```{python}
+# Extract domain from email by taking
+# everything after the @ symbol
+domain = email[email.index('@') + 1:]
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Comment with examples"}
+
+```{python}
+# Extract domain from email by taking
+# everything after the @ symbol
+# "user@example.com" -> "example.com"
+# "admin@mail.co.uk" -> "mail.co.uk"
+domain = email[email.index('@') + 1:]
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Transformation unclear"}
+
+```{python}
+# Normalize price string to decimal
+price = Decimal(price_str.replace(',', '').lstrip('$'))
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Examples clarify behavior"}
+
+```{python}
+# Normalize price string to decimal
+# "$1,234.56" -> Decimal('1234.56')
+# "1234" -> Decimal('1234')
+price = Decimal(price_str.replace(',', '').lstrip('$'))
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Examples bridge the gap between abstract explanations and concrete understanding.**
+
+:::
+
 ## Link to Sources and References {.smaller}
 
 ::: {style="background-color: #e3f2fd; padding: 15px; border-radius: 10px; margin-bottom: 15px;"}
