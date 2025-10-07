@@ -71,9 +71,7 @@ Source code: [github.com/IndrajeetPatil/to-comment-or-not](https://github.com/In
 
 - Why commenting matters for code quality and maintainability
 - When to comment and when not to comment
-- Common commenting pitfalls to avoid
 - Practical strategies for writing clear, helpful, and meaningful comments^†^
-- Tools and techniques for better documentation practices
 
 <br>
 
@@ -81,7 +79,7 @@ Source code: [github.com/IndrajeetPatil/to-comment-or-not](https://github.com/In
 
 🎯 **Goal**
 
-Transform commenting from an afterthought into a deliberate practice.
+Learning to write comments that clarify intent, not echo code.
 
 :::
 
@@ -213,10 +211,9 @@ Syntax varies by language; the distinction is universal.
 
 _Every comment distracts from reading code—make sure it's worth the interruption._
 
-
 ## Don't use crutch comments {.smaller}
 
-Fix the unclear code instead: good code > bad code + comments.
+Fix the unclear code instead: $good code > bad code + comments$.
 
 :::: {.columns}
 
@@ -323,7 +320,7 @@ while (...) {
 
 ## {.smaller}
 
-**Don't duplicate the code**
+**Don't duplicate the code in comments**
 
 :::: {.columns}
 
@@ -363,7 +360,8 @@ user_name = normalize(input)
 
 ::: {.callout-note title="Don't state the obvious?"}
 
-"Obvious" depends on your audience. Code clear to senior developers may confuse juniors.
+*Obvious* depends on your audience. Code clear to senior developers may confuse juniors.
+
 Consider team experience when deciding what needs explanation.
 
 :::
@@ -1917,11 +1915,9 @@ flowchart TD
 
 And Happy Commenting! 😊
 
-# Further Reading {.smaller data-visibility="uncounted"}
-
-For a more detailed discussion about how to comment, see the following references.
-
 ## References {.smaller data-visibility="uncounted"}
+
+For a more detailed discussion about how to comment, see the following references:
 
 :::{style="font-size: 25px;"}
 
