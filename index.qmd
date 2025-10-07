@@ -323,7 +323,7 @@ while (...) {
 
 ## {.smaller}
 
-**Don't state the obvious**
+**Don't duplicate the code**
 
 :::: {.columns}
 
@@ -361,8 +361,11 @@ user_name = normalize(input)
 
 ::::
 
-::: {style="background-color: #e3f2fd; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.8em;"}
-**Note**: "Obvious" depends on your audience. Code clear to senior developers may confuse juniors.<br> Consider team experience when deciding what needs explanation.
+::: {.callout-note title="Don't state the obvious?"}
+
+"Obvious" depends on your audience. Code clear to senior developers may confuse juniors.
+Consider team experience when deciding what needs explanation.
+
 :::
 
 **Don't write non-local comments**
@@ -498,6 +501,106 @@ for O(log n) complexity"""
 :::
 
 ::::
+
+## {.smaller}
+
+**Don't use ASCII art comments**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+- Looks different across editors and fonts
+- Breaks with formatting tools
+- Increases maintenance burden
+
+:::
+
+::: {.column width='50%'}
+
+```{python}
+#╔════════════════════════════╗
+#║   AUTHENTICATION MODULE    ║
+#╚════════════════════════════╝
+def authenticate(user): ...
+
+# ┌─────────────────┐
+# │ Helper Function │
+# └─────────────────┘
+def validate(): ...
+```
+
+:::
+
+::::
+
+**Don't write confusing comments**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Confusing comment"}
+
+```{python}
+# Returns false when validation succeeds
+if not validate(input):
+    process(input)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ No comment better than confusing"}
+
+```{python}
+# (no comment - code is clearer)
+if not validate(input):
+    process(input)
+```
+
+:::
+
+:::
+
+::::
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Misleading comment"}
+
+```{python}
+# Add item to cart
+user.remove_item(item_id)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Reading code is faster"}
+
+```{python}
+# (no comment - code speaks for itself)
+user.remove_item(item_id)
+```
+
+:::
+
+:::
+
+::::
+
+::: {style="background-color: #ffebee; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.85em; text-align: center;"}
+Bad comments are worse than no comments. They mislead readers and create confusion.
+:::
 
 # What to Comment
 
@@ -1697,31 +1800,37 @@ flowchart TD
 
 ## Benefits: Context and Understanding {.smaller}
 
-. . .
+:::: {.columns}
 
-- Well-written comments make **complex code comprehensible**.
+::: {.column width='60%'}
 
-. . .
-
-- Writing thoughtful comments forces you to **articulate your reasoning** and design decisions, improving code quality.
-
-. . .
-
-- Good comments **preserve business knowledge** and domain expertise for future developers.
-
-. . .
-
-- Strategic commenting **reduces onboarding time** for new team members.
-
-. . .
-
-- Consistent commenting practices **reduce cognitive overload** and make maintenance safer.
-
-. . .
+::: {style="font-size: 0.85em;"}
 
 <br>
 
-::: {style="background-color: #e8f5e9; padding: 15px; border-radius: 15px; text-align: center;"}
+- Well-written comments make **complex code comprehensible**.
+
+- Writing thoughtful comments forces you to **articulate your reasoning** and design decisions, improving code quality.
+
+- Good comments **preserve business knowledge** and domain expertise for future developers.
+
+- Consistent commenting practices **reduce cognitive overload** and make maintenance safer.
+
+:::
+
+:::
+
+::: {.column width='40%'}
+
+![](media/comment-cherry.png){width="100%"}
+
+:::
+
+::::
+
+<br>
+
+::: {style="background-color: #e8f5e9; padding: 15px; border-radius: 15px; text-align: center; font-size: 0.9em;"}
 
 **Invest time in thoughtful comments early—practice makes perfect.**
 
