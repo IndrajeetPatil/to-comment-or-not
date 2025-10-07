@@ -824,9 +824,8 @@ Even detailed comments can't convey understanding as effectively as well-chosen 
 :::{.callout-caution icon=false title="❌ Comment without example"}
 
 ```{python}
-# Extract domain from email by taking
-# everything after the @ symbol
-domain = email[email.index('@') + 1:]
+# Modulo with negatives wraps backward, not toward zero
+index = position % array_length
 ```
 
 :::
@@ -838,11 +837,10 @@ domain = email[email.index('@') + 1:]
 :::{.callout-tip icon=false title="✅ Comment with examples"}
 
 ```{python}
-# Extract domain from email by taking
-# everything after the @ symbol
-# "user@example.com" -> "example.com"
-# "admin@mail.co.uk" -> "mail.co.uk"
-domain = email[email.index('@') + 1:]
+# Modulo with negatives wraps backward, not toward zero
+# -5 % 3 = 1 (not -2), 5 % 3 = 2
+# Useful for circular array indexing
+index = position % array_length
 ```
 
 :::
@@ -857,11 +855,12 @@ domain = email[email.index('@') + 1:]
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Transformation unclear"}
+:::{.callout-caution icon=false title="❌ Edge cases unclear"}
 
 ```{python}
-# Normalize price string to decimal
-price = Decimal(price_str.replace(',', '').lstrip('$'))
+# Calculate age, accounting for birthday occurrence
+age = today.year - born.year - \
+      ((today.month, today.day) < (born.month, born.day))
 ```
 
 :::
@@ -870,13 +869,14 @@ price = Decimal(price_str.replace(',', '').lstrip('$'))
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Examples clarify behavior"}
+:::{.callout-tip icon=false title="✅ Examples clarify edge cases"}
 
 ```{python}
-# Normalize price string to decimal
-# "$1,234.56" -> Decimal('1234.56')
-# "1234" -> Decimal('1234')
-price = Decimal(price_str.replace(',', '').lstrip('$'))
+# Calculate age, accounting for birthday occurrence
+# Born Feb 29, 2020, today Feb 28, 2024 -> 3 (not 4)
+# Born Jan 15, 2020, today Jan 14, 2024 -> 3 (not 4)
+age = today.year - born.year - \
+      ((today.month, today.day) < (born.month, born.day))
 ```
 
 :::
