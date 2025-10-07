@@ -323,7 +323,7 @@ while (...) {
 
 ## {.smaller}
 
-**Don't be redundant**
+**Don't state the obvious**
 
 :::: {.columns}
 
@@ -361,6 +361,10 @@ user_name = normalize(input)
 
 ::::
 
+::: {style="background-color: #e3f2fd; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.8em;"}
+**Note**: "Obvious" depends on your audience. Code clear to senior developers may confuse juniors.<br> Consider team experience when deciding what needs explanation.
+:::
+
 **Don't write non-local comments**
 
 :::: {.columns}
@@ -394,6 +398,8 @@ user = create_user(data)
 
 ::::
 
+## {.smaller}
+
 **Don't retain dead code as comments**
 
 :::: {.columns}
@@ -426,8 +432,6 @@ new_function()
 
 ::::
 
-## {.smaller}
-
 **Don't narrate git history**
 
 :::: {.columns}
@@ -455,38 +459,6 @@ timeout = 20
 # Timeout tuned for production load
 # See commit abc123f or issue #456
 timeout = 20
-```
-
-:::
-
-:::
-
-::::
-
-**Don't write vague action comments**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Bad"}
-
-```{python}
-# TODO: optimize this
-process_data()
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Good"}
-
-```{python}
-# TODO: Switch to binary search (issue #1234)
-process_data()
 ```
 
 :::
@@ -1054,6 +1026,140 @@ response = api.fetch(url)
 ::: {.callout-tip}
 
 **Cautionary comments prevent well-intentioned "fixes" that break subtle constraints.**
+
+:::
+
+## Explain Security-Sensitive Code {.smaller}
+
+Security-critical code often looks inefficient or overly complex. Comments must explain why "obvious" optimizations break security boundaries.
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ No warning about security boundary"}
+
+```{python}
+# Compare password hashes
+if user_hash == provided_hash:
+    return True
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Explains timing attack protection"}
+
+```{python}
+# Compare password hashes
+# WARNING: Use constant-time comparison
+# Regular == leaks timing info (CVE-2023-xxxx)
+if secrets.compare_digest(user_hash, provided_hash):
+    return True
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Unclear sanitization boundary"}
+
+```{python}
+output = user_input.replace('<', '&lt;')
+display(output)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Marks security boundary"}
+
+```{python}
+# SECURITY: HTML escape before display
+# Only '<' escaped; XSS still possible via other chars
+# TODO: Use proper HTML sanitization library
+output = user_input.replace('<', '&lt;')
+display(output)
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Security comments prevent dangerous "simplifications" that introduce vulnerabilities.**
+
+:::
+
+## Document Concurrency Invariants {.smaller}
+
+Concurrent code has hidden contracts. Comments must explain locking order, invariants, and why seemingly redundant checks matter.
+
+. . .
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Unexplained lock usage"}
+
+```{python}
+with self.lock:
+    if self.state == 'ready':
+        self.state = 'processing'
+        return self.process()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Explains invariant and lock order"}
+
+```{python}
+# INVARIANT: state transitions require lock
+# Lock order: self.lock before db.lock (deadlock)
+# Double-check pattern: state may change during wait
+with self.lock:
+    if self.state == 'ready':
+        self.state = 'processing'
+        return self.process()
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+::: {.callout-tip}
+
+**Concurrency comments prevent race conditions from "optimizations" that remove "redundant" checks.**
 
 :::
 
