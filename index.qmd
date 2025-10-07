@@ -1915,11 +1915,9 @@ flowchart TD
 
 And Happy Commenting! 😊
 
-# Further Reading {.smaller data-visibility="uncounted"}
-
-For a more detailed discussion about how to comment, see the following references.
-
 ## References {.smaller data-visibility="uncounted"}
+
+For a more detailed discussion about how to comment, see the following references:
 
 :::{style="font-size: 25px;"}
 
