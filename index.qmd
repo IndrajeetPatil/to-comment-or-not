@@ -540,12 +540,12 @@ def validate(): ...
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Confusing comment"}
+:::{.callout-caution icon=false title="❌ Confusing negative framing"}
 
 ```{python}
-# Returns false when validation succeeds
-if not validate(input):
-    process(input)
+# Skip notification if user is inactive
+if user.is_active:
+    send_notification(user)
 ```
 
 :::
@@ -554,12 +554,11 @@ if not validate(input):
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ No comment better than confusing"}
+:::{.callout-tip icon=false title="✅ Code is clearer without comment"}
 
 ```{python}
-# (no comment - code is clearer)
-if not validate(input):
-    process(input)
+if user.is_active:
+    send_notification(user)
 ```
 
 :::
