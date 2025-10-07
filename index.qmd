@@ -1661,6 +1661,80 @@ validate_input()
 
 ::::
 
+## _Aside:_ Comment Aesthetics {.smaller}
+
+While content matters most, consistent formatting improves readability.
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+**Proper indentation**
+
+```{python}
+def process():
+    # Comment matches code indentation
+    if condition:
+        # Nested comment aligned with code
+        execute()
+```
+
+**Vertically align end-of-line comments**
+
+```{python}
+timeout = 30        # API rate limit
+retries = 3         # Network failures
+buffer_size = 1024  # Chunk size in bytes
+```
+
+**Block comments with breathing room**
+
+```{python}
+#
+# This is a complex algorithm requiring
+# detailed explanation across multiple lines
+#
+def complex_algorithm():
+    ...
+```
+
+:::
+
+::: {.column width='50%'}
+
+**Consistent capitalization**
+
+```{python}
+# Calculate total price
+total = sum(prices)
+
+# Apply discount to premium users
+if user.is_premium:
+    apply_discount()
+```
+
+**Consistent punctuation (or lack thereof)**
+
+```{python}
+# Option 1: No punctuation
+# Calculate average
+# Filter outliers
+# Return result
+
+# Option 2: Full sentences
+# Calculate the average of all values.
+# Filter out statistical outliers.
+# Return the final result.
+```
+
+:::
+
+::::
+
+::: {style="background-color: #e3f2fd; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.85em; text-align: center;"}
+**Tip**: Configure your linter/formatter to enforce these aesthetic choices consistently.
+:::
+
 # Tools & Techniques
 
 ## Tool Limitations {.smaller}
