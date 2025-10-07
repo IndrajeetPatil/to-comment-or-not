@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.9.3">
 
   <meta name="author" content="Indrajeet Patil">
-  <meta name="dcterms.date" content="2025-10-07 19:51:46.85723">
+  <meta name="dcterms.date" content="2025-10-07 20:11:20.316447">
   <meta name="keywords" content="comments, software-engineering, computer-science, software-development, code-documentation">
   <title>To Comment or Not To Comment</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -2045,6 +2045,61 @@
 </div>
 </div>
 </div></div>
+</section>
+<section id="aside-comment-aesthetics" class="slide level2 smaller">
+<h2><em>Aside:</em> Comment Aesthetics</h2>
+<p>While content matters most, consistent formatting improves readability.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Proper indentation</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process():</span>
+<span id="cb68-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Comment matches code indentation</span></span>
+<span id="cb68-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> condition:</span>
+<span id="cb68-4"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Nested comment aligned with code</span></span>
+<span id="cb68-5"><a href="" aria-hidden="true" tabindex="-1"></a>        execute()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Vertically align end-of-line comments</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="" aria-hidden="true" tabindex="-1"></a>timeout <span class="op">=</span> <span class="dv">30</span>        <span class="co"># API rate limit</span></span>
+<span id="cb69-2"><a href="" aria-hidden="true" tabindex="-1"></a>retries <span class="op">=</span> <span class="dv">3</span>         <span class="co"># Network failures</span></span>
+<span id="cb69-3"><a href="" aria-hidden="true" tabindex="-1"></a>buffer_size <span class="op">=</span> <span class="dv">1024</span>  <span class="co"># Chunk size in bytes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Block comments with breathing room</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb70-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a complex algorithm requiring</span></span>
+<span id="cb70-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># detailed explanation across multiple lines</span></span>
+<span id="cb70-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb70-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> complex_algorithm():</span>
+<span id="cb70-6"><a href="" aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Consistent capitalization</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate total price</span></span>
+<span id="cb71-2"><a href="" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="bu">sum</span>(prices)</span>
+<span id="cb71-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply discount to premium users</span></span>
+<span id="cb71-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> user.is_premium:</span>
+<span id="cb71-6"><a href="" aria-hidden="true" tabindex="-1"></a>    apply_discount()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Consistent punctuation (or lack thereof)</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1: No punctuation</span></span>
+<span id="cb72-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average</span></span>
+<span id="cb72-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter outliers</span></span>
+<span id="cb72-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Return result</span></span>
+<span id="cb72-5"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2: Full sentences</span></span>
+<span id="cb72-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the average of all values.</span></span>
+<span id="cb72-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out statistical outliers.</span></span>
+<span id="cb72-9"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Return the final result.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+<div style="background-color: #e3f2fd; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.85em; text-align: center;">
+<p><strong>Tip</strong>: Configure your linter/formatter to enforce these aesthetic choices consistently.</p>
+</div>
 </section></section>
 <section>
 <section id="tools-techniques" class="title-slide slide level1 center">
