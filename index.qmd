@@ -1665,6 +1665,8 @@ validate_input()
 
 While content matters most, consistent formatting improves readability.
 
+::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 15px;"}
+
 :::: {.columns}
 
 ::: {.column width='50%'}
@@ -1713,7 +1715,7 @@ if user.is_premium:
     apply_discount()
 ```
 
-**Consistent punctuation (or lack thereof)**
+**Consistent punctuation**
 
 ```{python}
 # Option 1: No punctuation
@@ -1731,8 +1733,10 @@ if user.is_premium:
 
 ::::
 
-::: {style="background-color: #e3f2fd; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.85em; text-align: center;"}
-**Tip**: Configure your linter/formatter to enforce these aesthetic choices consistently.
+:::
+
+::: {style="font-size: 0.65em; margin-top: 10px; color: #666;"}
+**Tip:** Configure your linter/formatter to enforce these aesthetic choices consistently.
 :::
 
 # Tools & Techniques
