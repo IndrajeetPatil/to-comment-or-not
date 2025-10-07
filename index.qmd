@@ -323,7 +323,7 @@ while (...) {
 
 ## {.smaller}
 
-**Don't state the obvious**
+**Don't be redundant by stating the obvious**
 
 :::: {.columns}
 
@@ -334,36 +334,7 @@ while (...) {
 ```{python}
 # increment counter
 counter += 1
-```
 
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Good"}
-
-```{python}
-# Reset retry count after successful connection
-counter = 0
-```
-
-:::
-
-:::
-
-::::
-
-**Don't repeat variable names**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Bad"}
-
-```{python}
 # user name variable
 user_name = "john"
 ```
@@ -377,6 +348,9 @@ user_name = "john"
 :::{.callout-tip icon=false title="✅ Good"}
 
 ```{python}
+# Reset retry count after successful connection
+counter = 0
+
 # Store normalised username for database
 user_name = normalize(input)
 ```
@@ -420,6 +394,40 @@ if user.is_active():
 :::
 
 ::::
+
+**Don't write non-local comments**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Requires checking other files"}
+
+```{python}
+# See UserService for validation logic
+user = create_user(data)
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Self-contained explanation"}
+
+```{python}
+# Email validated before creation (RFC 5322)
+# Duplicates rejected via unique constraint
+user = create_user(data)
+```
+
+:::
+
+:::
+
+::::
+
 
 ## {.smaller}
 
