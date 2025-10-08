@@ -1490,8 +1490,6 @@ apply_discount()
 
 ::::
 
-## {.smaller}
-
 **Maintain professional tone**
 
 :::: {.columns}
@@ -1523,6 +1521,8 @@ process_legacy_data()
 :::
 
 ::::
+
+## {.smaller}
 
 **Stay objective**
 
@@ -1734,9 +1734,9 @@ flowchart TD
     H -.->|Collaborates| A
     A -.->|Feedback| H
 
-    style H fill:#90CAF9
-    style A fill:#90CAF9
-    style S fill:#81C784
+    style H fill:#BBDEFB
+    style A fill:#BBDEFB
+    style S fill:#A5D6A7
 ```
 
 :::
