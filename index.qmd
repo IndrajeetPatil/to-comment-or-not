@@ -480,6 +480,34 @@ for O(log n) complexity"""
 
 ## {.smaller}
 
+**Don't write mandated comments**
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+::: {style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; font-size: 0.85em;"}
+
+Arbitrary rules like "one comment per 10 lines" or "every function must have a comment" lead to noise, not clarity.
+
+Write comments when they add value, not to meet quotas.
+
+:::
+
+:::
+
+::: {.column width='60%'}
+
+![](media/more-comments.png){width="100%" fig-alt="Comic strip showing code commenting guidelines being interpreted as 'write more comments' leading to excessive commenting"}
+
+::: {style="font-size: 0.7em; margin-top: 10px; padding: 8px; border-radius: 5px; text-align: center; color: #666;"}
+Source: [Geek & Poke](https://geekandpoke.typepad.com/geekandpoke/2011/06/code-commenting-made-easy.html)
+:::
+
+:::
+
+::::
+
 **Don't write confusing comments**
 
 :::: {.columns}
@@ -563,7 +591,7 @@ the <span style="background-color: #90CAF9; padding: 2px 6px; border-radius: 3px
 
 ::: {.column width='40%'}
 
-![](media/gandalf.jpg){width="100%"}
+![](media/gandalf.jpg){width="100%" fig-alt="Gandalf the Grey from Lord of the Rings with text 'You shall not pass' - representing your future self reviewing unclear code"}
 
 ::: {style="text-align: center; font-size: 0.75em; margin-top: 10px; font-style: italic; color: #666;"}
 Your future self as the reader
@@ -1854,7 +1882,7 @@ flowchart TD
 
 ::: {.column width='40%'}
 
-![](media/comment-cherry.png){width="100%"}
+![](media/comment-cherry.png){width="100%" fig-alt="Illustration of a cherry on top of a cake, symbolizing that good comments are the finishing touch to well-written code"}
 
 :::
 
