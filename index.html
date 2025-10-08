@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.9.3">
 
   <meta name="author" content="Indrajeet Patil">
-  <meta name="dcterms.date" content="2025-10-08 19:39:20.521305">
+  <meta name="dcterms.date" content="2025-10-08 19:54:31.795668">
   <meta name="keywords" content="comments, software-engineering, computer-science, software-development, code-documentation">
   <title>To Comment or Not To Comment</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1480,12 +1480,12 @@
 <section id="organize-long-functions" class="slide level2 smaller">
 <h2>Organize Long Functions</h2>
 <p>When a function is legitimately complex and shouldn’t be broken down further, use comments to delineate logical sections.</p>
-<div style="background-color: #fff9e6; padding: 10px; border-radius: 8px; margin: 15px 0; font-size: 0.85em;">
+<div style="background-color: #ffe699; padding: 15px; border-radius: 8px; margin: 15px 0; font-size: 0.85em;">
 <p><strong>Note</strong>: Refactoring into smaller functions is still preferable unless there’s a strong reason (tight I/O coupling, measured performance need, transaction boundaries).</p>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div style="background-color: #f0f7ff; padding: 15px; border-radius: 10px;">
+<div style="background-color: #cce6ff; padding: 20px; border-radius: 10px;">
 <p><strong>Use section comments to:</strong></p>
 <ul>
 <li>Group related operations</li>
@@ -1823,7 +1823,7 @@
 <section id="aside-comment-aesthetics" class="slide level2 smaller">
 <h2><em>Aside:</em> Comment Aesthetics</h2>
 <p>While content matters most, consistent formatting improves readability.</p>
-<div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 15px;">
+<div style="background-color: #d9f2d9; padding: 20px; border-radius: 10px; margin-top: 15px;">
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Proper indentation</strong></p>
@@ -1873,7 +1873,7 @@
 </div>
 </div></div>
 </div>
-<div style="font-size: 0.65em; margin-top: 10px; color: #666;">
+<div style="font-size: 0.65em; margin-top: 10px; color: #333;">
 <p><strong>Tip:</strong> Configure your linter/formatter to enforce these aesthetic choices consistently.</p>
 </div>
 </section></section>
@@ -1946,10 +1946,10 @@
 </div>
 <div class="fragment">
 <div style="background-color: rgba(117, 112, 179, 0.15); border-left: 5px solid #7570B3FF; padding: 20px; border-radius: 8px;">
-<p><strong>Review LLM-Generated Comments</strong></p>
 <div class="columns">
 <div class="column" style="width:55%;">
-<p>LLMs can overcomment or generate redundant comments, but they can also tighten verbose ones. Always review LLM-generated comments critically.</p>
+<p><strong>Review LLM-Generated Comments</strong></p>
+<p>LLMs can overcomment or generate redundant comments, but they can also tighten verbose ones.</p>
 </div><div class="column" style="width:45%;">
 <div style="background-color: #ffffff; padding: 15px; border-radius: 8px; font-size: 0.75em;">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb72"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb72-1"><a href="" aria-hidden="true" tabindex="-1"></a>Human-generated comment:</span>
@@ -1962,6 +1962,9 @@
 <span id="cb72-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="va">+ # Retry 3x with exponential backoff for network errors</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
+<div style="background-color: #ffffff; text-align: center; font-size: 1.2em;">
+<p><em>Always review LLM-generated comments critically.</em></p>
+</div>
 </div>
 </div>
 </section>
@@ -2008,7 +2011,7 @@
 </div>
 </div>
 <div class="fragment">
-<div style="background-color: #FFFBC1; padding: 10px; margin: 10px; border-radius: 25px;text-align: center; font-size: 1.2rem;">
+<div style="background-color: #FFFBC1; padding: 10px; margin: 10px; border-radius: 25px; text-align: center; font-size: 1.2rem;">
 <p><strong>Fresh eyes catch what you miss: outdated comments, missing context, and unclear intent!</strong></p>
 </div>
 </div>

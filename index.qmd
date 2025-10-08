@@ -1265,7 +1265,7 @@ with self.lock:
 
 When a function is legitimately complex and shouldn't be broken down further, use comments to delineate logical sections.
 
-::: {style="background-color: #fff9e6; padding: 10px; border-radius: 8px; margin: 15px 0; font-size: 0.85em;"}
+::: {style="background-color: #ffe699; padding: 15px; border-radius: 8px; margin: 15px 0; font-size: 0.85em;"}
 **Note**: Refactoring into smaller functions is still preferable unless there's a strong reason (tight I/O coupling, measured performance need, transaction boundaries).
 :::
 
@@ -1273,7 +1273,7 @@ When a function is legitimately complex and shouldn't be broken down further, us
 
 ::: {.column width='50%'}
 
-::: {style="background-color: #f0f7ff; padding: 15px; border-radius: 10px;"}
+::: {style="background-color: #cce6ff; padding: 20px; border-radius: 10px;"}
 
 **Use section comments to:**
 
@@ -1592,7 +1592,7 @@ process_transaction()
 
 While content matters most, consistent formatting improves readability.
 
-::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 15px;"}
+::: {style="background-color: #d9f2d9; padding: 20px; border-radius: 10px; margin-top: 15px;"}
 
 :::: {.columns}
 
@@ -1662,7 +1662,7 @@ if user.is_premium:
 
 :::
 
-::: {style="font-size: 0.65em; margin-top: 10px; color: #666;"}
+::: {style="font-size: 0.65em; margin-top: 10px; color: #333;"}
 **Tip:** Configure your linter/formatter to enforce these aesthetic choices consistently.
 :::
 
@@ -1747,13 +1747,13 @@ flowchart TD
 
 ::: {style="background-color: rgba(117, 112, 179, 0.15); border-left: 5px solid #7570B3FF; padding: 20px; border-radius: 8px;"}
 
-**Review LLM-Generated Comments**
-
 :::: {.columns}
 
 ::: {.column width='55%'}
 
-LLMs can overcomment or generate redundant comments, but they can also tighten verbose ones. Always review LLM-generated comments critically.
+**Review LLM-Generated Comments**
+
+LLMs can overcomment or generate redundant comments, but they can also tighten verbose ones. 
 
 :::
 
@@ -1777,6 +1777,12 @@ LLM-suggested improvement:
 :::
 
 ::::
+
+::: {style="background-color: #ffffff; text-align: center; font-size: 1.2em;"}
+
+*Always review LLM-generated comments critically.*
+
+:::
 
 :::
 
@@ -1818,7 +1824,7 @@ flowchart TD
 
 . . .
 
-::: {style="background-color: #FFFBC1; padding: 10px; margin: 10px; border-radius: 25px;text-align: center; font-size: 1.2rem;"}
+::: {style="background-color: #FFFBC1; padding: 10px; margin: 10px; border-radius: 25px; text-align: center; font-size: 1.2rem;"}
 
 **Fresh eyes catch what you miss: outdated comments, missing context, and unclear intent!**
 
