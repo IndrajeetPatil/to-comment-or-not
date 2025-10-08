@@ -61,3 +61,34 @@
 .smaller .callout table {
   font-size: 1.0em !important;
 }
+
+/* Colorblind-friendly callout colors */
+.callout-tip {
+  border-left-color: #7570B3FF !important; /* Purple (good/correct) */
+  background-color: rgba(117, 112, 179, 0.15) !important; /* Light purple background */
+}
+
+.callout-tip .callout-header,
+.callout-tip .callout-title,
+.callout-tip .callout-body {
+  background-color: rgba(117, 112, 179, 0.15) !important;
+}
+
+.callout-tip .callout-icon {
+  color: #7570B3FF !important;
+}
+
+.callout-caution {
+  border-left-color: #E6AB02FF !important; /* Gold/Yellow (warning/caution) */
+  background-color: rgba(230, 171, 2, 0.15) !important; /* Light gold background */
+}
+
+.callout-caution .callout-header,
+.callout-caution .callout-title,
+.callout-caution .callout-body {
+  background-color: rgba(230, 171, 2, 0.15) !important;
+}
+
+.callout-caution .callout-icon {
+  color: #E6AB02FF !important;
+}

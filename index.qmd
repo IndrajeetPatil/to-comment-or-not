@@ -117,19 +117,19 @@ flowchart TD
     D --> E[Commenting Shortcuts]
 
     E --> F[No Comments]
-    E --> G[Obvious Comments]
+    E --> G[Redundant Comments]
 
     H[Comment Rot] --> I[Outdated Comments]
 
-    style A fill:#f8f9fa,color:#000
-    style B fill:#f8f9fa,color:#000
-    style C fill:#f8f9fa,color:#000
-    style D fill:#fff3e0,color:#000
-    style E fill:#ffebee,color:#000
-    style F fill:#ffcdd2,color:#000
-    style G fill:#ffcdd2,color:#000
-    style H fill:#ef9a9a,color:#000
-    style I fill:#ffcdd2,color:#000
+    style A fill:#E8EAF6,color:#000
+    style B fill:#E8EAF6,color:#000
+    style C fill:#E8EAF6,color:#000
+    style D fill:#FFE082,color:#000
+    style E fill:#FFCC80,color:#000
+    style F fill:#FFAB91,color:#000
+    style G fill:#FFAB91,color:#000
+    style H fill:#FFB74D,color:#000
+    style I fill:#FFAB91,color:#000
 ```
 
 ## _N.B._ Documentation vs. Comments {.smaller}
@@ -138,15 +138,19 @@ flowchart TD
 
 ::: {.column width='65%'}
 
-<div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.8em; line-height: 1.6;">
+<div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.75em; line-height: 1.6;">
 <span style="color: #0033cc;">def</span> is_valid_email(email):<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #c8e6c9; padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">"""Check if email address is valid.</span><br>
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #c8e6c9; padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">Returns:</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #c8e6c9; padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">True if valid, False otherwise</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #c8e6c9; padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">"""</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: #ffcdd2; padding: 2px 4px; border-radius: 3px; font-size: 0.95em;"># RFC 5322 simplified: local@domain format</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;pattern = <span style="color: #008000;">r'&#94;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&#36;'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">"""Check if email address is valid.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">Returns:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">True if valid, False otherwise</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">"""</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(230, 171, 2, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;"># RFC 5322 simplified: local@domain format</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;local_part = <span style="color: #008000;">r'[a-zA-Z0-9._%+-]+'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;domain = <span style="color: #008000;">r'[a-zA-Z0-9.-]+'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;tld = <span style="color: #008000;">r'[a-zA-Z]{2,}'</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pattern = <span style="color: #0033cc;">rf</span><span style="color: #008000;">'^{local_part}@{domain}\.{tld}$'</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0033cc;">return</span> re.match(pattern, email) <span style="color: #0033cc;">is not</span> <span style="color: #0033cc;">None</span>
 </div>
 
@@ -154,7 +158,7 @@ flowchart TD
 
 ::: {.column width='35%'}
 
-::: {style="background-color: #c8e6c9; padding: 10px; border-radius: 10px; margin-bottom: 10px;"}
+::: {style="background-color: rgba(117, 112, 179, 0.2); padding: 10px; border-radius: 10px; margin-bottom: 10px;"}
 **Documentation**
 
 - How to *use* the function
@@ -162,7 +166,7 @@ flowchart TD
 - For function *users*
 :::
 
-::: {style="background-color: #ffcdd2; padding: 10px; border-radius: 10px;"}
+::: {style="background-color: rgba(230, 171, 2, 0.2); padding: 10px; border-radius: 10px;"}
 **Comments**
 
 - *Why* it works this way
@@ -226,9 +230,9 @@ def has_premium_access(user):
 :::{.callout-caution icon=false title="❌ Comment explains complex conditional"}
 
 ```{python}
-# Process if valid: not expired and either paid or free trial
-if not item.expired and (item.paid or item.days_left > 0):
-    process(item)
+# Process if positive and (even or divisible by 5)
+if x > 0 and (x % 2 == 0 or x % 5 == 0):
+    process(x)
 ```
 
 :::
@@ -240,11 +244,11 @@ if not item.expired and (item.paid or item.days_left > 0):
 :::{.callout-tip icon=false title="✅ Well-named function obviates comment"}
 
 ```{python}
-def is_valid_item(item):
-    return not item.expired and (item.paid or item.days_left > 0)
+def should_process(x):
+    return x > 0 and (x % 2 == 0 or x % 5 == 0)
 
-if is_valid_item(item):
-    process(item)
+if should_process(x):
+    process(x)
 ```
 
 :::
@@ -253,32 +257,28 @@ if is_valid_item(item):
 
 ::::
 
+::: {style="background-color: rgba(230, 171, 2, 0.15); border-left: 5px solid #E6AB02FF; padding: 20px; border-radius: 8px; font-size: 0.85em;"}
+
 :::: {.columns}
 
-::: {.column width='50%'}
+::: {.column width='65%'}
 
-:::{.callout-caution icon=false title="❌ Closing brace comments signal complexity"}
+**❌ Closing brace comments signal complexity**
 
-Indicates overly complex, deeply nested code that needs refactoring into smaller, well-named functions.
-
-Example from <span style="background-color: #c8e6c9; padding: 2px 8px; border-radius: 4px; font-weight: bold;">JavaScript</span>.
+Indicates overly complex, deeply nested code that needs refactoring into smaller, well-named functions (example from <span style="background-color: #e0e0e0; padding: 2px 8px; border-radius: 4px; font-weight: bold;">JavaScript</span>).
 
 :::
 
-:::
+::: {.column width='35%'}
 
-::: {.column width='50%'}
-
-::: {style="font-size: 0.75em;"}
+::: {style="background-color: #ffffff; padding: 15px; border-radius: 8px; font-size: 0.75em;"}
 
 ```javascript
 while (...) {
     try {
-        if (...) {
-            for (...) {
-                ...
-            } // end for
-        } // end if
+        for (...) {
+            ...
+        } // end for
     } catch {
         ...
     } // end try
@@ -290,6 +290,8 @@ while (...) {
 :::
 
 ::::
+
+:::
 
 ## {.smaller}
 
@@ -331,7 +333,7 @@ user_name = normalize(input)
 
 ::::
 
-::: {.callout-note title="Don't state the obvious?"}
+::: {.callout-note title="Why not 'Don't state the obvious?'"}
 
 *Obvious* depends on your audience. Code clear to senior developers may confuse juniors.
 
@@ -478,36 +480,6 @@ for O(log n) complexity"""
 
 ## {.smaller}
 
-**Don't use [ASCII art](https://www.figlet.org/) comments**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-- Looks different across editors and fonts
-- Breaks with formatting tools
-- Increases maintenance burden
-
-:::
-
-::: {.column width='50%'}
-
-```{python}
-#╔════════════════════════════╗
-#║   AUTHENTICATION MODULE    ║
-#╚════════════════════════════╝
-def authenticate(user): ...
-
-# ┌─────────────────┐
-# │ Helper Function │
-# └─────────────────┘
-def validate(): ...
-```
-
-:::
-
-::::
-
 **Don't write confusing comments**
 
 :::: {.columns}
@@ -582,8 +554,10 @@ Bad comments are worse than no comments. They mislead readers and create confusi
 ::: {.column width='60%'}
 
 <br>
+<br>
 
-Whatever helps the reader understand the code more easily: the *what*, the *why*, and/or the *how*.
+Whatever helps the reader understand the code more easily:
+the <span style="background-color: #90CAF9; padding: 2px 6px; border-radius: 3px;">*what*</span>, the <span style="background-color: #B39DDB; padding: 2px 6px; border-radius: 3px;">*why*</span>,  the <span style="background-color: #81C784; padding: 2px 6px; border-radius: 3px;">*how*</span>
 
 :::
 
@@ -616,12 +590,12 @@ flowchart LR
     D -->|Yes| E[Comment<br/>WHY]
     D -->|No| F[No comment<br/>needed]
 
-    style A fill:#fff3e0,color:#000
-    style B fill:#e3f2fd,color:#000
-    style C fill:#c8e6c9,color:#000
-    style D fill:#e3f2fd,color:#000
-    style E fill:#fff9c4,color:#000
-    style F fill:#c8e6c9,color:#000
+    style A fill:#FFE082,color:#000
+    style B fill:#90CAF9,color:#000
+    style C fill:#B39DDB,color:#000
+    style D fill:#90CAF9,color:#000
+    style E fill:#FFF59D,color:#000
+    style F fill:#B39DDB,color:#000
 ```
 
 <br>
@@ -633,6 +607,8 @@ flowchart LR
 :::
 
 ## Explain the Thought Process {.smaller}
+
+Good comments explain business logic, design decisions, and non-obvious requirements.
 
 . . .
 
@@ -682,14 +658,6 @@ if len(data) == 0:
 :::
 
 ::::
-
-. . .
-
-::: {.callout-tip}
-
-**Good comments explain business logic, design decisions, and non-obvious requirements.**
-
-:::
 
 ## Document Non-Obvious Logic {.smaller}
 
@@ -765,14 +733,6 @@ def is_power_of_two(n):
 :::
 
 ::::
-
-. . .
-
-::: {.callout-tip}
-
-**Complex logic deserves explanation—clarity trumps brevity.**
-
-:::
 
 ## Explain Unidiomatic Code {.smaller}
 
@@ -915,7 +875,7 @@ def process_data(items):
 
 ## Aid Comprehension with Examples {.smaller}
 
-Even detailed comments can't convey understanding as effectively as well-chosen examples. Complement comments with concrete examples to clarify complex code.
+Well-chosen examples often clarify complex code more effectively than detailed comments alone.
 
 . . .
 
@@ -987,15 +947,9 @@ age = today.year - born.year - \
 
 ::::
 
-. . .
-
-::: {.callout-tip}
-
-**Examples bridge the gap between abstract explanations and concrete understanding.**
-
-:::
-
 ## Legal Comments and External Links {.smaller}
+
+. . .
 
 ::: {style="background-color: #e8f5e9; padding: 15px; border-radius: 10px; margin-bottom: 15px;"}
 
@@ -1029,6 +983,8 @@ Copyright, license, and attribution information can be noted in file headers or 
 
 :::
 
+. . .
+
 ::: {style="background-color: #e3f2fd; padding: 15px; border-radius: 10px; margin-bottom: 15px;"}
 
 :::: {.columns}
@@ -1061,6 +1017,8 @@ def shuffle(array):
 ::::
 
 :::
+
+. . .
 
 ::: {style="background-color: #fff3e0; padding: 15px; border-radius: 10px; margin-bottom: 15px;"}
 
@@ -1096,7 +1054,7 @@ def parse_iso_date(date_string):
 
 ## Use Comments as Cautionary Text {.smaller}
 
-Comments can amplify the importance of something that might otherwise seem inconsequential, warning against seemingly obvious "improvements".
+Cautionary comments prevent well-intentioned "fixes" that break subtle constraints by warning against seemingly obvious "improvements".
 
 . . .
 
@@ -1170,17 +1128,9 @@ response = api.fetch(url)
 
 ::::
 
-. . .
-
-::: {.callout-tip}
-
-**Cautionary comments prevent well-intentioned "fixes" that break subtle constraints.**
-
-:::
-
 ## Explain Security-Sensitive Code {.smaller}
 
-Security-critical code often looks inefficient or overly complex. Comments must explain why "obvious" optimizations break security boundaries.
+Security comments prevent dangerous "simplifications" that introduce vulnerabilities by explaining why "obvious" optimizations break security boundaries.
 
 . . .
 
@@ -1253,17 +1203,9 @@ display(output)
 
 ::::
 
-. . .
-
-::: {.callout-tip}
-
-**Security comments prevent dangerous "simplifications" that introduce vulnerabilities.**
-
-:::
-
 ## Document Concurrency Invariants {.smaller}
 
-Concurrent code has hidden contracts. Comments must explain locking order, invariants, and why seemingly redundant checks matter.
+Concurrency comments prevent race conditions from "optimizations" that remove checks by explaining locking order, invariants, and why seemingly redundant logic matters.
 
 . . .
 
@@ -1318,14 +1260,6 @@ with self.lock:
 :::
 
 ::::
-
-. . .
-
-::: {.callout-tip}
-
-**Concurrency comments prevent race conditions from "optimizations" that remove "redundant" checks.**
-
-:::
 
 ## Organize Long Functions {.smaller}
 
@@ -1590,38 +1524,6 @@ process_legacy_data()
 
 ::::
 
-**Avoid inside jokes**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Unclear to outsiders"}
-
-```{python}
-# Here be dragons
-process_transaction()
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Clear explanation"}
-
-```{python}
-# Handles concurrent writes with optimistic locking
-process_transaction()
-```
-
-:::
-
-:::
-
-::::
-
 **Stay objective**
 
 :::: {.columns}
@@ -1646,6 +1548,38 @@ validate_input()
 ```{python}
 # Business requirement: process within 24h
 validate_input()
+```
+
+:::
+
+:::
+
+::::
+
+**Avoid inside jokes**
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+:::{.callout-caution icon=false title="❌ Unclear to outsiders"}
+
+```{python}
+# Here be dragons
+process_transaction()
+```
+
+:::
+
+:::
+
+::: {.column width='50%'}
+
+:::{.callout-tip icon=false title="✅ Clear explanation"}
+
+```{python}
+# Handles concurrent writes with optimistic locking
+process_transaction()
 ```
 
 :::
@@ -1740,7 +1674,7 @@ if user.is_premium:
 
 ::: {.column width='50%' .fragment}
 
-**What tools <span style="background-color: #c8e6c9; padding: 2px 6px; border-radius: 4px;">CAN</span> do:**
+**What tools <span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 6px; border-radius: 4px;">CAN</span> do:**
 
 - Check comment formatting and style
 - Flag TODO/FIXME comments
@@ -1751,7 +1685,7 @@ if user.is_premium:
 
 ::: {.column width='50%' .fragment}
 
-**What they <span style="background-color: #ffcdd2; padding: 2px 6px; border-radius: 4px;">CANNOT</span> do:**
+**What they <span style="background-color: rgba(230, 171, 2, 0.3); padding: 2px 6px; border-radius: 4px;">CANNOT</span> do:**
 
 - Understand if comments explain the "why"
 - Assess comment usefulness and clarity
@@ -1765,9 +1699,11 @@ if user.is_premium:
 
 . . .
 
-::: {.callout-note title="The fundamental limitation"}
+::: {style="background-color: #e3f2fd; border-left: 5px solid #2196F3; padding: 20px; border-radius: 8px;"}
 
-**Tools can enforce *format* but not *value*.** Good commenting requires human judgment about what information is helpful.
+**The fundamental limitation**
+
+Tools can enforce *format* but not *value*. Good commenting requires human judgment about what information is helpful.
 
 :::
 
@@ -1784,7 +1720,6 @@ if user.is_premium:
 - Analyze code complexity and suggest documentation
 - Identify business logic that needs explanation
 - Check comment clarity and helpfulness
-- Generate initial documentation drafts
 
 :::
 
@@ -1799,9 +1734,9 @@ flowchart TD
     H -.->|Collaborates| A
     A -.->|Feedback| H
 
-    style H fill:#e3f2fd
-    style A fill:#f3e5f5
-    style S fill:#e8f5e8
+    style H fill:#90CAF9
+    style A fill:#90CAF9
+    style S fill:#81C784
 ```
 
 :::
@@ -1810,9 +1745,38 @@ flowchart TD
 
 . . .
 
-::: {.callout-tip title="Review LLM-Generated Comments"}
+::: {style="background-color: rgba(117, 112, 179, 0.15); border-left: 5px solid #7570B3FF; padding: 20px; border-radius: 8px;"}
 
-LLMs can overcomment or generate redundant comments. Review LLM-generated comments critically—either manually or with a different LLM—to evaluate quality and identify unnecessary ones.
+**Review LLM-Generated Comments**
+
+:::: {.columns}
+
+::: {.column width='55%'}
+
+LLMs can overcomment or generate redundant comments, but they can also tighten verbose ones. Always review LLM-generated comments critically.
+
+:::
+
+::: {.column width='45%'}
+
+::: {style="background-color: #ffffff; padding: 15px; border-radius: 8px; font-size: 0.75em;"}
+
+```{.diff}
+Human-generated comment:
+
+- # Retry up to 3 times with exponential backoff
+- # to handle transient network failures
+
+LLM-suggested improvement:
+
++ # Retry 3x with exponential backoff for network errors
+```
+
+:::
+
+:::
+
+::::
 
 :::
 
@@ -1840,16 +1804,16 @@ flowchart TD
     H --> I
     O --> I
 
-    style A fill:#e3f2fd,color:#000
-    style B fill:#f3e5f5,color:#000
-    style C fill:#f8f9fa,color:#000
-    style D fill:#f8f9fa,color:#000
-    style E fill:#fff3e0,color:#000
-    style F fill:#fff3e0,color:#000
-    style G fill:#fff3e0,color:#000
-    style H fill:#fff3e0,color:#000
-    style O fill:#fff3e0,color:#000
-    style I fill:#e8f5e8,color:#000
+    style A fill:#90CAF9,color:#000
+    style B fill:#CE93D8,color:#000
+    style C fill:#E1F5FE,color:#000
+    style D fill:#E1F5FE,color:#000
+    style E fill:#FFE082,color:#000
+    style F fill:#FFE082,color:#000
+    style G fill:#FFE082,color:#000
+    style H fill:#FFE082,color:#000
+    style O fill:#FFE082,color:#000
+    style I fill:#B39DDB,color:#000
 ```
 
 . . .
