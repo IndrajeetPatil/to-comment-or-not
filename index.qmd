@@ -478,7 +478,7 @@ for O(log n) complexity"""
 
 ## {.smaller}
 
-**Don't use ASCII art comments**
+**Don't use [ASCII art](https://www.figlet.org/) comments**
 
 :::: {.columns}
 
@@ -1282,6 +1282,21 @@ with self.lock:
 
 :::
 
+::: {style="text-align: center; margin: 15px 0; color: #666; font-size: 0.9em;"}
+Refactoring to "simplify" ↓
+:::
+
+:::{.callout-caution icon=false title="❌ Simpler but introduces race condition"}
+
+```{python}
+# Someone removed "unnecessary" lock to reduce nesting
+if self.state == 'ready':
+    self.state = 'processing'
+    return self.process()
+```
+
+:::
+
 :::
 
 ::: {.column width='50%'}
@@ -1475,38 +1490,6 @@ total = sum(prices)
 ::::
 
 ## {.smaller}
-
-**Be accurate**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Misleading comment"}
-
-```{python}
-# Calculate average
-return median(values)
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Accurate description"}
-
-```{python}
-# Calculate median for anomaly detection
-return median(values)
-```
-
-:::
-
-:::
-
-::::
 
 **Keep comments updated**
 
@@ -1827,17 +1810,9 @@ flowchart TD
 
 . . .
 
-::: {.callout-tip title="Symbiotic Commenting"}
+::: {.callout-tip title="Review LLM-Generated Comments"}
 
-Write initial comments yourself. Then, ask AI tools to identify gaps, suggest improvements, or validate clarity.
-
-:::
-
-. . .
-
-::: {.callout-tip title="Cross-LLM Review"}
-
-Use a different LLM to evaluate comments than the one used to write the code.
+LLMs can overcomment or generate redundant comments. Review LLM-generated comments critically—either manually or with a different LLM—to evaluate quality and identify unnecessary ones.
 
 :::
 
@@ -1881,7 +1856,7 @@ flowchart TD
 
 ::: {style="background-color: #FFFBC1; padding: 10px; margin: 10px; border-radius: 25px;text-align: center; font-size: 1.2rem;"}
 
-**Code review transforms commenting from reactive to deliberate!**
+**Fresh eyes catch what you miss: outdated comments, missing context, and unclear intent!**
 
 :::
 
