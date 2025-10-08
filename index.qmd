@@ -71,11 +71,11 @@ Source code: [github.com/IndrajeetPatil/to-comment-or-not](https://github.com/In
 
 - Why commenting matters for code quality and maintainability
 - When to comment and when not to comment
-- Practical strategies for writing clear, helpful, and meaningful comments^†^
+- Practical strategies for writing clear, helpful, and meaningful comments
 
 <br>
 
-::: {style="background-color: #FFFBC1; padding: 20px; border-radius: 25px;text-align: center;"}
+::: {style="background-color: #FFFBC1; padding: 20px; border-radius: 25px; text-align: center;"}
 
 🎯 **Goal**
 
@@ -83,10 +83,12 @@ Learning to write comments that clarify intent, not echo code.
 
 :::
 
+<br>
 
-::: {.aside style="font-size: 0.6em; position: absolute; bottom: 10px; left: 50px;"}
+::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 25px; text-align: center;"}
 
-^†^Despite Python examples, all the mentioned strategies are **language-agnostic**. None of this advice is dogma; there can be valid reasons and conventions to break these rules.
+Despite Python examples, all the mentioned strategies are **language-agnostic**.<br>
+None of this advice is **dogma**; there can be valid reasons and conventions to break these rules.
 
 :::
 
@@ -176,35 +178,6 @@ flowchart TD
 
 **Documentation for public interface, comments for private implementation.**
 
-:::
-
-## _Aside:_ Cross-Language Examples {.smaller}
-
-Syntax varies by language; the distinction is universal.
-
-::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 15px;"}
-
-| Language | Documentation | Comment | Documentation Tools |
-|----------|--------------|---------|---------------------|
-| **Python** | `"""docstring"""` | `# comment` | Sphinx, pdoc |
-| **JavaScript** | `/** JSDoc */` | `// comment` | JSDoc, TypeDoc |
-| **TypeScript** | `/** JSDoc */` | `// comment` | TypeDoc, TSDoc |
-| **Java** | `/** Javadoc */` | `// comment` | Javadoc |
-| **Kotlin** | `/** KDoc */` | `// comment` | Dokka |
-| **C** | `/** Doxygen */` | `/* comment */` | Doxygen |
-| **C++** | `/** Doxygen */` | `// comment` | Doxygen |
-| **Go** | `// Doc comment` | `// comment` | godoc, pkgsite |
-| **Rust** | `/// Doc comment` | `// comment` | rustdoc |
-| **Swift** | `/// Doc comment` | `// comment` | DocC |
-| **R** | `#' Roxygen` | `# comment` | roxygen2 |
-| **C#** | `/// XML Doc` | `// comment` | DocFX, Sandcastle |
-| **PHP** | `/** PHPDoc */` | `// comment` | phpDocumentor |
-| **Ruby** | `# YARD comment` | `# comment` | YARD, RDoc |
-
-:::
-
-::: {style="font-size: 0.65em; margin-top: 10px; color: #666;"}
-**Note:** Copyright notices and license information are typically part of documentation and can be referenced in comments.
 :::
 
 # What *Not* to Comment
@@ -411,7 +384,6 @@ user = create_user(data)
 
 ```{python}
 # old_function()
-# legacy_code = True
 new_function()
 ```
 
@@ -468,6 +440,10 @@ timeout = 20
 
 ::::
 
+::: {style="background-color: #e3f2fd; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.8em; text-align: center;"}
+**Exception**: Bundled/distributed code without git access may need key change notes in comments.
+:::
+
 **Don't confuse docs with comments**
 
 :::: {.columns}
@@ -502,7 +478,7 @@ for O(log n) complexity"""
 
 ## {.smaller}
 
-**Don't use ASCII art comments**
+**Don't use [ASCII art](https://www.figlet.org/) comments**
 
 :::: {.columns}
 
@@ -601,31 +577,43 @@ Bad comments are worse than no comments. They mislead readers and create confusi
 
 # What to Comment
 
-Whatever helps the reader understand the code more easily: the *what*, the *why*, and/or the *how*.
-
-## {.smaller}
-
 :::: {.columns}
 
+::: {.column width='60%'}
+
+<br>
+
+Whatever helps the reader understand the code more easily: the *what*, the *why*, and/or the *how*.
+
+:::
+
 ::: {.column width='40%'}
+
+![](media/gandalf.jpg){width="100%"}
+
+::: {style="text-align: center; font-size: 0.75em; margin-top: 10px; font-style: italic; color: #666;"}
+Your future self as the reader
+:::
+
+:::
+
+::::
+
+## {.smaller}
 
 ### Comment Decision Workflow
 
 When encountering unclear code, prioritize refactoring over commenting. Only add comments for inherently non-obvious logic.
 
-:::
-
-::: {.column width='60%'}
-
 ```{mermaid}
 %%| eval: true
 %%| echo: false
-flowchart TD
-    A[Code unclear?] --> B{Can rename/<br/>refactor?}
-    B -->|Yes| C[Rename/Refactor]
+flowchart LR
+    A[Code<br/>unclear?] --> B{Can<br/>rename/refactor?}
+    B -->|Yes| C[Rename/<br/>Refactor]
     C --> D{Still<br/>non-obvious?}
     B -->|No| D
-    D -->|Yes| E[Comment WHY]
+    D -->|Yes| E[Comment<br/>WHY]
     D -->|No| F[No comment<br/>needed]
 
     style A fill:#fff3e0,color:#000
@@ -636,9 +624,13 @@ flowchart TD
     style F fill:#c8e6c9,color:#000
 ```
 
-:::
+<br>
 
-::::
+::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #666; margin: 20px auto; max-width: 80%; text-align: center; font-style: italic; color: #333;"}
+"Don't comment bad code — rewrite it."
+
+— Kernighan & Plaugher
+:::
 
 ## Explain the Thought Process {.smaller}
 
@@ -680,7 +672,7 @@ timeout = 30
 db.connect(retry=True)
 
 # Return None for empty datasets per
-# API specification v2.1 section 4.3
+# https://api-docs.example.com/v2.1#section-4.3
 if len(data) == 0:
     return None
 ```
@@ -784,7 +776,7 @@ def is_power_of_two(n):
 
 ## Explain Unidiomatic Code {.smaller}
 
-When you intentionally deviate from language conventions, explain why the idiomatic approach doesn't work.
+When you intentionally deviate from language conventions, explain why the idiomatic approach doesn't work and preempt questions.
 
 . . .
 
@@ -860,14 +852,6 @@ file.close()
 :::
 
 ::::
-
-. . .
-
-::: {.callout-tip}
-
-**Unidiomatic code raises questions—answer them preemptively with comments.**
-
-:::
 
 ## Highlight Known Flaws {.smaller}
 
@@ -1011,7 +995,39 @@ age = today.year - born.year - \
 
 :::
 
-## Link to Sources and References {.smaller}
+## Legal Comments and External Links {.smaller}
+
+::: {style="background-color: #e8f5e9; padding: 15px; border-radius: 10px; margin-bottom: 15px;"}
+
+:::: {.columns}
+
+::: {.column width='40%'}
+
+::: {style="font-size: 0.85em;"}
+
+**Include legal notices**
+
+Copyright, license, and attribution information can be noted in file headers or alongside relevant code.
+
+:::
+
+:::
+
+::: {.column width='60%'}
+
+```{python}
+# Copyright (c) 2024 Company Name
+# SPDX-License-Identifier: MIT
+
+# Third-party code: portions adapted from
+# project-name (Apache-2.0 license)
+```
+
+:::
+
+::::
+
+:::
 
 ::: {style="background-color: #e3f2fd; padding: 15px; border-radius: 10px; margin-bottom: 15px;"}
 
@@ -1023,11 +1039,7 @@ age = today.year - born.year - \
 
 **Credit original sources**
 
-When adapting code from elsewhere, link to the source. This provides:
-
-- Credit to original authors
-- Context for future maintainers
-- Path to additional documentation
+Credit the source when adapting code from elsewhere, which also provides context for future maintainers.
 
 :::
 
@@ -1050,7 +1062,7 @@ def shuffle(array):
 
 :::
 
-::: {style="background-color: #fff3e0; padding: 15px; border-radius: 10px;"}
+::: {style="background-color: #fff3e0; padding: 15px; border-radius: 10px; margin-bottom: 15px;"}
 
 :::: {.columns}
 
@@ -1270,6 +1282,21 @@ with self.lock:
 
 :::
 
+::: {style="text-align: center; margin: 15px 0; color: #666; font-size: 0.9em;"}
+Refactoring to "simplify" ↓
+:::
+
+:::{.callout-caution icon=false title="❌ Simpler but introduces race condition"}
+
+```{python}
+# Someone removed "unnecessary" lock to reduce nesting
+if self.state == 'ready':
+    self.state = 'processing'
+    return self.process()
+```
+
+:::
+
 :::
 
 ::: {.column width='50%'}
@@ -1463,38 +1490,6 @@ total = sum(prices)
 ::::
 
 ## {.smaller}
-
-**Be accurate**
-
-:::: {.columns}
-
-::: {.column width='50%'}
-
-:::{.callout-caution icon=false title="❌ Misleading comment"}
-
-```{python}
-# Calculate average
-return median(values)
-```
-
-:::
-
-:::
-
-::: {.column width='50%'}
-
-:::{.callout-tip icon=false title="✅ Accurate description"}
-
-```{python}
-# Calculate median for anomaly detection
-return median(values)
-```
-
-:::
-
-:::
-
-::::
 
 **Keep comments updated**
 
@@ -1815,17 +1810,9 @@ flowchart TD
 
 . . .
 
-::: {.callout-tip title="Symbiotic Commenting"}
+::: {.callout-tip title="Review LLM-Generated Comments"}
 
-Write initial comments yourself. Then, ask AI tools to identify gaps, suggest improvements, or validate clarity.
-
-:::
-
-. . .
-
-::: {.callout-tip title="Cross-LLM Review"}
-
-Use a different LLM to evaluate comments than the one used to write the code.
+LLMs can overcomment or generate redundant comments. Review LLM-generated comments critically—either manually or with a different LLM—to evaluate quality and identify unnecessary ones.
 
 :::
 
@@ -1869,7 +1856,7 @@ flowchart TD
 
 ::: {style="background-color: #FFFBC1; padding: 10px; margin: 10px; border-radius: 25px;text-align: center; font-size: 1.2rem;"}
 
-**Code review transforms commenting from reactive to deliberate!**
+**Fresh eyes catch what you miss: outdated comments, missing context, and unclear intent!**
 
 :::
 
@@ -1914,6 +1901,31 @@ flowchart TD
 # Thank You
 
 And Happy Commenting! 😊
+
+## _Aside:_ Cross-Language Examples {.smaller data-visibility="uncounted"}
+
+Syntax varies by language; the distinction is universal.
+
+::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 15px;"}
+
+| Language | Documentation | Comment | Documentation Tools |
+|----------|--------------|---------|---------------------|
+| **Python** | `"""docstring"""` | `# comment` | Sphinx, pdoc |
+| **JavaScript** | `/** JSDoc */` | `// comment` | JSDoc, TypeDoc |
+| **TypeScript** | `/** JSDoc */` | `// comment` | TypeDoc, TSDoc |
+| **Java** | `/** Javadoc */` | `// comment` | Javadoc |
+| **Kotlin** | `/** KDoc */` | `// comment` | Dokka |
+| **C** | `/** Doxygen */` | `/* comment */` | Doxygen |
+| **C++** | `/** Doxygen */` | `// comment` | Doxygen |
+| **Go** | `// Doc comment` | `// comment` | godoc, pkgsite |
+| **Rust** | `/// Doc comment` | `// comment` | rustdoc |
+| **Swift** | `/// Doc comment` | `// comment` | DocC |
+| **R** | `#' Roxygen` | `# comment` | roxygen2 |
+| **C#** | `/// XML Doc` | `// comment` | DocFX, Sandcastle |
+| **PHP** | `/** PHPDoc */` | `// comment` | phpDocumentor |
+| **Ruby** | `# YARD comment` | `# comment` | YARD, RDoc |
+
+:::
 
 ## References {.smaller data-visibility="uncounted"}
 
