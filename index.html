@@ -6,13 +6,13 @@
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-6172778a27b0bfa6b3b3f65992e46a92.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-485605091aded536db53fb751867c3cd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="index_files/libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="index_files/libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.3">
+  <meta name="generator" content="quarto-1.9.4">
 
   <meta name="author" content="Indrajeet Patil">
-  <meta name="dcterms.date" content="2025-10-10 14:37:53.078133">
+  <meta name="dcterms.date" content="2025-10-10 19:17:42.616682">
   <meta name="keywords" content="comments, software-engineering, computer-science, software-development, code-documentation">
   <title>To Comment or Not To Comment</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -314,7 +314,7 @@
 <div class="columns">
 <div class="column" style="width:65%;">
 <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.75em; line-height: 1.6;">
-<p><span style="color: #0033cc;">def</span> is_valid_email(email):<br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">“““Check if email address is valid.</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">Returns:</span><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">True if valid, False otherwise</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">“““</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(230, 171, 2, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;"># RFC 5322 simplified: local@domain format</span><br> &nbsp;&nbsp;&nbsp;&nbsp;local_part = <span style="color: #008000;">r’[a-zA-Z0-9._%+-]+’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;domain = <span style="color: #008000;">r’[a-zA-Z0-9.-]+’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;tld = <span style="color: #008000;">r’[a-zA-Z]{2,}’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp;&nbsp;&nbsp;&nbsp;pattern = <span style="color: #0033cc;">rf</span><span style="color: #008000;">‘^{local_part}<span class="citation" data-cites="domain">@domain</span>.{tld}$’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0033cc;">return</span> re.match(pattern, email) <span style="color: #0033cc;">is not</span> <span style="color: #0033cc;">None</span></p>
+<p><span style="color: #0033cc;">def</span> is_valid_email(email: str) -&gt; bool:<br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">“““Check if email address is valid.</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">Returns:</span><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">True if valid, False otherwise</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">“““</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(230, 171, 2, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;"># RFC 5322 simplified: local@domain format</span><br> &nbsp;&nbsp;&nbsp;&nbsp;local_part = <span style="color: #008000;">r’[a-zA-Z0-9._%+-]+’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;domain = <span style="color: #008000;">r’[a-zA-Z0-9.-]+’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;tld = <span style="color: #008000;">r’[a-zA-Z]{2,}’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp;&nbsp;&nbsp;&nbsp;pattern = <span style="color: #0033cc;">rf</span><span style="color: #008000;">‘^{local_part}<span class="citation" data-cites="domain">@domain</span>.{tld}$’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0033cc;">return</span> re.match(pattern, email) <span style="color: #0033cc;">is not</span> <span style="color: #0033cc;">None</span></p>
 </div>
 </div><div class="column" style="width:35%;">
 <div style="background-color: rgba(117, 112, 179, 0.2); padding: 10px; border-radius: 10px; margin-bottom: 10px;">
@@ -1580,7 +1580,7 @@
 </div>
 </div>
 </div></div>
-<p><strong>Explain intent, not mechanics</strong></p>
+<p><strong>Explain intent, not implementation</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div title="❌ Lower-level details">
@@ -1898,7 +1898,10 @@
 <section>
 <section id="tools-techniques" class="title-slide slide level1 center">
 <h1>Tools &amp; Techniques</h1>
-
+<div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #666; margin: 20px 0; max-width: 80%; text-align: center; font-style: italic; color: #333;">
+<p>“Code never lies, comments sometimes do.”</p>
+<p>— Ron Jeffries</p>
+</div>
 </section>
 <section id="tool-limitations" class="slide level2 smaller">
 <h2>Tool Limitations</h2>
@@ -2001,7 +2004,7 @@
 
     C --&gt; E[Question Assumptions]
     C --&gt; F[Spot Missing Context]
-    C --&gt; O[Find Outdated Comments]
+    C --&gt; O[Find Obsolete Comments]
     D --&gt; G[Evaluate Intent]
     D --&gt; H[Assess Usefulness]
 
@@ -2037,7 +2040,10 @@
 <section>
 <section id="summary" class="title-slide slide level1 center">
 <h1>Summary</h1>
-
+<div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #666; margin: 20px 0; max-width: 80%; text-align: center; font-style: italic; color: #333;">
+<p>“Good code is its own best documentation.”</p>
+<p>— Steve McConnell</p>
+</div>
 </section>
 <section id="section-6" class="slide level2 smaller">
 <h2></h2>
@@ -2273,10 +2279,12 @@
 <p>For a more detailed discussion about how to comment, see the following references:</p>
 <div style="font-size: 25px;">
 <ul>
+<li><p>Kernighan, B. W., &amp; Plauger, P. J. (1978). <em>The Elements of Programming Style</em> (2nd ed.). McGraw-Hill. (<strong>pp.&nbsp;117-128</strong>)</p></li>
 <li><p>McConnell, S. (2004). <em>Code Complete</em> (2nd ed.). Microsoft Press. (<strong>pp.&nbsp;777-818</strong>)</p></li>
 <li><p>Boswell, D., &amp; Foucher, T. (2011). <em>The Art of Readable Code</em>. O’Reilly Media, Inc.&nbsp;(<strong>pp.&nbsp;45-65</strong>)</p></li>
 <li><p>Martin, R. C. (2009). <em>Clean Code</em>. Pearson Education. (<strong>pp.&nbsp;53-74</strong>)</p></li>
 <li><p>Goodliffe, P. (2007). <em>Code Craft</em>. No Starch Press. (<strong>pp.&nbsp;73-88</strong>)</p></li>
+<li><p>Contieri, M. (2023). <em>Clean Code Cookbook</em>. O’Reilly Media, Inc.&nbsp;(<strong>pp.&nbsp;111-121</strong>)</p></li>
 <li><p>Gregg, E. (2021). <a href="https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/">Best practices for writing code comments</a></p></li>
 <li><p><a href="https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings">Google Python Style Guide</a></p></li>
 </ul>
