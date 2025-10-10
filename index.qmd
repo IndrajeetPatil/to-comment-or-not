@@ -139,7 +139,7 @@ flowchart TD
 ::: {.column width='65%'}
 
 <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.75em; line-height: 1.6;">
-<span style="color: #0033cc;">def</span> is_valid_email(email):<br>
+<span style="color: #0033cc;">def</span> is_valid_email(email: str) -> bool:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">"""Check if email address is valid.</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">Returns:</span><br>
@@ -1700,6 +1700,12 @@ if user.is_premium:
 
 # Tools & Techniques
 
+::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #666; margin: 20px 0; max-width: 80%; text-align: center; font-style: italic; color: #333;"}
+"Code never lies, comments sometimes do."
+
+— Ron Jeffries
+:::
+
 ## Tool Limitations {.smaller}
 
 :::: {.columns}
@@ -1832,7 +1838,7 @@ flowchart TD
 
     C --> E[Question Assumptions]
     C --> F[Spot Missing Context]
-    C --> O[Find Outdated Comments]
+    C --> O[Find Obsolete Comments]
     D --> G[Evaluate Intent]
     D --> H[Assess Usefulness]
 
@@ -2023,6 +2029,8 @@ For a more detailed discussion about how to comment, see the following reference
 
 :::{style="font-size: 25px;"}
 
+- Kernighan, B. W., & Plauger, P. J. (1978). *The Elements of Programming Style* (2nd ed.). McGraw-Hill. (**pp. 117-128**)
+
 - McConnell, S. (2004). *Code Complete* (2nd ed.). Microsoft Press. (**pp. 777-818**)
 
 - Boswell, D., & Foucher, T. (2011). *The Art of Readable Code*. O'Reilly Media, Inc. (**pp. 45-65**)
@@ -2030,6 +2038,8 @@ For a more detailed discussion about how to comment, see the following reference
 - Martin, R. C. (2009). *Clean Code*. Pearson Education. (**pp. 53-74**)
 
 - Goodliffe, P. (2007). *Code Craft*.  No Starch Press. (**pp. 73-88**)
+
+- Contieri, M. (2023). *Clean Code Cookbook*. O'Reilly Media, Inc. (**pp. 111-121**)
 
 - Gregg, E. (2021). [Best practices for writing code comments](https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/)
 
