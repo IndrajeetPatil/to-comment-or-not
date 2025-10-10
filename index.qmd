@@ -1386,7 +1386,7 @@ invalidate()
 
 ::::
 
-**Explain intent, not mechanics**
+**Explain intent, not implementation**
 
 :::: {.columns}
 
@@ -1869,6 +1869,12 @@ flowchart TD
 :::
 
 # Summary
+
+::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #666; margin: 20px 0; max-width: 80%; text-align: center; font-style: italic; color: #333;"}
+"Good code is its own best documentation."
+
+— Steve McConnell
+:::
 
 ## {.smaller}
 
