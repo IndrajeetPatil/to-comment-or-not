@@ -601,92 +601,6 @@ Your future self as the reader
 
 ::::
 
-## {.smaller}
-
-### Comment Decision Workflow
-
-When encountering unclear code, prioritize refactoring over commenting. Only add comments for inherently non-obvious logic.
-
-```{mermaid}
-%%| eval: true
-%%| echo: false
-flowchart LR
-    A[Code<br/>unclear?] --> B{Can<br/>rename/refactor?}
-    B -->|Yes| C[Rename/<br/>Refactor]
-    C --> D{Still<br/>non-obvious?}
-    B -->|No| D
-    D -->|Yes| E[Comment<br/>WHY]
-    D -->|No| F[No comment<br/>needed]
-
-    style A fill:#FFE082,color:#000
-    style B fill:#90CAF9,color:#000
-    style C fill:#B39DDB,color:#000
-    style D fill:#90CAF9,color:#000
-    style E fill:#FFF59D,color:#000
-    style F fill:#B39DDB,color:#000
-```
-
-<br>
-
-::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #666; margin: 20px auto; max-width: 80%; text-align: center; font-style: italic; color: #333;"}
-"Don't comment bad code — rewrite it."
-
-— Kernighan & Plaugher
-:::
-
-## Workflow in Action {.smaller}
-
-Applying the decision workflow: refactor first, comment only what remains non-obvious.
-
-:::: {.columns}
-
-::: {.column width='38%'}
-
-:::{.callout-caution icon=false title="❌ Poor naming + excessive comments"}
-
-```{python filename="before.py"}
-def calc(d, t):
-    # Initialize result variable
-    r = 0
-    # Loop through data array
-    for i in range(len(d)):
-        # Check if threshold is exceeded
-        if d[i] >= t:
-            # Add to running total
-            r = r + d[i]
-        # Otherwise skip the value
-        else:
-            continue
-    # Return the final result
-    return r
-```
-
-:::
-
-:::
-
-::: {.column width='62%'}
-
-:::{.callout-tip icon=false title="✅ Clear naming + selective comment"}
-
-```{python filename="after.py"}
-def sum_values_above_threshold(data, threshold):
-    # Use >= instead of > due to sensor calibration specs:
-    # boundary readings confirmed valid (see ticket #891)
-    filtered_values = (value for value in data if value >= threshold)
-    return sum(filtered_values)
-```
-
-:::
-
-:::
-
-::::
-
-::: {style="background-color: #e3f2fd; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.85em; text-align: center;"}
-**Transformation**: Renamed function/variables + Pythonic idiom → eliminated 6 redundant comments. Added 1 comment explaining **non-obvious business decision** (>= vs >).
-:::
-
 ## Explain the Thought Process {.smaller}
 
 Good comments explain business logic, design decisions, and non-obvious requirements.
@@ -1909,6 +1823,94 @@ flowchart TD
 
 **Fresh eyes catch what you miss: outdated comments, missing context, and unclear intent!**
 
+:::
+
+# Summary
+
+## {.smaller}
+
+### Comment Decision Workflow
+
+When encountering unclear code, prioritize refactoring over commenting. Only add comments for inherently non-obvious logic.
+
+```{mermaid}
+%%| eval: true
+%%| echo: false
+flowchart LR
+    A[Code<br/>unclear?] --> B{Can<br/>rename/refactor?}
+    B -->|Yes| C[Rename/<br/>Refactor]
+    C --> D{Still<br/>non-obvious?}
+    B -->|No| D
+    D -->|Yes| E[Comment<br/>WHY]
+    D -->|No| F[No comment<br/>needed]
+
+    style A fill:#FFE082,color:#000
+    style B fill:#90CAF9,color:#000
+    style C fill:#B39DDB,color:#000
+    style D fill:#90CAF9,color:#000
+    style E fill:#FFF59D,color:#000
+    style F fill:#B39DDB,color:#000
+```
+
+<br>
+
+::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #666; margin: 20px auto; max-width: 80%; text-align: center; font-style: italic; color: #333;"}
+"Don't comment bad code — rewrite it."
+
+— Kernighan & Plaugher
+:::
+
+## Workflow in Action {.smaller}
+
+Applying the decision workflow: refactor first, comment only what remains non-obvious.
+
+:::: {.columns}
+
+::: {.column width='38%'}
+
+:::{.callout-caution icon=false title="❌ Poor naming + excessive comments"}
+
+```{python filename="before.py"}
+def calc(d, t):
+    # Initialize result variable
+    r = 0
+    # Loop through data array
+    for i in range(len(d)):
+        # Check if threshold is exceeded
+        if d[i] >= t:
+            # Add to running total
+            r = r + d[i]
+        # Otherwise skip the value
+        else:
+            continue
+    # Return the final result
+    return r
+```
+
+:::
+
+:::
+
+::: {.column width='62%'}
+
+:::{.callout-tip icon=false title="✅ Clear naming + selective comment"}
+
+```{python filename="after.py"}
+def sum_values_above_threshold(data, threshold):
+    # Use >= instead of > due to sensor calibration specs:
+    # boundary readings confirmed valid (see ticket #891)
+    filtered_values = (value for value in data if value >= threshold)
+    return sum(filtered_values)
+```
+
+:::
+
+:::
+
+::::
+
+::: {style="background-color: #e3f2fd; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.85em; text-align: center;"}
+**Transformation**: Renamed function/variables + Pythonic idiom → eliminated 6 redundant comments. Added 1 comment explaining **non-obvious business decision** (>= vs >).
 :::
 
 ## Benefits: Context and Understanding {.smaller}
