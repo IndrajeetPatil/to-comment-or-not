@@ -1789,7 +1789,7 @@ flowchart TD
 
 ::: {.column width='55%'}
 
-**Review LLM-Generated Comments**
+**LLM-Generated Comments**
 
 LLMs can overcomment or generate redundant comments, but they can also tighten verbose ones. 
 
