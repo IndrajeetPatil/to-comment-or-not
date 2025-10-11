@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.9.4">
 
   <meta name="author" content="Indrajeet Patil">
-  <meta name="dcterms.date" content="2025-10-11 08:25:39.813517">
+  <meta name="dcterms.date" content="2025-10-11 10:02:54.334688">
   <meta name="keywords" content="comments, software-engineering, computer-science, software-development, code-documentation">
   <title>To Comment or Not To Comment</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -289,8 +289,7 @@
 
     E --&gt; F[No Comments]
     E --&gt; G[Redundant Comments]
-
-    H[Comment Rot] --&gt; I[Outdated Comments]
+    E --&gt; H[Obsolete Comments]
 
     style A fill:#E8EAF6,color:#000
     style B fill:#E8EAF6,color:#000
@@ -299,8 +298,7 @@
     style E fill:#FFCC80,color:#000
     style F fill:#FFAB91,color:#000
     style G fill:#FFAB91,color:#000
-    style H fill:#FFB74D,color:#000
-    style I fill:#FFAB91,color:#000
+    style H fill:#FFAB91,color:#000
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -314,7 +312,7 @@
 <div class="columns">
 <div class="column" style="width:65%;">
 <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.75em; line-height: 1.6;">
-<p><span style="color: #0033cc;">def</span> is_valid_email(email: str) -&gt; bool:<br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">“““Check if email address is valid.</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">Returns:</span><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">True if valid, False otherwise</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">“““</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(230, 171, 2, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;"># RFC 5322 simplified: local@domain format</span><br> &nbsp;&nbsp;&nbsp;&nbsp;local_part = <span style="color: #008000;">r’[a-zA-Z0-9._%+-]+’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;domain = <span style="color: #008000;">r’[a-zA-Z0-9.-]+’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;tld = <span style="color: #008000;">r’[a-zA-Z]{2,}’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp;&nbsp;&nbsp;&nbsp;pattern = <span style="color: #0033cc;">rf</span><span style="color: #008000;">‘^{local_part}<span class="citation" data-cites="domain">@domain</span>.{tld}$’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0033cc;">return</span> re.match(pattern, email) <span style="color: #0033cc;">is not</span> <span style="color: #0033cc;">None</span></p>
+<p><span style="color: #0033cc;">def</span> is_valid_email(email: str) -&gt; bool:<br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">“““Check if email address is valid.</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">Args:</span><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">email: Email address to validate</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">Returns:</span><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">True if valid, False otherwise</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">“““</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(230, 171, 2, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;"># RFC 5322 simplified: local@domain format</span><br> &nbsp;&nbsp;&nbsp;&nbsp;local_part = <span style="color: #008000;">r’[a-zA-Z0-9._%+-]+’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;domain = <span style="color: #008000;">r’[a-zA-Z0-9.-]+’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;tld = <span style="color: #008000;">r’[a-zA-Z]{2,}’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<br> &nbsp;&nbsp;&nbsp;&nbsp;pattern = <span style="color: #0033cc;">rf</span><span style="color: #008000;">‘^{local_part}<span class="citation" data-cites="domain">@domain</span>.{tld}$’</span><br> &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #0033cc;">return</span> re.match(pattern, email) <span style="color: #0033cc;">is not</span> <span style="color: #0033cc;">None</span></p>
 </div>
 </div><div class="column" style="width:35%;">
 <div style="background-color: rgba(117, 112, 179, 0.2); padding: 10px; border-radius: 10px; margin-bottom: 10px;">
@@ -323,6 +321,7 @@
 <li>How to <em>use</em> the function</li>
 <li>Parameters &amp; returns</li>
 <li>For function <em>users</em></li>
+<li>For public interface</li>
 </ul>
 </div>
 <div style="background-color: rgba(230, 171, 2, 0.2); padding: 10px; border-radius: 10px;">
@@ -331,12 +330,10 @@
 <li><em>Why</em> it works this way</li>
 <li>Business rules &amp; context</li>
 <li>For code <em>maintainers</em></li>
+<li>For private implementation</li>
 </ul>
 </div>
 </div></div>
-<div style="background-color: #FFFBC1; padding: 10px; border-radius: 25px; text-align: center; margin-top: 15px;">
-<p><strong>Documentation for public interface, comments for private implementation.</strong></p>
-</div>
 </section></section>
 <section>
 <section id="what-not-to-comment" class="title-slide slide level1 center">
