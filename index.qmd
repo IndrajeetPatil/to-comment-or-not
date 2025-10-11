@@ -118,8 +118,7 @@ flowchart TD
 
     E --> F[No Comments]
     E --> G[Redundant Comments]
-
-    H[Comment Rot] --> I[Outdated Comments]
+    E --> H[Obsolete Comments]
 
     style A fill:#E8EAF6,color:#000
     style B fill:#E8EAF6,color:#000
@@ -128,8 +127,7 @@ flowchart TD
     style E fill:#FFCC80,color:#000
     style F fill:#FFAB91,color:#000
     style G fill:#FFAB91,color:#000
-    style H fill:#FFB74D,color:#000
-    style I fill:#FFAB91,color:#000
+    style H fill:#FFAB91,color:#000
 ```
 
 ## _N.B._ Documentation vs. Comments {.smaller}
@@ -141,6 +139,9 @@ flowchart TD
 <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.75em; line-height: 1.6;">
 <span style="color: #0033cc;">def</span> is_valid_email(email: str) -> bool:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">"""Check if email address is valid.</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">Args:</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">email: Email address to validate</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">Returns:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background-color: rgba(117, 112, 179, 0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.95em;">True if valid, False otherwise</span><br>
@@ -164,6 +165,7 @@ flowchart TD
 - How to *use* the function
 - Parameters & returns
 - For function *users*
+- For public interface
 :::
 
 ::: {style="background-color: rgba(230, 171, 2, 0.2); padding: 10px; border-radius: 10px;"}
@@ -172,17 +174,12 @@ flowchart TD
 - *Why* it works this way
 - Business rules & context
 - For code *maintainers*
+- For private implementation
 :::
 
 :::
 
 ::::
-
-::: {style="background-color: #FFFBC1; padding: 10px; border-radius: 25px; text-align: center; margin-top: 15px;"}
-
-**Documentation for public interface, comments for private implementation.**
-
-:::
 
 # What *Not* to Comment
 
