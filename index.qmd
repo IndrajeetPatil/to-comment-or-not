@@ -2001,6 +2001,25 @@ def sum_values_above_threshold(data, threshold):
 
 And Happy Commenting! 😊
 
+<br>
+<br>
+
+::: {style="text-align: center; font-size: 0.7em;"}
+
+Check out my other [slide decks](https://sites.google.com/site/indrajeetspatilmorality/presentations) on software development best practices
+
+:::
+
+::: {style="text-align: center; font-size: 1em;"}
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/indrajeet-patil-ph-d-397865174/)
+&nbsp;&nbsp;
+[{{< fa brands github >}}](http://github.com/IndrajeetPatil) 
+&nbsp;&nbsp;
+[{{< fa solid envelope >}}](mailto:patilindrajeet.science@gmail.com)
+
+:::
+
 ## _Aside:_ Cross-Language Examples {.smaller data-visibility="uncounted"}
 
 Syntax varies by language; the distinction is universal.
@@ -2049,19 +2068,3 @@ For a more detailed discussion about how to comment, see the following reference
 - [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html#s3.8-comments-and-docstrings)
 
 :::
-
-
-# For more {data-visibility="uncounted"}
-
-If you are interested in good programming and software development practices, check out my other [slide decks](https://sites.google.com/site/indrajeetspatilmorality/presentations).
-
-# Find me at... {data-visibility="uncounted"}
-
-{{< fa brands linkedin >}} [LinkedIn](https://www.linkedin.com/in/indrajeet-patil-ph-d-397865174/)
-
-{{< fa brands github >}} [GitHub](http://github.com/IndrajeetPatil)
-
-{{< fa solid link >}} [Website](https://sites.google.com/site/indrajeetspatilmorality/)
-
-{{< fa solid envelope >}} [E-mail](mailto:patilindrajeet.science@gmail.com)
-
