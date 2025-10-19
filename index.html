@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.9.8">
 
   <meta name="author" content="Indrajeet Patil">
-  <meta name="dcterms.date" content="2025-10-19 00:39:12.311728">
+  <meta name="dcterms.date" content="2025-10-19 21:40:51.983162">
   <meta name="keywords" content="comments, software-engineering, computer-science, software-development, code-documentation">
   <title>To Comment or Not To Comment</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -213,9 +213,6 @@
   <meta name="twitter:title" content="To Comment or Not To Comment">
   <meta name="twitter:description" content="A comprehensive guide to code commenting best practices for software development. Learn when, how, and why to write effective comments that enhance code clarity and maintainability.">
   <meta name="twitter:image" content="https://indrajeetpatil.github.io/to-comment-or-not/media/pipe.jpg">
-  <script src="index_files/libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="index_files/libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="index_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <link rel="canonical" href="https://indrajeetpatil.github.io/to-comment-or-not/">
 </head>
 <body class="quarto-light">
@@ -275,31 +272,12 @@
 <h2>Why It’s Challenging</h2>
 <p>Multiple pressures during development make thoughtful commenting difficult.</p>
 <div class="fragment">
-<div class="cell" data-reveal="true" data-eval="true" data-layout-align="default">
+<div class="cell" data-eval="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
-    A[Deadline Pressure] --&gt; D[High Cognitive Load]
-    B[Complex Problem Solving] --&gt; D
-    C[Implementation Focus] --&gt; D
-
-    D --&gt; E[Commenting Shortcuts]
-
-    E --&gt; F[No Comments]
-    E --&gt; G[Redundant Comments]
-    E --&gt; H[Obsolete Comments]
-
-    style A fill:#E8EAF6,color:#000
-    style B fill:#E8EAF6,color:#000
-    style C fill:#E8EAF6,color:#000
-    style D fill:#FFE082,color:#000
-    style E fill:#FFCC80,color:#000
-    style F fill:#FFAB91,color:#000
-    style G fill:#FFAB91,color:#000
-    style H fill:#FFAB91,color:#000
-</pre>
+<p><img data-src="index_files/figure-revealjs/mermaid-figure-1.png" style="width:7.94in;height:3.98in"></p>
 </div>
 <p></p></figure><p></p>
 </div>
@@ -1940,21 +1918,12 @@
 <li>Check comment clarity and helpfulness</li>
 </ul>
 </div><div class="column" style="width:40%;">
-<div class="cell" data-reveal="true" data-eval="true" data-layout-align="default">
+<div class="cell" data-eval="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
-    H[Human] --&gt; S[Quality Comments]
-    A[AI] --&gt; S[Quality Comments]
-    H -.-&gt;|Collaborates| A
-    A -.-&gt;|Feedback| H
-
-    style H fill:#BBDEFB
-    style A fill:#BBDEFB
-    style S fill:#A5D6A7
-</pre>
+<p><img data-src="index_files/figure-revealjs/mermaid-figure-4.png" style="width:2.41in;height:3.15in"></p>
 </div>
 <p></p></figure><p></p>
 </div>
@@ -1989,39 +1958,12 @@
 <section id="code-review" class="slide level2 smaller">
 <h2>Code Review</h2>
 <div class="fragment">
-<div class="cell" data-reveal="true" data-eval="true" data-layout-align="default">
+<div class="cell" data-eval="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
-    A[Code Review] --&gt; B[Lower Cognitive Load]
-    B --&gt; C[Fresh Perspective]
-    B --&gt; D[Focus on Clarity]
-
-    C --&gt; E[Question Assumptions]
-    C --&gt; F[Spot Missing Context]
-    C --&gt; O[Find Obsolete Comments]
-    D --&gt; G[Evaluate Intent]
-    D --&gt; H[Assess Usefulness]
-
-    E --&gt; I[Better Comments]
-    F --&gt; I
-    G --&gt; I
-    H --&gt; I
-    O --&gt; I
-
-    style A fill:#90CAF9,color:#000
-    style B fill:#CE93D8,color:#000
-    style C fill:#E1F5FE,color:#000
-    style D fill:#E1F5FE,color:#000
-    style E fill:#FFE082,color:#000
-    style F fill:#FFE082,color:#000
-    style G fill:#FFE082,color:#000
-    style H fill:#FFE082,color:#000
-    style O fill:#FFE082,color:#000
-    style I fill:#B39DDB,color:#000
-</pre>
+<p><img data-src="index_files/figure-revealjs/mermaid-figure-3.png" style="width:12.83in;height:5.06in"></p>
 </div>
 <p></p></figure><p></p>
 </div>
@@ -2046,26 +1988,12 @@
 <h2></h2>
 <h3 id="comment-decision-workflow">Comment Decision Workflow</h3>
 <p>When encountering unclear code, prioritize refactoring over commenting. Only add comments for inherently non-obvious logic.</p>
-<div class="cell" data-reveal="true" data-eval="true" data-layout-align="default">
+<div class="cell" data-eval="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart LR
-    A[Code&lt;br/&gt;unclear?] --&gt; B{Can&lt;br/&gt;rename/refactor?}
-    B --&gt;|Yes| C[Rename/&lt;br/&gt;Refactor]
-    C --&gt; D{Still&lt;br/&gt;non-obvious?}
-    B --&gt;|No| D
-    D --&gt;|Yes| E[Comment&lt;br/&gt;WHY]
-    D --&gt;|No| F[No comment&lt;br/&gt;needed]
-
-    style A fill:#FFE082,color:#000
-    style B fill:#90CAF9,color:#000
-    style C fill:#B39DDB,color:#000
-    style D fill:#90CAF9,color:#000
-    style E fill:#FFF59D,color:#000
-    style F fill:#B39DDB,color:#000
-</pre>
+<p><img data-src="index_files/figure-revealjs/mermaid-figure-2.png" style="width:10.73in;height:2.31in"></p>
 </div>
 <p></p></figure><p></p>
 </div>
