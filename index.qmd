@@ -28,6 +28,7 @@ dir: "ltr"
 image: "media/pipe.jpg"
 image-alt: "Preview image for presentation about code commenting best practices"
 canonical-url: "https://indrajeetpatil.github.io/to-comment-or-not/"
+jupyter: python3
 ---
 
 ## To Comment or Not To Comment {style="margin-top: 1em; margin-bottom: 2.5em;"}
