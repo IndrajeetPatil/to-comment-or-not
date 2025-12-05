@@ -49,5 +49,5 @@ I'd love to hear thoughts and comments in
 # Code of Conduct
 
 Please note that the to-comment-or-not project is released with a
-[Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
+[Contributor Code of Conduct](https://www.contributor-covenant.org/version/3/0/code_of_conduct/).
 By contributing to this project, you agree to abide by its terms.
