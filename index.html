@@ -6,10 +6,10 @@
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-cdaacfc258cb6f151192107f105ac881.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-a67ac2868200dddf7a4f0e3ae403775c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="index_files/libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="index_files/libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.12">
+  <meta name="generator" content="quarto-1.9.16">
 
   <meta name="author" content="Indrajeet Patil">
   <meta name="dcterms.date" content="2025-12-05">
@@ -99,7 +99,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
   <link rel="stylesheet" href="style.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -330,7 +330,7 @@
 <p><strong>❌ Comment compensates for bad naming</strong></p>
 </div>
 <div class="callout-content">
-<div id="ccbd03f3" class="cell" data-execution_count="1">
+<div id="81f0331d" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if user can access premium features</span></span>
 <span id="cb1-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> chk(u):</span>
 <span id="cb1-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> u.tier <span class="op">==</span> <span class="st">'gold'</span> <span class="kw">or</span> u.tier <span class="op">==</span> <span class="st">'platinum'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -347,7 +347,7 @@
 <p><strong>✅ Clear naming needs no comment</strong></p>
 </div>
 <div class="callout-content">
-<div id="2696dfe7" class="cell" data-execution_count="2">
+<div id="754cc945" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> has_premium_access(user):</span>
 <span id="cb2-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> user.tier <span class="kw">in</span> [<span class="st">'gold'</span>, <span class="st">'platinum'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -365,7 +365,7 @@
 <p><strong>❌ Comment explains complex conditional</strong></p>
 </div>
 <div class="callout-content">
-<div id="0490826d" class="cell" data-execution_count="3">
+<div id="24bee053" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Process if positive and (even or divisible by 5)</span></span>
 <span id="cb3-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> (x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> x <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>):</span>
 <span id="cb3-3"><a href="" aria-hidden="true" tabindex="-1"></a>    process(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -382,7 +382,7 @@
 <p><strong>✅ Well-named function obviates comment</strong></p>
 </div>
 <div class="callout-content">
-<div id="fdd13da9" class="cell" data-execution_count="4">
+<div id="884f3339" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> should_process(x):</span>
 <span id="cb4-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> (x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> x <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>)</span>
 <span id="cb4-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
@@ -426,7 +426,7 @@
 <p><strong>❌ Bad</strong></p>
 </div>
 <div class="callout-content">
-<div id="b9ef7cb4" class="cell" data-execution_count="5">
+<div id="853642ec" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># increment counter</span></span>
 <span id="cb6-2"><a href="" aria-hidden="true" tabindex="-1"></a>counter <span class="op">+=</span> <span class="dv">1</span></span>
 <span id="cb6-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
@@ -445,7 +445,7 @@
 <p><strong>✅ Good</strong></p>
 </div>
 <div class="callout-content">
-<div id="29991d65" class="cell" data-execution_count="6">
+<div id="b3a27779" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset retry count after successful connection</span></span>
 <span id="cb7-2"><a href="" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb7-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
@@ -483,7 +483,7 @@
 <p><strong>❌ Requires checking other files</strong></p>
 </div>
 <div class="callout-content">
-<div id="99c16d97" class="cell" data-execution_count="7">
+<div id="83114b30" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># See UserService for validation logic</span></span>
 <span id="cb8-2"><a href="" aria-hidden="true" tabindex="-1"></a>user <span class="op">=</span> create_user(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -499,7 +499,7 @@
 <p><strong>✅ Self-contained explanation</strong></p>
 </div>
 <div class="callout-content">
-<div id="ac75a151" class="cell" data-execution_count="8">
+<div id="ebe6ddeb" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Email validated before creation (RFC 5322)</span></span>
 <span id="cb9-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Duplicates rejected via unique constraint</span></span>
 <span id="cb9-3"><a href="" aria-hidden="true" tabindex="-1"></a>user <span class="op">=</span> create_user(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -522,7 +522,7 @@
 <p><strong>❌ Bad</strong></p>
 </div>
 <div class="callout-content">
-<div id="0688869f" class="cell" data-execution_count="9">
+<div id="00e6c21e" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># old_function()</span></span>
 <span id="cb10-2"><a href="" aria-hidden="true" tabindex="-1"></a>new_function()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -538,7 +538,7 @@
 <p><strong>✅ Good</strong></p>
 </div>
 <div class="callout-content">
-<div id="c5aec71b" class="cell" data-execution_count="10">
+<div id="d277e6ab" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="" aria-hidden="true" tabindex="-1"></a>new_function()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -556,7 +556,7 @@
 <p><strong>❌ Narrative changelog</strong></p>
 </div>
 <div class="callout-content">
-<div id="bc6543c1" class="cell" data-execution_count="11">
+<div id="5d25af6c" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Changed timeout from 5 to 10 on Jan 15</span></span>
 <span id="cb12-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Updated to 30 on Feb 3 for prod issue</span></span>
 <span id="cb12-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Reduced to 20 on Feb 10 per team discussion</span></span>
@@ -574,7 +574,7 @@
 <p><strong>✅ Point to commit/issue</strong></p>
 </div>
 <div class="callout-content">
-<div id="08f74ed5" class="cell" data-execution_count="12">
+<div id="f445a33d" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Timeout tuned for production load</span></span>
 <span id="cb13-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># See commit abc123f or issue #456</span></span>
 <span id="cb13-3"><a href="" aria-hidden="true" tabindex="-1"></a>timeout <span class="op">=</span> <span class="dv">20</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -597,7 +597,7 @@
 <p><strong>❌ Bad</strong></p>
 </div>
 <div class="callout-content">
-<div id="89a14b98" class="cell" data-execution_count="13">
+<div id="74f6025d" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">"""Implementation uses binary search</span></span>
 <span id="cb14-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">for O(log n) complexity"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -613,7 +613,7 @@
 <p><strong>✅ Good</strong></p>
 </div>
 <div class="callout-content">
-<div id="2fa51674" class="cell" data-execution_count="14">
+<div id="669adadf" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">"""Find user by ID."""</span></span>
 <span id="cb15-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Use binary search for O(log n) lookup</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -648,7 +648,7 @@
 <p><strong>❌ Confusing negative framing</strong></p>
 </div>
 <div class="callout-content">
-<div id="381de194" class="cell" data-execution_count="15">
+<div id="c31a0570" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Skip notification if user is inactive</span></span>
 <span id="cb16-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> user.is_active:</span>
 <span id="cb16-3"><a href="" aria-hidden="true" tabindex="-1"></a>    send_notification(user)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -665,7 +665,7 @@
 <p><strong>✅ Code is clearer without comment</strong></p>
 </div>
 <div class="callout-content">
-<div id="cd2fe917" class="cell" data-execution_count="16">
+<div id="2c3c3794" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> user.is_active:</span>
 <span id="cb17-2"><a href="" aria-hidden="true" tabindex="-1"></a>    send_notification(user)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -683,7 +683,7 @@
 <p><strong>❌ Misleading comment</strong></p>
 </div>
 <div class="callout-content">
-<div id="115824c7" class="cell" data-execution_count="17">
+<div id="8fdefdeb" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Add item to cart</span></span>
 <span id="cb18-2"><a href="" aria-hidden="true" tabindex="-1"></a>user.remove_item(item_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -699,7 +699,7 @@
 <p><strong>✅ Reading code is faster</strong></p>
 </div>
 <div class="callout-content">
-<div id="f0ba6691" class="cell" data-execution_count="18">
+<div id="5ba96353" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># (no comment - code speaks for itself)</span></span>
 <span id="cb19-2"><a href="" aria-hidden="true" tabindex="-1"></a>user.remove_item(item_id)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -739,7 +739,7 @@
 <p><strong>❌ Comments reiterate code</strong></p>
 </div>
 <div class="callout-content">
-<div id="34af15f8" class="cell" data-execution_count="19">
+<div id="02e8eb5d" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Timeout value is 30 seconds</span></span>
 <span id="cb20-2"><a href="" aria-hidden="true" tabindex="-1"></a>timeout <span class="op">=</span> <span class="dv">30</span></span>
 <span id="cb20-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
@@ -762,7 +762,7 @@
 <p><strong>✅ Comments explain rationale</strong></p>
 </div>
 <div class="callout-content">
-<div id="698449ae" class="cell" data-execution_count="20">
+<div id="187cbf04" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Timeout to handle slow network conditions</span></span>
 <span id="cb21-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># in international deployments</span></span>
 <span id="cb21-3"><a href="" aria-hidden="true" tabindex="-1"></a>timeout <span class="op">=</span> <span class="dv">30</span></span>
@@ -796,7 +796,7 @@
 <p><strong>❌ Cryptic regex</strong></p>
 </div>
 <div class="callout-content">
-<div id="76c772c8" class="cell" data-execution_count="21">
+<div id="8d674d8c" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="vs">r'</span><span class="dv">^</span><span class="ex">(</span><span class="fu">?=</span><span class="dv">.</span><span class="op">*</span><span class="pp">[A-Z]</span><span class="ex">)(</span><span class="fu">?=</span><span class="dv">.</span><span class="op">*</span><span class="dv">\d</span><span class="ex">)(</span><span class="fu">?=</span><span class="dv">.</span><span class="op">*</span><span class="pp">[@$!%*?&amp;]</span><span class="ex">)</span><span class="pp">[A-Za-z</span><span class="dv">\d</span><span class="pp">@$!%*?&amp;]</span><span class="op">{8,}</span><span class="dv">$</span><span class="vs">'</span></span>
 <span id="cb22-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> re.match(pattern, password):</span>
 <span id="cb22-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -813,7 +813,7 @@
 <p><strong>✅ Regex requirements explained</strong></p>
 </div>
 <div class="callout-content">
-<div id="5f9e2b29" class="cell" data-execution_count="22">
+<div id="9ae50827" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Password must have: uppercase letter, digit,</span></span>
 <span id="cb23-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># special char (@$!%*?&amp;), min 8 characters</span></span>
 <span id="cb23-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: ASCII-only, no entropy check</span></span>
@@ -837,7 +837,7 @@
 <p><strong>❌ Unexplained bit manipulation</strong></p>
 </div>
 <div class="callout-content">
-<div id="55f5b707" class="cell" data-execution_count="23">
+<div id="e82545cc" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_power_of_two(n):</span>
 <span id="cb24-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> (n <span class="op">&amp;</span> (n <span class="op">-</span> <span class="dv">1</span>)) <span class="op">==</span> <span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -853,7 +853,7 @@
 <p><strong>✅ Logic clarified</strong></p>
 </div>
 <div class="callout-content">
-<div id="458a3399" class="cell" data-execution_count="24">
+<div id="cc1b404b" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_power_of_two(n):</span>
 <span id="cb25-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Powers of 2 have single bit set;</span></span>
 <span id="cb25-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># n &amp; (n-1) clears lowest bit, yields 0</span></span>
@@ -879,7 +879,7 @@
 <p><strong>❌ No explanation for unusual approach</strong></p>
 </div>
 <div class="callout-content">
-<div id="a1a1fcaa" class="cell" data-execution_count="25">
+<div id="921e92f1" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Process items</span></span>
 <span id="cb26-2"><a href="" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> []</span>
 <span id="cb26-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> items:</span>
@@ -898,7 +898,7 @@
 <p><strong>✅ Explains deviation from idiom</strong></p>
 </div>
 <div class="callout-content">
-<div id="88cc6a5b" class="cell" data-execution_count="26">
+<div id="f99e65ca" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Use explicit loop to allow early break on error</span></span>
 <span id="cb27-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># (list comprehension evaluates all items upfront)</span></span>
 <span id="cb27-3"><a href="" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> []</span>
@@ -922,7 +922,7 @@
 <p><strong>❌ Unidiomatic without context</strong></p>
 </div>
 <div class="callout-content">
-<div id="a78d54fc" class="cell" data-execution_count="27">
+<div id="26a367c5" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">'data.txt'</span>, <span class="st">'r'</span>)</span>
 <span id="cb28-2"><a href="" aria-hidden="true" tabindex="-1"></a>content <span class="op">=</span> <span class="bu">file</span>.read()</span>
 <span id="cb28-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span>.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -939,7 +939,7 @@
 <p><strong>✅ Justifies non-Pythonic code</strong></p>
 </div>
 <div class="callout-content">
-<div id="de53f61a" class="cell" data-execution_count="28">
+<div id="5e1bf931" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Cannot use context manager: file handle must remain</span></span>
 <span id="cb29-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># open for async callback (library limitation)</span></span>
 <span id="cb29-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">'data.txt'</span>, <span class="st">'r'</span>)</span>
@@ -966,7 +966,7 @@
 <p><strong>❌ Vague action comment</strong></p>
 </div>
 <div class="callout-content">
-<div id="ff0df0a9" class="cell" data-execution_count="29">
+<div id="1a7b4b36" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: fix this</span></span>
 <span id="cb30-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_data(items):</span>
 <span id="cb30-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> items]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -983,7 +983,7 @@
 <p><strong>✅ Specific with tracking</strong></p>
 </div>
 <div class="callout-content">
-<div id="2b12c13c" class="cell" data-execution_count="30">
+<div id="f83ddadf" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add validation for empty list (issue #847)</span></span>
 <span id="cb31-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_data(items):</span>
 <span id="cb31-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> items]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1066,7 +1066,7 @@
 <p><strong>❌ Comment without example</strong></p>
 </div>
 <div class="callout-content">
-<div id="e47860ea" class="cell" data-execution_count="31">
+<div id="a91382db" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Modulo with negatives wraps backward, not toward zero</span></span>
 <span id="cb32-2"><a href="" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> position <span class="op">%</span> array_length</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1082,7 +1082,7 @@
 <p><strong>✅ Comment with examples</strong></p>
 </div>
 <div class="callout-content">
-<div id="0f3e797f" class="cell" data-execution_count="32">
+<div id="f33e3b28" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Modulo with negatives wraps backward, not toward zero</span></span>
 <span id="cb33-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># -5 % 3 = 1 (not -2), 5 % 3 = 2</span></span>
 <span id="cb33-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Useful for circular array indexing</span></span>
@@ -1104,7 +1104,7 @@
 <p><strong>❌ Edge cases unclear</strong></p>
 </div>
 <div class="callout-content">
-<div id="07a374c1" class="cell" data-execution_count="33">
+<div id="b0c80721" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate age, accounting for birthday occurrence</span></span>
 <span id="cb34-2"><a href="" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> today.year <span class="op">-</span> born.year <span class="op">-</span> <span class="op">\</span></span>
 <span id="cb34-3"><a href="" aria-hidden="true" tabindex="-1"></a>      ((today.month, today.day) <span class="op">&lt;</span> (born.month, born.day))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1121,7 +1121,7 @@
 <p><strong>✅ Examples clarify edge cases</strong></p>
 </div>
 <div class="callout-content">
-<div id="62c1e707" class="cell" data-execution_count="34">
+<div id="34964a67" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate age, accounting for birthday occurrence</span></span>
 <span id="cb35-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Born Feb 29, 2020, today Feb 28, 2024 -&gt; 3 (not 4)</span></span>
 <span id="cb35-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Born Jan 15, 2020, today Jan 14, 2024 -&gt; 3 (not 4)</span></span>
@@ -1146,7 +1146,7 @@
 <p>Copyright, license, and attribution information can be noted in file headers or alongside relevant code.</p>
 </div>
 </div><div class="column" style="width:60%;">
-<div id="c38e2c7f" class="cell" data-execution_count="35">
+<div id="cd1f520e" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Copyright (c) 2024 Company Name</span></span>
 <span id="cb36-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="an">SPDX-License-Identifier:</span><span class="co"> MIT</span></span>
 <span id="cb36-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
@@ -1165,7 +1165,7 @@
 <p>Credit the source when adapting code from elsewhere, which also provides context for future maintainers.</p>
 </div>
 </div><div class="column" style="width:60%;">
-<div id="9abc7ac6" class="cell" data-execution_count="36">
+<div id="264e8855" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Durstenfeld shuffle algorithm (in-place)</span></span>
 <span id="cb37-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># https://stackoverflow.com/a/12646864</span></span>
 <span id="cb37-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> shuffle(array):</span>
@@ -1185,7 +1185,7 @@
 <p>When implementing specs, algorithms, or standards, provide references where readers can learn more.</p>
 </div>
 </div><div class="column" style="width:60%;">
-<div id="72f23c23" class="cell" data-execution_count="37">
+<div id="b4b3d6eb" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># ISO 8601 date parsing</span></span>
 <span id="cb38-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># https://en.wikipedia.org/wiki/ISO_8601</span></span>
 <span id="cb38-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_iso_date(date_string):</span>
@@ -1209,7 +1209,7 @@
 <p><strong>❌ No warning about dead-end</strong></p>
 </div>
 <div class="callout-content">
-<div id="a8158ba4" class="cell" data-execution_count="38">
+<div id="0c043f29" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear search through users</span></span>
 <span id="cb39-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> user <span class="kw">in</span> users:</span>
 <span id="cb39-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> user.<span class="bu">id</span> <span class="op">==</span> target_id:</span>
@@ -1227,7 +1227,7 @@
 <p><strong>✅ Warns against futile optimization</strong></p>
 </div>
 <div class="callout-content">
-<div id="86dd9dca" class="cell" data-execution_count="39">
+<div id="79a27f9b" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear search through users</span></span>
 <span id="cb40-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># DON'T optimize: list is always &lt;20 items</span></span>
 <span id="cb40-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Binary search tested in PR #456: 0.01ms vs 0.009ms</span></span>
@@ -1251,7 +1251,7 @@
 <p><strong>❌ Missing context for constraint</strong></p>
 </div>
 <div class="callout-content">
-<div id="02d67125" class="cell" data-execution_count="40">
+<div id="f87d501c" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="" aria-hidden="true" tabindex="-1"></a>sleep(<span class="fl">0.1</span>)</span>
 <span id="cb41-2"><a href="" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> api.fetch(url)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1267,7 +1267,7 @@
 <p><strong>✅ Explains critical timing</strong></p>
 </div>
 <div class="callout-content">
-<div id="51a781f5" class="cell" data-execution_count="41">
+<div id="54f5d96c" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">WARNING</span><span class="co">: 100ms delay required by API rate limit</span></span>
 <span id="cb42-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing causes 429 errors (see incident #2341)</span></span>
 <span id="cb42-3"><a href="" aria-hidden="true" tabindex="-1"></a>sleep(<span class="fl">0.1</span>)</span>
@@ -1293,7 +1293,7 @@
 <p><strong>❌ No warning about security boundary</strong></p>
 </div>
 <div class="callout-content">
-<div id="5fc89041" class="cell" data-execution_count="42">
+<div id="551a96b7" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare password hashes</span></span>
 <span id="cb43-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> user_hash <span class="op">==</span> provided_hash:</span>
 <span id="cb43-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">True</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1310,7 +1310,7 @@
 <p><strong>✅ Explains timing attack protection</strong></p>
 </div>
 <div class="callout-content">
-<div id="d7cba6a7" class="cell" data-execution_count="43">
+<div id="85d1534f" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare password hashes</span></span>
 <span id="cb44-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">WARNING</span><span class="co">: Use constant-time comparison</span></span>
 <span id="cb44-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Regular == leaks timing info (CVE-2023-xxxx)</span></span>
@@ -1333,7 +1333,7 @@
 <p><strong>❌ Unclear sanitization boundary</strong></p>
 </div>
 <div class="callout-content">
-<div id="c329333b" class="cell" data-execution_count="44">
+<div id="3647a78a" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> user_input.replace(<span class="st">'&lt;'</span>, <span class="st">'&amp;lt;'</span>)</span>
 <span id="cb45-2"><a href="" aria-hidden="true" tabindex="-1"></a>display(output)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1349,7 +1349,7 @@
 <p><strong>✅ Marks security boundary</strong></p>
 </div>
 <div class="callout-content">
-<div id="9af0e34b" class="cell" data-execution_count="45">
+<div id="ae4cdb75" class="cell" data-execution_count="45">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">SECURITY</span><span class="co">: HTML escape before display</span></span>
 <span id="cb46-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Only '&lt;' escaped; XSS still possible via other chars</span></span>
 <span id="cb46-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Use proper HTML sanitization library</span></span>
@@ -1376,7 +1376,7 @@
 <p><strong>❌ Unexplained lock usage</strong></p>
 </div>
 <div class="callout-content">
-<div id="762ff339" class="cell" data-execution_count="46">
+<div id="b131ae5e" class="cell" data-execution_count="46">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="va">self</span>.lock:</span>
 <span id="cb47-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="va">self</span>.state <span class="op">==</span> <span class="st">'ready'</span>:</span>
 <span id="cb47-3"><a href="" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.state <span class="op">=</span> <span class="st">'processing'</span></span>
@@ -1396,7 +1396,7 @@
 <p><strong>❌ Simpler but introduces race condition</strong></p>
 </div>
 <div class="callout-content">
-<div id="3cf7c70f" class="cell" data-execution_count="47">
+<div id="8ad748cc" class="cell" data-execution_count="47">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Someone removed "unnecessary" lock to reduce nesting</span></span>
 <span id="cb48-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">self</span>.state <span class="op">==</span> <span class="st">'ready'</span>:</span>
 <span id="cb48-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.state <span class="op">=</span> <span class="st">'processing'</span></span>
@@ -1414,7 +1414,7 @@
 <p><strong>✅ Explains invariant and lock order</strong></p>
 </div>
 <div class="callout-content">
-<div id="413d36bf" class="cell" data-execution_count="48">
+<div id="be0aee9a" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># INVARIANT: state transitions require lock</span></span>
 <span id="cb49-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Lock order: self.lock before db.lock (deadlock)</span></span>
 <span id="cb49-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Double-check pattern: state may change during wait</span></span>
@@ -1448,7 +1448,7 @@
 </ul>
 </div>
 </div><div class="column" style="width:50%;">
-<div id="042f333c" class="cell" data-execution_count="49">
+<div id="ee58c2a6" class="cell" data-execution_count="49">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_order(order):</span>
 <span id="cb50-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Validate order data</span></span>
 <span id="cb50-3"><a href="" aria-hidden="true" tabindex="-1"></a>    ...</span>
@@ -1486,7 +1486,7 @@
 <p><strong>❌ Verbose</strong></p>
 </div>
 <div class="callout-content">
-<div id="4db753ab" class="cell" data-execution_count="50">
+<div id="6a421f88" class="cell" data-execution_count="50">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Store function results based on inputs</span></span>
 <span id="cb51-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># to avoid recomputing same values</span></span>
 <span id="cb51-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="at">@save_results</span></span>
@@ -1505,7 +1505,7 @@
 <p><strong>✅ Uses technical term</strong></p>
 </div>
 <div class="callout-content">
-<div id="dc5d18dd" class="cell" data-execution_count="51">
+<div id="d7f310ce" class="cell" data-execution_count="51">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Memoize expensive computation</span></span>
 <span id="cb52-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="at">@save_results</span></span>
 <span id="cb52-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate(x, y):</span>
@@ -1526,7 +1526,7 @@
 <p><strong>❌ Ambiguous pronouns</strong></p>
 </div>
 <div class="callout-content">
-<div id="57d160e9" class="cell" data-execution_count="52">
+<div id="d74e51ed" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Sync local cache with remote database</span></span>
 <span id="cb53-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># and invalidate it</span></span>
 <span id="cb53-3"><a href="" aria-hidden="true" tabindex="-1"></a>sync(local_cache, remote_db)</span>
@@ -1544,7 +1544,7 @@
 <p><strong>✅ Specific nouns</strong></p>
 </div>
 <div class="callout-content">
-<div id="89a6b30b" class="cell" data-execution_count="53">
+<div id="cb1fe5b0" class="cell" data-execution_count="53">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Sync local cache with remote database</span></span>
 <span id="cb54-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># and invalidate local cache</span></span>
 <span id="cb54-3"><a href="" aria-hidden="true" tabindex="-1"></a>sync(local_cache, remote_db)</span>
@@ -1565,7 +1565,7 @@
 <p><strong>❌ Lower-level details</strong></p>
 </div>
 <div class="callout-content">
-<div id="b533d8d3" class="cell" data-execution_count="54">
+<div id="212e4a0d" class="cell" data-execution_count="54">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through array and add to sum</span></span>
 <span id="cb55-2"><a href="" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="bu">sum</span>(prices)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1581,7 +1581,7 @@
 <p><strong>✅ Higher-level intent</strong></p>
 </div>
 <div class="callout-content">
-<div id="b2c8301b" class="cell" data-execution_count="55">
+<div id="c4c23021" class="cell" data-execution_count="55">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate order total for tax computation</span></span>
 <span id="cb56-2"><a href="" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="bu">sum</span>(prices)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1603,7 +1603,7 @@
 <p><strong>❌ Comment lies after refactor</strong></p>
 </div>
 <div class="callout-content">
-<div id="da47e93f" class="cell" data-execution_count="56">
+<div id="bd270556" class="cell" data-execution_count="56">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average of all values</span></span>
 <span id="cb57-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> median(values)  <span class="co"># Changed from mean()!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1619,7 +1619,7 @@
 <p><strong>✅ Comment matches code</strong></p>
 </div>
 <div class="callout-content">
-<div id="5c503ec0" class="cell" data-execution_count="57">
+<div id="3b1942fc" class="cell" data-execution_count="57">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate median for robust aggregation</span></span>
 <span id="cb58-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># (changed from mean to handle outliers)</span></span>
 <span id="cb58-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> median(values)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1639,7 +1639,7 @@
 <p><strong>❌ Vague reference</strong></p>
 </div>
 <div class="callout-content">
-<div id="c374374a" class="cell" data-execution_count="58">
+<div id="cc4ad81a" class="cell" data-execution_count="58">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># See the function above</span></span>
 <span id="cb59-2"><a href="" aria-hidden="true" tabindex="-1"></a>apply_discount()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1655,7 +1655,7 @@
 <p><strong>✅ Clear reference</strong></p>
 </div>
 <div class="callout-content">
-<div id="a7ad14e5" class="cell" data-execution_count="59">
+<div id="b8a4632e" class="cell" data-execution_count="59">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Rate logic in pricing.calculate_discount()</span></span>
 <span id="cb60-2"><a href="" aria-hidden="true" tabindex="-1"></a>apply_discount()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1674,7 +1674,7 @@
 <p><strong>❌ Unprofessional</strong></p>
 </div>
 <div class="callout-content">
-<div id="9ee6517f" class="cell" data-execution_count="60">
+<div id="efaf742a" class="cell" data-execution_count="60">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># This code is a mess</span></span>
 <span id="cb61-2"><a href="" aria-hidden="true" tabindex="-1"></a>process_legacy_data()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1690,7 +1690,7 @@
 <p><strong>✅ Professional</strong></p>
 </div>
 <div class="callout-content">
-<div id="66ef40ad" class="cell" data-execution_count="61">
+<div id="9a253425" class="cell" data-execution_count="61">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Complex legacy integration, needs refactoring</span></span>
 <span id="cb62-2"><a href="" aria-hidden="true" tabindex="-1"></a>process_legacy_data()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1712,7 +1712,7 @@
 <p><strong>❌ Emotional/subjective</strong></p>
 </div>
 <div class="callout-content">
-<div id="55dcbe17" class="cell" data-execution_count="62">
+<div id="7250a27b" class="cell" data-execution_count="62">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Stupid requirement from management</span></span>
 <span id="cb63-2"><a href="" aria-hidden="true" tabindex="-1"></a>validate_input()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1728,7 +1728,7 @@
 <p><strong>✅ Factual</strong></p>
 </div>
 <div class="callout-content">
-<div id="a8121bdf" class="cell" data-execution_count="63">
+<div id="57229a29" class="cell" data-execution_count="63">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Business requirement: process within 24h</span></span>
 <span id="cb64-2"><a href="" aria-hidden="true" tabindex="-1"></a>validate_input()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1747,7 +1747,7 @@
 <p><strong>❌ Unclear to outsiders</strong></p>
 </div>
 <div class="callout-content">
-<div id="40a44226" class="cell" data-execution_count="64">
+<div id="fd7f7fd6" class="cell" data-execution_count="64">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Here be dragons</span></span>
 <span id="cb65-2"><a href="" aria-hidden="true" tabindex="-1"></a>process_transaction()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1763,7 +1763,7 @@
 <p><strong>✅ Clear explanation</strong></p>
 </div>
 <div class="callout-content">
-<div id="9167681c" class="cell" data-execution_count="65">
+<div id="3deeea80" class="cell" data-execution_count="65">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Handles concurrent writes with optimistic locking</span></span>
 <span id="cb66-2"><a href="" aria-hidden="true" tabindex="-1"></a>process_transaction()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1782,7 +1782,7 @@
 <p><strong>❌ Editing auto-generated sections</strong></p>
 </div>
 <div class="callout-content">
-<div id="b165b1cd" class="cell" data-execution_count="66">
+<div id="b5036c65" class="cell" data-execution_count="66">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
 <span id="cb67-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Auto-generated by config.py v2.3.1</span></span>
 <span id="cb67-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Last updated: 2024-01-15</span></span>
@@ -1802,7 +1802,7 @@
 <p><strong>✅ Link to generator</strong></p>
 </div>
 <div class="callout-content">
-<div id="32c14e2f" class="cell" data-execution_count="67">
+<div id="08c598fe" class="cell" data-execution_count="67">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Auto-generated by config.py</span></span>
 <span id="cb68-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># See tools/config.py to modify defaults</span></span>
 <span id="cb68-3"><a href="" aria-hidden="true" tabindex="-1"></a>timeout <span class="op">=</span> <span class="dv">30</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1820,7 +1820,7 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Proper indentation</strong></p>
-<div id="cb5c8b75" class="cell" data-execution_count="68">
+<div id="08c03890" class="cell" data-execution_count="68">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process():</span>
 <span id="cb69-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Comment matches code indentation</span></span>
 <span id="cb69-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> condition:</span>
@@ -1828,13 +1828,13 @@
 <span id="cb69-5"><a href="" aria-hidden="true" tabindex="-1"></a>        execute()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Vertically align end-of-line comments</strong></p>
-<div id="6b91e2cf" class="cell" data-execution_count="69">
+<div id="1f2180e7" class="cell" data-execution_count="69">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="" aria-hidden="true" tabindex="-1"></a>timeout <span class="op">=</span> <span class="dv">30</span>        <span class="co"># API rate limit</span></span>
 <span id="cb70-2"><a href="" aria-hidden="true" tabindex="-1"></a>retries <span class="op">=</span> <span class="dv">3</span>         <span class="co"># Network failures</span></span>
 <span id="cb70-3"><a href="" aria-hidden="true" tabindex="-1"></a>buffer_size <span class="op">=</span> <span class="dv">1024</span>  <span class="co"># Chunk size in bytes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Block comments with breathing room</strong></p>
-<div id="5c993ebf" class="cell" data-execution_count="70">
+<div id="d84d54eb" class="cell" data-execution_count="70">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb71-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a complex algorithm requiring</span></span>
 <span id="cb71-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># detailed explanation across multiple lines</span></span>
@@ -1844,7 +1844,7 @@
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Consistent capitalization</strong></p>
-<div id="431bd7af" class="cell" data-execution_count="71">
+<div id="ea263269" class="cell" data-execution_count="71">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate total price</span></span>
 <span id="cb72-2"><a href="" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="bu">sum</span>(prices)</span>
 <span id="cb72-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
@@ -1853,7 +1853,7 @@
 <span id="cb72-6"><a href="" aria-hidden="true" tabindex="-1"></a>    apply_discount()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Consistent punctuation</strong></p>
-<div id="6f74fbdd" class="cell" data-execution_count="72">
+<div id="294e348a" class="cell" data-execution_count="72">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1: No punctuation</span></span>
 <span id="cb73-2"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average</span></span>
 <span id="cb73-3"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter outliers</span></span>
@@ -2017,7 +2017,7 @@
 <p><strong>❌ Poor naming + excessive comments</strong></p>
 </div>
 <div class="callout-content">
-<div id="2b52faee" class="cell" data-execution_count="73">
+<div id="472491ac" class="cell" data-execution_count="73">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc(d, t):</span>
 <span id="cb75-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize result variable</span></span>
 <span id="cb75-3"><a href="" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="dv">0</span></span>
@@ -2045,7 +2045,7 @@
 <p><strong>✅ Clear naming + selective comment</strong></p>
 </div>
 <div class="callout-content">
-<div id="c3172dbf" class="cell" data-execution_count="74">
+<div id="afe51186" class="cell" data-execution_count="74">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_values_above_threshold(data, threshold):</span>
 <span id="cb76-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use &gt;= instead of &gt; due to sensor calibration specs:</span></span>
 <span id="cb76-3"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co"># boundary readings confirmed valid (see ticket #891)</span></span>
