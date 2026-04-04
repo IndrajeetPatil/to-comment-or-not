@@ -4,9 +4,9 @@ This presentation summarizes my understanding of best practices for code
 comments in software development.
 
 The slides can be seen at:
-<https://indrajeetpatil.github.io/to-comment-or-not/>
+<https://www.indrapatil.com/to-comment-or-not/>
 
-[![introductory slide](media/pipe.jpg)](https://indrajeetpatil.github.io/to-comment-or-not/)
+[![introductory slide](media/pipe.jpg)](https://www.indrapatil.com/to-comment-or-not/)
 
 # Development
 
