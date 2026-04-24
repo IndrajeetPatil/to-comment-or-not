@@ -1,0 +1,27 @@
+# To Comment or Not To Comment
+
+> A Quarto RevealJS presentation by Indrajeet Patil.
+
+A comprehensive guide to code commenting best practices for software development. Learn when, how, and why to write effective comments that enhance code clarity and maintainability.
+
+## Primary URL
+
+- [Slides](https://www.indrapatil.com/to-comment-or-not/)
+
+## Source
+
+- [GitHub repository](https://github.com/IndrajeetPatil/to-comment-or-not/)
+
+## Topics
+
+- comments
+- software engineering
+- computer science
+- software development
+- code documentation
+- presentation
+- slides
+
+## Machine-readable companion
+
+- [Full agent summary](https://www.indrapatil.com/to-comment-or-not/llms-full.txt)

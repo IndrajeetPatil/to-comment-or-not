@@ -1,0 +1,7 @@
+# To Comment or Not To Comment
+
+> A Quarto RevealJS presentation by Indrajeet Patil.
+
+Canonical slides: https://www.indrapatil.com/to-comment-or-not/
+Full agent summary: https://www.indrapatil.com/to-comment-or-not/llms-full.txt
+Source: https://github.com/IndrajeetPatil/to-comment-or-not/

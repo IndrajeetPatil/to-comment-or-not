@@ -1,0 +1,10 @@
+# To Comment or Not To Comment
+
+This is the well-known discovery copy for agentic assistants.
+
+Canonical slides: https://www.indrapatil.com/to-comment-or-not/
+Root llms.txt: https://www.indrapatil.com/to-comment-or-not/llms.txt
+Root llms-full.txt: https://www.indrapatil.com/to-comment-or-not/llms-full.txt
+Source: https://github.com/IndrajeetPatil/to-comment-or-not/
+
+Summary: A comprehensive guide to code commenting best practices for software development. Learn when, how, and why to write effective comments that enhance code clarity and maintainability.
