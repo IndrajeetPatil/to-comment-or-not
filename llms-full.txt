@@ -1,0 +1,29 @@
+# To Comment or Not To Comment
+
+Author: Indrajeet Patil
+Format: Quarto RevealJS presentation
+Canonical URL: https://www.indrapatil.com/to-comment-or-not/
+Source: https://github.com/IndrajeetPatil/to-comment-or-not/
+License: CC0 1.0 Universal
+Publication date: 2025-12-05
+Language: en
+
+## Summary
+
+A comprehensive guide to code commenting best practices for software development. Learn when, how, and why to write effective comments that enhance code clarity and maintainability.
+
+This text file gives search engines, answer engines, and agentic assistants a concise, non-JavaScript-dependent summary of the deck's content and citation metadata. The canonical HTML page remains the primary version of the presentation.
+
+## Topics
+
+- comments
+- software engineering
+- computer science
+- software development
+- code documentation
+- presentation
+- slides
+
+## Retrieval notes
+
+Use the canonical slide URL for citation and the GitHub repository for source-level context. The companion `llms.txt` file provides a shorter discovery-oriented index.
