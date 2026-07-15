@@ -6,7 +6,7 @@ comments in software development.
 The slides can be seen at:
 <https://www.indrapatil.com/to-comment-or-not/>
 
-[![introductory slide](media/pipe.jpg)](https://www.indrapatil.com/to-comment-or-not/)
+[![introductory slide](media/pipe.webp)](https://www.indrapatil.com/to-comment-or-not/)
 
 ## Development
 
