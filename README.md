@@ -36,8 +36,15 @@ just preview  # Start a live preview with auto-reload
 just open     # Alias for preview (live-reload dev server over localhost)
 just clean    # Remove generated files and caches
 just check    # Check the Quarto and Python setup
+just axe      # Preview with an accessibility report slide
 just          # Install dependencies and start live-reload preview
 ```
+
+Quarto commands run through `uv run`, which syncs the locked environment and makes
+the project Python interpreter available automatically.
+
+`just axe` opts into the `_quarto-a11y.yml` profile for local accessibility audits.
+Normal renders and deployments do not include the axe checker or report slide.
 
 ## Feedback
 

@@ -61,7 +61,7 @@ Indrajeet Patil
 ::::
 
 ::: {.footer style="text-align: center; font-size: 0.55em; color: #999; position: absolute; bottom: 20px; left: 0; right: 0;"}
-Source code: [github.com/IndrajeetPatil/to-comment-or-not](https://github.com/IndrajeetPatil/to-comment-or-not/)
+Source code: [github.com/IndrajeetPatil/to-comment-or-not](https://github.com/IndrajeetPatil/to-comment-or-not/){style="text-decoration: underline;"}
 :::
 
 ## What You'll Learn {.smaller}
