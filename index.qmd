@@ -10,6 +10,7 @@ format:
     touch: true
     help: true
     include-in-header: meta-tags.html
+    include-after-body: accessibility.html
     link-external-newwindow: true
 execute:
   echo: true
@@ -60,7 +61,7 @@ Indrajeet Patil
 
 ::::
 
-::: {.footer style="text-align: center; font-size: 0.55em; color: #999; position: absolute; bottom: 20px; left: 0; right: 0;"}
+::: {.footer style="text-align: center; font-size: 0.55em; color: #666; position: absolute; bottom: 20px; left: 0; right: 0;"}
 Source code: [github.com/IndrajeetPatil/to-comment-or-not](https://github.com/IndrajeetPatil/to-comment-or-not/){style="text-decoration: underline;"}
 :::
 
@@ -287,7 +288,7 @@ while (...) {
 
 :::
 
-## {.smaller}
+## [Avoid duplicate comments]{.visually-hidden} {.smaller}
 
 **Don't duplicate the code in comments**
 
@@ -368,7 +369,7 @@ user = create_user(data)
 
 ::::
 
-## {.smaller}
+## [Remove dead code and history]{.visually-hidden} {.smaller}
 
 **Don't retain dead code as comments**
 
@@ -472,7 +473,7 @@ for O(log n) complexity"""
 
 ::::
 
-## {.smaller}
+## [Write clear comments with a purpose]{.visually-hidden} {.smaller}
 
 **Don't write mandated comments**
 
@@ -1305,7 +1306,7 @@ def process_order(order):
 
 _Keep them precise and compact._
 
-## {.smaller}
+## [Use precise and actionable wording]{.visually-hidden} {.smaller}
 
 **Use information-dense words**
 
@@ -1412,7 +1413,7 @@ total = sum(prices)
 
 ::::
 
-## {.smaller}
+## [Keep comments current and specific]{.visually-hidden} {.smaller}
 
 **Keep comments updated**
 
@@ -1511,7 +1512,7 @@ process_legacy_data()
 
 ::::
 
-## {.smaller}
+## [Keep comments objective]{.visually-hidden} {.smaller}
 
 **Stay objective**
 
@@ -1766,9 +1767,9 @@ flowchart TD
     H -.->|Collaborates| A
     A -.->|Feedback| H
 
-    style H fill:#BBDEFB
-    style A fill:#BBDEFB
-    style S fill:#A5D6A7
+    style H fill:#BBDEFB,color:#000
+    style A fill:#BBDEFB,color:#000
+    style S fill:#A5D6A7,color:#000
 ```
 
 :::
@@ -1870,7 +1871,7 @@ flowchart TD
 — Steve McConnell
 :::
 
-## {.smaller}
+## [Comment decision workflow]{.visually-hidden} {.smaller}
 
 ### Comment Decision Workflow
 

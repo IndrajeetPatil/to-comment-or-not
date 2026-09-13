@@ -45,6 +45,7 @@ the project Python interpreter available automatically.
 
 `just axe` opts into the `_quarto-a11y.yml` profile for local accessibility audits.
 Normal renders and deployments do not include the axe checker or report slide.
+Preview options can be forwarded, for example `just axe --no-browser --port 4200`.
 
 ## Feedback
 
