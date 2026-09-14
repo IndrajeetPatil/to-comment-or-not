@@ -137,13 +137,6 @@
   border: 0;
 }
 
-/* Inline links and diagram labels stay legible in the scrolling view. */
-.reveal p a,
-.reveal li a,
-.reveal td a {
-  text-decoration: underline;
-}
-
 .reveal svg .edgeLabel p {
   color: #222 !important;
 }
