@@ -25,7 +25,7 @@ llms-full.txt        # Extended machine-readable summary
 .well-known/         # Mirrors of llms.txt and llms-full.txt
 robots.txt           # Crawl rules
 sitemap.xml          # Sitemap for search engines
-.github/             # CI workflows (build/deploy, template-drift check) and Dependabot
+.github/             # CI workflows (build/deploy) and Dependabot
 _extensions/         # Latest a11y extension, installed by `just install` and CI (gitignored)
 _site/               # Build output (gitignored)
 ```
@@ -67,7 +67,7 @@ Check which set is present to know which language context applies.
   The `a11y` extension supplies zoom, focus indicators, link underlines, reduced motion,
   slide isolation, and screen-reader announcements. Keep `accessibility.html` for
   code scrolling, menu focus, and vertical-slide semantics.
-  `accessibility.html` is shared verbatim across all decks; keep it byte-identical to the fleet template
+  `accessibility.html` is shared verbatim across all decks; keep the copies in sync by hand
   rather than trimming handlers that this deck does not currently exercise.
   Disable the extension's slide-menu patch and settings menu as in the reference
   deck: version 0.2.3 introduces ARIA and contrast failures in those components.
@@ -122,10 +122,10 @@ When modifying `index.qmd`:
 - Install the latest a11y extension directly from upstream with
   `quarto add mcanouil/quarto-revealjs-a11y --no-prompt` in both `justfile` and CI.
   This extension is trusted; do not add version pins, vendoring, or checksum checks.
-- `.github/workflows/check-template-drift.yaml` runs weekly and calls the shared
-  `check-presentation-drift.yaml` workflow with `backend: python`. It reports when shared files
-  (`accessibility.html`, `_quarto-a11y.yml`, `justfile`, `.gitignore`, `.editorconfig`, workflows)
-  drift from the fleet-wide templates. Fix drift by re-copying the template, not by editing in place.
+- Several files are shared verbatim across the deck fleet (`accessibility.html`, `_quarto-a11y.yml`,
+  `justfile`, `.gitignore`, `.editorconfig`, workflows). Nothing checks this automatically, so when
+  you change one of them here, copy the same change across the other decks rather than letting this
+  deck diverge.
 - Dependabot keeps GitHub Actions dependencies up to date weekly. Python decks also have Dependabot configured for `uv`; R decks do not use Dependabot for R packages.
 
 ## What not to do
