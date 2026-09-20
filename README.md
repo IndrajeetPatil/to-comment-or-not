@@ -1,5 +1,7 @@
 # To Comment or Not To Comment
 
+[![Build and Deploy Presentation](https://github.com/IndrajeetPatil/to-comment-or-not/actions/workflows/build-presentation.yaml/badge.svg)](https://github.com/IndrajeetPatil/to-comment-or-not/actions/workflows/build-presentation.yaml)
+
 This presentation summarizes my understanding of best practices for code
 comments in software development.
 
@@ -30,6 +32,7 @@ just install
 ```bash
 just help     # Show all available commands
 just install  # Install Python dependencies and the a11y extension
+just sync     # Alias for install
 just update   # Update Python dependencies
 just render   # Render slides to HTML
 just preview  # Start a live preview with auto-reload
@@ -58,7 +61,9 @@ underlines, reduced motion, and screen-reader announcements.
 Run `just install` again after `just clean`, which removes installed extensions.
 
 The `accessibility.html` helper still handles scrollable code, slide-menu focus,
-and vertical-slide semantics. Unused tabset handling has been removed.
+tab-order normalisation, and vertical-slide semantics. It is shared verbatim
+across all decks, so keep the copies in sync by hand rather than patching this
+one on its own.
 The extension's slide-menu patch and accessibility settings panel are disabled
 as in the reference deck: version 0.2.3 introduces ARIA and contrast failures in
 those components.
