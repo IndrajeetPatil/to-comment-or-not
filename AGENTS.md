@@ -18,13 +18,14 @@ accessibility.html  # Compatibility fixes supplementing the a11y extension
 style.css            # Custom RevealJS theme (fonts, colours, component classes)
 meta-tags.html       # OpenGraph, Twitter Card, JSON-LD, and analytics tags
 justfile             # Command runner (install, render, preview, clean, etc.)
+.editorconfig        # Shared editor defaults (charset, EOL, indentation)
 media/               # Images: evidence screenshots, illustrations, social card
 llms.txt             # Short machine-readable summary for LLM discovery
 llms-full.txt        # Extended machine-readable summary
 .well-known/         # Mirrors of llms.txt and llms-full.txt
 robots.txt           # Crawl rules
 sitemap.xml          # Sitemap for search engines
-.github/             # CI workflow (reusable, from IndrajeetPatil/workflows) and Dependabot
+.github/             # CI workflows (build/deploy, template-drift check) and Dependabot
 _extensions/         # Latest a11y extension, installed by `just install` and CI (gitignored)
 _site/               # Build output (gitignored)
 ```
@@ -66,7 +67,8 @@ Check which set is present to know which language context applies.
   The `a11y` extension supplies zoom, focus indicators, link underlines, reduced motion,
   slide isolation, and screen-reader announcements. Keep `accessibility.html` for
   code scrolling, menu focus, and vertical-slide semantics.
-  This deck has no tabsets; reassess keyboard handling if adding any.
+  `accessibility.html` is shared verbatim across all decks; keep it byte-identical to the fleet template
+  rather than trimming handlers that this deck does not currently exercise.
   Disable the extension's slide-menu patch and settings menu as in the reference
   deck: version 0.2.3 introduces ARIA and contrast failures in those components.
 - **Icons.** Icons use lightweight HTML spans backed by only the required SVG path data in the custom stylesheet; no icon-font or Quarto icon extension is needed.
@@ -81,16 +83,17 @@ All commands use [just](https://github.com/casey/just). The recipes are the same
 
 ```bash
 just install   # Install language dependencies and the latest a11y extension
+just sync      # Alias for install
+just update    # Update language dependencies
 just render    # Render index.qmd to _site/
 just preview   # Live-reload dev server
 just open      # Alias for preview (live-reload dev server over localhost)
 just clean     # Remove build artifacts
 just check     # Verify Quarto setup
-just update    # Update language dependencies
 just axe       # Preview with the axe accessibility checker enabled
 ```
 
-Python decks wrap Quarto in `uv run` (e.g. `uv run quarto render index.qmd`), which syncs the locked environment and puts the project interpreter on `PATH` so Quarto discovers it automatically. R decks call `quarto render` directly (R is discovered automatically). See the `justfile` for exact commands.
+This deck renders with Quarto. Python dependencies are managed with [uv](https://docs.astral.sh/uv/) (`pyproject.toml` + `uv.lock`); CI installs them with `uv sync --frozen`. Slides live in `index.qmd`.
 
 ## Editing slides
 
@@ -119,6 +122,10 @@ When modifying `index.qmd`:
 - Install the latest a11y extension directly from upstream with
   `quarto add mcanouil/quarto-revealjs-a11y --no-prompt` in both `justfile` and CI.
   This extension is trusted; do not add version pins, vendoring, or checksum checks.
+- `.github/workflows/check-template-drift.yaml` runs weekly and calls the shared
+  `check-presentation-drift.yaml` workflow with `backend: python`. It reports when shared files
+  (`accessibility.html`, `_quarto-a11y.yml`, `justfile`, `.gitignore`, `.editorconfig`, workflows)
+  drift from the fleet-wide templates. Fix drift by re-copying the template, not by editing in place.
 - Dependabot keeps GitHub Actions dependencies up to date weekly. Python decks also have Dependabot configured for `uv`; R decks do not use Dependabot for R packages.
 
 ## What not to do
