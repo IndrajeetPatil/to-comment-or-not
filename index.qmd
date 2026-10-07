@@ -963,7 +963,7 @@ age = today.year - born.year - \
 
 **Include legal notices**
 
-Copyright, license, and attribution information can be noted in file headers or alongside relevant code.
+Copyright, licence, and attribution information can be noted in file headers or alongside relevant code.
 
 :::
 
@@ -1079,11 +1079,11 @@ for user in users:
 
 ::: {.column width='50%'}
 
-:::{.callout-tip icon=false title="✅ Warns against futile optimization"}
+:::{.callout-tip icon=false title="✅ Warns against futile optimisation"}
 
 ```{python}
 # Linear search through users
-# DON'T optimize: list is always <20 items
+# DON'T optimise: list is always <20 items
 # Binary search tested in PR #456: 0.01ms vs 0.009ms
 for user in users:
     if user.id == target_id:
@@ -1132,7 +1132,7 @@ response = api.fetch(url)
 
 ## Explain Security-Sensitive Code {.smaller}
 
-Security comments prevent dangerous "simplifications" that introduce vulnerabilities by explaining why "obvious" optimizations break security boundaries.
+Security comments prevent dangerous "simplifications" that introduce vulnerabilities by explaining why "obvious" optimisations break security boundaries.
 
 . . .
 
@@ -1176,7 +1176,7 @@ if secrets.compare_digest(user_hash, provided_hash):
 
 ::: {.column width='50%'}
 
-:::{.callout-caution icon=false title="❌ Unclear sanitization boundary"}
+:::{.callout-caution icon=false title="❌ Unclear sanitisation boundary"}
 
 ```{python}
 output = user_input.replace('<', '&lt;')
@@ -1194,7 +1194,7 @@ display(output)
 ```{python}
 # SECURITY: HTML escape before display
 # Only '<' escaped; XSS still possible via other chars
-# TODO: Use proper HTML sanitization library
+# TODO: Use proper HTML sanitisation library
 output = user_input.replace('<', '&lt;')
 display(output)
 ```
@@ -1207,7 +1207,7 @@ display(output)
 
 ## Document Concurrency Invariants {.smaller}
 
-Concurrency comments prevent race conditions from "optimizations" that remove checks by explaining locking order, invariants, and why seemingly redundant logic matters.
+Concurrency comments prevent race conditions from "optimisations" that remove checks by explaining locking order, invariants, and why seemingly redundant logic matters.
 
 . . .
 
@@ -1263,7 +1263,7 @@ with self.lock:
 
 ::::
 
-## Organize Long Functions {.smaller}
+## Organise Long Functions {.smaller}
 
 When a function is legitimately complex and shouldn't be broken down further, use comments to delineate logical sections.
 
@@ -1670,7 +1670,7 @@ def complex_algorithm():
 
 ::: {.column width='50%'}
 
-**Consistent capitalization**
+**Consistent capitalisation**
 
 ```{python}
 # Calculate total price
@@ -1762,7 +1762,7 @@ Tools can enforce *format* but not *value*. Good commenting requires human judgm
 
 **Why AI tools can help:**
 
-- Analyze code complexity and suggest documentation
+- Analyse code complexity and suggest documentation
 - Identify business logic that needs explanation
 - Check comment clarity and helpfulness
 
@@ -1887,7 +1887,7 @@ flowchart TD
 
 ### Comment Decision Workflow
 
-When encountering unclear code, prioritize refactoring over commenting. Only add comments for inherently non-obvious logic.
+When encountering unclear code, prioritise refactoring over commenting. Only add comments for inherently non-obvious logic.
 
 ```{mermaid}
 %%| eval: true
@@ -1993,7 +1993,7 @@ def sum_values_above_threshold(data, threshold):
 
 ::: {.column width='40%'}
 
-![](media/comment-cherry.webp){width="100%" fig-alt="Illustration of a cherry on top of a cake, symbolizing that good comments are the finishing touch to well-written code"}
+![](media/comment-cherry.webp){width="100%" fig-alt="Illustration of a cherry on top of a cake, symbolising that good comments are the finishing touch to well-written code"}
 
 :::
 
