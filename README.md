@@ -2,7 +2,7 @@
 
 [![Build and Deploy Presentation](https://github.com/IndrajeetPatil/to-comment-or-not/actions/workflows/build-presentation.yaml/badge.svg)](https://github.com/IndrajeetPatil/to-comment-or-not/actions/workflows/build-presentation.yaml)
 
-This presentation summarizes my understanding of best practices for code
+This presentation summarises my understanding of best practices for code
 comments in software development.
 
 The slides can be seen at:
