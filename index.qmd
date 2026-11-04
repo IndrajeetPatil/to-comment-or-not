@@ -1248,7 +1248,8 @@ response = api.fetch(url)
 
 ::: {.notes}
 - Explain the role of cautionary comments as defensive barriers against harmful refactorings.
-- Walk through the linear search example: an engineer might see an $O(n)$ search and want to replace it with a hash map, but the comment reveals that small array sizes and hardware branch prediction make the linear search measurably faster.
+- Walk through the linear search example: an engineer might see an $O(n)$ search and want to replace it with a binary search, but the comment cites PR #456 benchmarks showing linear search is faster for fewer than 20 items (0.009ms vs 0.01ms).
+- Walk through the API sleep example: explain that removing the 100ms delay triggers rate limit 429 errors documented in incident #2341.
 - Emphasise that cautionary comments save hours of wasted optimisation and regressions.
 :::
 
@@ -2221,7 +2222,7 @@ def sum_values_above_threshold(data, threshold):
 :::
 
 ::: {.notes}
-- Summarise the key organizational and cognitive benefits of thoughtful commenting.
+- Summarise the key organisational and cognitive benefits of thoughtful commenting.
 - Emphasise that writing comments forces the author to articulate design rationale, improving the code itself.
 - High-quality comments preserve institutional knowledge, accelerate onboarding, and drastically lower future maintenance overhead.
 :::
