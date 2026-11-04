@@ -344,9 +344,10 @@ while (...) {
 
 ::: {.notes}
 - Explain the concept of crutch comments: using comments as an apology or band-aid for obscure or poorly factored code.
-- Contrast the two examples on the slide:
-  - First, show how renaming `chk(u)` to `can_access_premium_features(user)` eliminates the need for an explanatory comment.
-  - Second, show how extracting complex boolean expressions into descriptive predicates (`is_eligible = ...`) makes the code immediately self-documenting.
+- Contrast the examples on the slide:
+  - First, show how renaming `chk(u)` to `has_premium_access(user)` eliminates the need for an explanatory comment.
+  - Second, show how extracting complex conditionals into a well-named helper function (`should_process(x)`) makes the code immediately self-documenting.
+  - Third, point out closing brace comments (`// end if`, `// end while`): they are warning signals of deeply nested functions that need decomposing.
 - Reiterate the mathematical formula at the top: good code is strictly better than bad code plus comments.
 :::
 
