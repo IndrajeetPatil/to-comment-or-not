@@ -432,9 +432,10 @@ user = create_user(data)
 ::::
 
 ::: {.notes}
-- Address duplicate and parrot comments that merely restate what the code clearly expresses.
-- Contrast the trivial `counter += 1` ("increment counter") with the meaningful comment explaining why the counter is reset to zero after connection.
-- Highlight the lower pair: show how repeating parameter names in function docstrings without adding semantic value creates maintenance debt.
+- Address duplicate comments that merely parrot what the code clearly expresses.
+- Contrast trivial code duplication (`counter += 1`) with meaningful explanations of state changes (`counter = 0` after connection).
+- Walk through the lower pair on non-local comments: contrast vague pointers like "See UserService" with self-contained comments that document validation constraints (`RFC 5322`) and database invariants locally.
+- Note the advisory callout: what is obvious depends on audience and team experience.
 :::
 
 ## [Remove dead code and history]{.visually-hidden} {.smaller}
@@ -738,8 +739,9 @@ if len(data) == 0:
 ::: {.notes}
 - Emphasise that business logic, external constraints, and architectural trade-offs require explanation.
 - Contrast the caution block with the tip block:
-  - Instead of stating that the timeout is thirty seconds, explain why: slow upstream payment gateways need thirty seconds to avoid premature aborts.
-  - Instead of reiterating an empty check, explain the business requirement behind returning a default guest profile.
+  - Instead of stating that the timeout is thirty seconds, explain that it accommodates slow network conditions in international deployments.
+  - Explain why retry is enabled: mitigating observed transient network failures.
+  - Instead of a vague "as per spec", link directly to the API specification section explaining why `None` is returned for empty datasets.
 :::
 
 ## Document Non-Obvious Logic {.smaller}
@@ -904,8 +906,10 @@ file.close()
 
 ::: {.notes}
 - Explain how to handle intentional deviations from language idioms.
-- Contrast the naive loop with the unidiomatic approach: explain that when performance benchmarks, memory constraints, or edge cases demand an unusual implementation, documenting that rationale prevents well-meaning developers from "refactoring" it back to a broken idiom.
-- Preempt review questions by stating why the standard pattern failed.
+- Walk through the two concrete examples:
+  - Explain choosing an explicit `for` loop over a list comprehension to enable early break on error without evaluating all elements upfront.
+  - Explain avoiding a `with open(...)` context manager because the file handle must remain open for an asynchronous callback.
+- Preempt review questions by documenting why the idiomatic approach fails in each situation.
 :::
 
 ## Highlight Known Flaws {.smaller}
@@ -1568,9 +1572,10 @@ total = sum(prices)
 ::::
 
 ::: {.notes}
-- Discuss using high-information words and concrete technical terms.
-- Contrast verbose, meandering descriptions with concise domain terminology like "memoize", "canonicalise", or "idempotent".
-- Highlight the importance of specifying exact units (such as milliseconds or bytes) and explicit boundary conditions rather than generic adjectives.
+- Discuss using precise, information-dense wording across the three examples:
+  - Replace verbose explanations with precise technical terms like "memoize".
+  - Avoid ambiguous pronouns like "it" by repeating the specific noun ("invalidate local cache").
+  - Express higher-level intent ("calculate order total for tax computation") rather than lower-level mechanics ("loop through array and add to sum").
 :::
 
 ## [Keep comments current and specific]{.visually-hidden} {.smaller}
