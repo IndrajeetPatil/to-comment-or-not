@@ -649,7 +649,9 @@ Bad comments are worse than no comments. They mislead readers and create confusi
 ::: {.notes}
 - Highlight the dangers of mandated commenting policies, such as arbitrary comment density quotas or requiring every function to have a comment.
 - Reference the comic on the right: artificial quotas produce low-effort, distracting noise that obscures important code.
-- Contrast vague comments like "process data" or "handle edge cases" with purposeful comments that state specific technical conditions.
+- Walk through the confusing comments section:
+  - Explain how negative-framing comments ("Skip notification if user is inactive") confuse readers when the code uses a straightforward positive condition (`if user.is_active`).
+  - Explain how misleading comments that contradict code (describing `remove_item` as adding an item) actively mislead developers; removing the comment entirely lets the clear code speak for itself.
 :::
 
 # What to Comment
@@ -1451,8 +1453,8 @@ def process_order(order):
 ::::
 
 ::: {.notes}
-- Discuss strategies for structuring unavoidably long functions that cannot be trivially split due to performance or tight I/O coupling.
-- Walk through the three-phase pattern: input validation, core processing, and output formatting.
+- Discuss strategies for structuring unavoidably long functions that cannot be trivially split due to performance, tight I/O coupling, or transaction boundaries.
+- Walk through the `process_order` example: using clear section comments to delineate distinct processing phases (validation, pricing, inventory, payment, and database updates).
 - Reiterate the amber advisory box: extracting helper functions is always the primary recommendation unless specific architectural constraints prevent it.
 :::
 
@@ -1680,9 +1682,10 @@ process_legacy_data()
 ::::
 
 ::: {.notes}
-- Address the danger of comment drift: when code changes but comments remain untouched, the comment becomes a misleading lie.
-- Walk through the example where code was changed from mean to median, but the comment still claimed to calculate the average.
-- Stress the discipline of updating comments in the very same commit as the code changes they describe.
+- Address comment currency and specificity across the three examples:
+  - Keep comments updated during refactoring: show how changing mean to median without updating the comment turns it into a misleading lie.
+  - Use specific references: point to exact module and function names (`pricing.calculate_discount()`) rather than vague spatial terms like "the function above".
+  - Maintain a professional tone: avoid editorialising like "This code is a mess"; state the technical constraints factually.
 :::
 
 ## [Keep comments objective]{.visually-hidden} {.smaller}
@@ -1789,9 +1792,10 @@ timeout = 30
 ::::
 
 ::: {.notes}
-- Address emotional tone and professionalism in codebase comments.
-- Contrast subjective venting or frustration with management with neutral, factual descriptions of business requirements and trade-offs.
-- Remind the audience that source code comments remain part of the organisation's engineering record.
+- Address tone, objectivity, and comment hygiene across the three examples:
+  - Stay objective: replace subjective venting or frustration with management with neutral, factual descriptions of business requirements.
+  - Avoid inside jokes: replace obscure phrases like "Here be dragons" with clear technical explanations of concurrency and locking.
+  - Respect banner comments: never manually edit auto-generated code headers or generated sections; update the generator script instead.
 :::
 
 ## _Aside:_ Comment Aesthetics {.smaller}
