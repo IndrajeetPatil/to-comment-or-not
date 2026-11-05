@@ -79,10 +79,7 @@ Source code: [github.com/IndrajeetPatil/to-comment-or-not](https://github.com/In
 :::
 
 ::: {.notes}
-- Welcome everyone to this session on code comments in software engineering.
-- Highlight the visual metaphor on the right: René Magritte's "The Treachery of Images", reminding us that code and its representations are not the same thing.
-- Set the stage: commenting is often treated as either a chore or an afterthought, but thoughtful commenting is an essential engineering discipline.
-- Outline the goal: moving beyond dogmatic rules to establish practical, context-aware guidelines for maintainable code.
+Welcome to this talk about code comments. Magritte's painting is a reminder that a representation is not the thing itself: a comment and the code it describes can tell different stories. We will look at practical ways to make comments useful, accurate, and worth maintaining.
 :::
 
 ## What You'll Learn {.smaller}
@@ -111,18 +108,14 @@ None of this advice is **dogma**; there can be valid reasons and conventions to 
 :::
 
 ::: {.notes}
-- Walk through the three main learning pillars: understanding why comments matter, knowing when and when not to write them, and learning practical drafting strategies.
-- Emphasise the core goal: learning to write comments that clarify intent, not merely echo the syntax.
-- Remind the audience of the footnote: none of this advice is dogma, and conventions must always adapt to team and language context.
+We will cover why comments matter, when they help, and how to write them. The aim is to preserve intent rather than repeat syntax. These are guidelines to adapt to a project's language, team, and conventions.
 :::
 
 # "The purpose of commenting is to help the reader know as much as the writer did."
 \- Boswell & Foucher
 
 ::: {.notes}
-- Pause on this foundational quotation from Dustin Boswell and Trevor Foucher's "The Art of Readable Code".
-- Highlight the core insight: as the author, you possess immense mental context about edge cases, trade-offs, and domain constraints that cannot fit into syntax alone.
-- The objective of commenting is closing that information gap for future maintainers.
+The Art of Readable Code describes the purpose of commenting as helping the reader know as much as the writer did. The author knows the constraints, rejected alternatives, and awkward edge cases. A useful comment preserves the part of that reasoning that the code cannot express on its own.
 :::
 
 # Why Comments Matter
@@ -130,9 +123,7 @@ None of this advice is **dogma**; there can be valid reasons and conventions to 
 _Good comments act as guideposts for navigating complex code._
 
 ::: {.notes}
-- Transition into the first major section of the presentation: Why Comments Matter.
-- Frame comments as navigation guideposts across complex codebases.
-- Introduce the recurring theme: clean architecture and expressive naming are prerequisites, but comments carry the reasoning behind decisions.
+Comments can help a reader navigate a codebase and understand its decisions. Clear architecture and good names remain the foundation, while comments carry context that would otherwise disappear.
 :::
 
 ## Why It's Challenging {.smaller}
@@ -166,9 +157,7 @@ flowchart TD
 ```
 
 ::: {.notes}
-- Walk through the flowchart showing how developer pressures translate into poor commenting outcomes.
-- Explain the causal chain: deadline pressure, intricate problem solving, and intense implementation focus create high cognitive load.
-- Under cognitive load, developers take shortcuts: omitting comments entirely, copying redundant comments, or allowing existing comments to drift and become obsolete.
+Deadlines and difficult implementation work compete for our attention. Under that pressure, comments may be omitted, copied without thought, or left behind when the code changes. Comment quality needs a deliberate place in the development and review process.
 :::
 
 ## _N.B._ Documentation vs. Comments {.smaller}
@@ -223,9 +212,7 @@ flowchart TD
 ::::
 
 ::: {.notes}
-- Clarify the crucial architectural distinction between API documentation and implementation comments.
-- Use the code sample to contrast the docstring (which defines the public interface, parameters, and contract for callers) with the inline comment (which explains internal implementation quirks for maintainers).
-- Walk through the comparison table covering audience, purpose, scope, and lifecycle.
+API documentation and implementation comments serve different readers. A docstring explains the public contract to a caller. An inline comment explains an internal decision to a maintainer. They can complement each other without repeating the same information.
 :::
 
 # What *Not* to Comment
@@ -233,9 +220,7 @@ flowchart TD
 _Every comment distracts from reading code—make sure it's worth the interruption._
 
 ::: {.notes}
-- Transition to the next major section: What Not to Comment.
-- Emphasise the guiding principle: every comment interrupts the reading flow of the code, so it must justify its cognitive cost.
-- Reiterate that bad comments are often worse than no comments at all.
+Every comment adds something for the reader to process. Before adding one, ask whether it supplies information the code does not already communicate. A redundant or misleading explanation can make the code harder to understand.
 :::
 
 ## Don't use crutch comments {.smaller}
@@ -344,12 +329,7 @@ while (...) {
 :::
 
 ::: {.notes}
-- Explain the concept of crutch comments: using comments as an apology or band-aid for obscure or poorly factored code.
-- Contrast the examples on the slide:
-  - First, show how renaming `chk(u)` to `has_premium_access(user)` eliminates the need for an explanatory comment.
-  - Second, show how extracting complex conditionals into a well-named helper function (`should_process(x)`) makes the code immediately self-documenting.
-  - Third, point out closing brace comments (`// end if`, `// end while`): they are warning signals of deeply nested functions that need decomposing.
-- Reiterate the mathematical formula at the top: good code is strictly better than bad code plus comments.
+A comment should not be a permanent patch for an unclear name or tangled condition. In these examples, a descriptive access-check name and a well-named helper explain the intent directly. Repeated comments marking the ends of nested blocks may also be a sign that the function needs a simpler structure.
 :::
 
 ## [Avoid duplicate comments]{.visually-hidden} {.smaller}
@@ -434,10 +414,7 @@ user = create_user(data)
 ::::
 
 ::: {.notes}
-- Address duplicate comments that merely parrot what the code clearly expresses.
-- Contrast trivial code duplication (`counter += 1`) with meaningful explanations of state changes (`counter = 0` after connection).
-- Walk through the lower pair on non-local comments: contrast vague pointers like "See UserService" with self-contained comments that document validation constraints (`RFC 5322`) and database invariants locally.
-- Note the advisory callout: what is obvious depends on audience and team experience.
+Repeating an obvious increment adds little value. Explaining why a counter is reset can add useful context. Keep that explanation close to the code and make it self-contained: a vague reference to another service is less helpful than the relevant constraint or invariant.
 :::
 
 ## [Remove dead code and history]{.visually-hidden} {.smaller}
@@ -545,9 +522,7 @@ for O(log n) complexity"""
 ::::
 
 ::: {.notes}
-- Discuss the anti-pattern of preserving dead or commented-out code: version control systems track full file histories, so commented-out blocks only clutter the active logic.
-- Discuss git history narration in comments: changelogs and author timestamps belong in commit logs, pull requests, and git blame, not in source code.
-- Point out the notable exception: bundled or distributed libraries without source control access may require changelogs in file headers.
+Version control already preserves deleted code and the history of a change. Keeping those records as commented-out blocks clutters the active implementation. A distributed file may need its own change record, but that is a specific distribution requirement rather than a reason to narrate every edit in source comments.
 :::
 
 ## [Write clear comments with a purpose]{.visually-hidden} {.smaller}
@@ -648,11 +623,7 @@ Bad comments are worse than no comments. They mislead readers and create confusi
 :::
 
 ::: {.notes}
-- Highlight the dangers of mandated commenting policies, such as arbitrary comment density quotas or requiring every function to have a comment.
-- Reference the comic on the right: artificial quotas produce low-effort, distracting noise that obscures important code.
-- Walk through the confusing comments section:
-  - Explain how negative-framing comments ("Skip notification if user is inactive") confuse readers when the code uses a straightforward positive condition (`if user.is_active`).
-  - Explain how misleading comments that contradict code (describing `remove_item` as adding an item) actively mislead developers; removing the comment entirely lets the clear code speak for itself.
+A comment quota rewards quantity rather than usefulness. It can produce explanations that repeat the code, describe a positive condition through a confusing negative, or even contradict the operation below them. When the code is clear and the comment is wrong, removing the comment is an improvement.
 :::
 
 # What to Comment
@@ -682,9 +653,7 @@ Your future self as the reader
 ::::
 
 ::: {.notes}
-- Transition into the positive guidance section: What to Comment.
-- Point to the visual signpost: effective comments illuminate the "what", the "why", and the "how".
-- Reiterate that comments should answer the questions that code structure alone cannot resolve.
+Useful comments answer questions that the code's structure leaves open. They can explain a business constraint, a trade-off, an unusual algorithm, or the reason an apparently simpler approach would be wrong.
 :::
 
 ## Explain the Thought Process {.smaller}
@@ -741,11 +710,7 @@ if len(data) == 0:
 ::::
 
 ::: {.notes}
-- Emphasise that business logic, external constraints, and architectural trade-offs require explanation.
-- Contrast the caution block with the tip block:
-  - Instead of stating that the timeout is thirty seconds, explain that it accommodates slow network conditions in international deployments.
-  - Explain why retry is enabled: mitigating observed transient network failures.
-  - Instead of a vague "as per spec", link directly to the API specification section explaining why `None` is returned for empty datasets.
+The reason for a timeout matters more than a restatement of its duration. A retry may exist because of observed transient failures. When behaviour follows an external specification, a precise reference lets a maintainer check the requirement rather than guess what “as specified” means.
 :::
 
 ## Document Non-Obvious Logic {.smaller}
@@ -824,9 +789,7 @@ def is_power_of_two(n):
 ::::
 
 ::: {.notes}
-- Discuss non-obvious logic and complex algorithms, including regular expressions and mathematical tricks.
-- Walk through the regex example: breaking down password validation rules into clear bullet points (minimum length, uppercase, numbers, and special characters) saves future maintainers significant reverse-engineering time.
-- Emphasise that even if a developer could decipher the code eventually, a concise comment provides instant comprehension.
+A compact algorithm or regular expression can hide a great deal of reasoning. The password example becomes easier to understand when its individual rules are stated in ordinary language. The comment also makes the limits of the check explicit, rather than suggesting it does more than it actually does.
 :::
 
 ## Explain Unidiomatic Code {.smaller}
@@ -909,11 +872,7 @@ file.close()
 ::::
 
 ::: {.notes}
-- Explain how to handle intentional deviations from language idioms.
-- Walk through the two concrete examples:
-  - Explain choosing an explicit `for` loop over a list comprehension to enable early break on error without evaluating all elements upfront.
-  - Explain avoiding a `with open(...)` context manager because the file handle must remain open for an asynchronous callback.
-- Preempt review questions by documenting why the idiomatic approach fails in each situation.
+Sometimes the usual idiom does not fit a requirement. A loop may need to stop early, or a file may need to stay open until an asynchronous callback completes. Explaining that constraint helps the next reader understand why the apparently more idiomatic alternative was not used.
 :::
 
 ## Highlight Known Flaws {.smaller}
@@ -977,10 +936,7 @@ def process_data(items):
 :::
 
 ::: {.notes}
-- Discuss documenting technical debt, known limitations, and deferred improvements through action comments.
-- Contrast a vague "TODO: fix this" with an actionable TODO linked to an issue tracker with specific requirements.
-- Review the Common Action Comment Tags in the callout note: `TODO` for planned work, `FIXME` for known bugs, `HACK` for workarounds, `NOTE` for caveats, and `OPTIMIZE` for performance opportunities.
-- Mention editor tooling, such as the Better Comments extension, to keep action items visible.
+Action comments should identify work that someone can act on. A to-do linked to a specific issue is more useful than “fix this.” Tags for known bugs, workarounds, caveats, and optimisation opportunities can help organise that work, provided their meanings are consistent within the team.
 :::
 
 ## Aid Comprehension with Examples {.smaller}
@@ -1058,9 +1014,7 @@ age = today.year - born.year - \
 ::::
 
 ::: {.notes}
-- Highlight the power of concrete input and output examples for complex mathematical or boundary-sensitive code.
-- Walk through the modulo arithmetic example: explain how negative inputs behave counter-intuitively, and show how concrete examples (such as `-1 % 5 == 4`) provide immediate clarity.
-- Suggest incorporating examples into comments whenever behaviour at boundaries is subtle.
+A small input-and-output example can make a subtle boundary rule clear. Negative inputs in modulo arithmetic and dates near a birthday are easier to understand with concrete values. The example should reveal the behaviour a future change must preserve.
 :::
 
 ## Legal Comments and External Links {.smaller}
@@ -1169,9 +1123,7 @@ def parse_iso_date(date_string):
 :::
 
 ::: {.notes}
-- Cover the practical necessity of legal notices and external references.
-- Note where copyright notices, open-source licences, and third-party attribution belong.
-- Highlight the value of deep links: linking to RFC specifications, external bug trackers, regulatory documentation, or architectural decision records grounds code decisions in authoritative sources.
+Some comments carry legal notices, attribution, or references to external requirements. Keep those references precise and maintainable. A link to the relevant specification or decision record is more useful than a broad pointer that leaves the reader to find the actual rule.
 :::
 
 ## Use Comments as Cautionary Text {.smaller}
@@ -1251,10 +1203,7 @@ response = api.fetch(url)
 ::::
 
 ::: {.notes}
-- Explain the role of cautionary comments as defensive barriers against harmful refactorings.
-- Walk through the linear search example: an engineer might see an $O(n)$ search and want to replace it with a binary search, but the comment cites PR #456 benchmarks showing linear search is faster for fewer than 20 items (0.009ms vs 0.01ms).
-- Walk through the API sleep example: explain that removing the 100ms delay triggers rate limit 429 errors documented in incident #2341.
-- Emphasise that cautionary comments save hours of wasted optimisation and regressions.
+A cautionary comment explains why an obvious-looking change may cause a regression. The search example records a measured trade-off for a small collection. The API example records why a short delay is needed to avoid rate limiting. The evidence matters more than simply telling a future maintainer not to touch the code.
 :::
 
 ## Explain Security-Sensitive Code {.smaller}
@@ -1333,9 +1282,7 @@ display(output)
 ::::
 
 ::: {.notes}
-- Discuss the critical role of comments in security-sensitive boundaries.
-- Walk through the hash comparison example: explain why a seemingly redundant constant-time comparison is necessary to prevent timing attacks, whereas a standard equality operator introduces a critical vulnerability.
-- Clear security rationale stops future engineers from inadvertently introducing vulnerabilities during cleanups.
+Security-sensitive code can look unnecessarily complicated without its rationale. The comparison example explains why timing behaviour matters and why ordinary equality is not an interchangeable replacement. That context helps a cleanup preserve the security property.
 :::
 
 ## Document Concurrency Invariants {.smaller}
@@ -1397,9 +1344,7 @@ with self.lock:
 ::::
 
 ::: {.notes}
-- Cover concurrency invariants, lock acquisition orders, and synchronisation constraints.
-- Walk through the locking example: explain why the double-checked locking pattern or explicit lock sequencing is necessary, preventing race conditions and deadlocks.
-- Stress that concurrent bugs are notoriously hard to reproduce, making upfront documentation of invariants invaluable.
+Concurrent code depends on invariants that may not be obvious from a single statement. A comment can explain lock ordering or why state must be checked again after a wait. This gives a reviewer a concrete condition to preserve, rather than a vague warning that the code is delicate.
 :::
 
 ## Organise Long Functions {.smaller}
@@ -1454,9 +1399,7 @@ def process_order(order):
 ::::
 
 ::: {.notes}
-- Discuss strategies for structuring unavoidably long functions that cannot be trivially split due to performance, tight I/O coupling, or transaction boundaries.
-- Walk through the `process_order` example: using clear section comments to delineate distinct processing phases (validation, pricing, inventory, payment, and database updates).
-- Reiterate the amber advisory box: extracting helper functions is always the primary recommendation unless specific architectural constraints prevent it.
+If a function cannot reasonably be split, section comments can identify its processing phases. The order-processing example separates validation, pricing, inventory, payment, and persistence. Extracting well-named helpers is still worth considering before using comments to organise an oversized function.
 :::
 
 # How to Comment
@@ -1464,9 +1407,7 @@ def process_order(order):
 _Keep them precise and compact._
 
 ::: {.notes}
-- Transition into the third main section: How to Comment.
-- Introduce the section theme: writing comments that are precise, compact, and easy to maintain.
-- Focus on tone, wording, precision, and comment hygiene.
+Now let’s look at wording. A useful comment should be precise enough to help and short enough to remain easy to read and maintain.
 :::
 
 ## [Use precise and actionable wording]{.visually-hidden} {.smaller}
@@ -1577,10 +1518,7 @@ total = sum(prices)
 ::::
 
 ::: {.notes}
-- Discuss using precise, information-dense wording across the three examples:
-  - Replace verbose explanations with precise technical terms like "memoize".
-  - Avoid ambiguous pronouns like "it" by repeating the specific noun ("invalidate local cache").
-  - Express higher-level intent ("calculate order total for tax computation") rather than lower-level mechanics ("loop through array and add to sum").
+Use a precise term when it carries the intended meaning, and avoid pronouns whose reference is unclear. Explain the operation's purpose, such as calculating a total for tax computation, rather than narrating each loop and addition.
 :::
 
 ## [Keep comments current and specific]{.visually-hidden} {.smaller}
@@ -1683,10 +1621,7 @@ process_legacy_data()
 ::::
 
 ::: {.notes}
-- Address comment currency and specificity across the three examples:
-  - Keep comments updated during refactoring: show how changing mean to median without updating the comment turns it into a misleading lie.
-  - Use specific references: point to exact module and function names (`pricing.calculate_discount()`) rather than vague spatial terms like "the function above".
-  - Maintain a professional tone: avoid editorialising like "This code is a mess"; state the technical constraints factually.
+Comments need to change with the code. An explanation of a mean becomes misleading if the implementation now calculates a median. Exact function references are also easier to follow than “the function above,” and a factual description of constraints is more useful than calling the code a mess.
 :::
 
 ## [Keep comments objective]{.visually-hidden} {.smaller}
@@ -1793,10 +1728,7 @@ timeout = 30
 ::::
 
 ::: {.notes}
-- Address tone, objectivity, and comment hygiene across the three examples:
-  - Stay objective: replace subjective venting or frustration with management with neutral, factual descriptions of business requirements.
-  - Avoid inside jokes: replace obscure phrases like "Here be dragons" with clear technical explanations of concurrency and locking.
-  - Respect banner comments: never manually edit auto-generated code headers or generated sections; update the generator script instead.
+Keep the tone professional and the explanation concrete. Business constraints do not need an accompanying complaint, and concurrency concerns do not need an inside joke. For generated code, update the generator rather than manually changing the generated section.
 :::
 
 ## _Aside:_ Comment Aesthetics {.smaller}
@@ -1878,9 +1810,7 @@ if user.is_premium:
 :::
 
 ::: {.notes}
-- Cover visual presentation and formatting conventions for comments.
-- Discuss matching code indentation levels, leaving a single space after the comment delimiter, and using complete grammatical sentences for multi-line explanations.
-- Recommend enforcing aesthetic standards automatically with linters and formatters to remove friction.
+Formatting should make comments easy to associate with the code they describe. Follow the surrounding indentation and the project's spacing conventions. Linters and formatters can handle the routine presentation rules so review can focus on meaning.
 :::
 
 # Tools & Techniques
@@ -1892,9 +1822,7 @@ if user.is_premium:
 :::
 
 ::: {.notes}
-- Transition to the section on Tools & Techniques.
-- Reflect on Ron Jeffries' quote: "Code never lies, comments sometimes do."
-- Frame this section around using modern tooling and peer review to ensure comments stay truthful and valuable.
+Ron Jeffries' observation that code never lies but comments sometimes do captures the challenge. Tools and review can help, but a comment remains useful only while it accurately describes the code and its context.
 :::
 
 ## Tool Limitations {.smaller}
@@ -1937,9 +1865,7 @@ Tools can enforce *format* but not *value*. Good commenting requires human judgm
 :::
 
 ::: {.notes}
-- Contrast what automated developer tools can and cannot achieve.
-- Point out that linters and language servers excel at checking formatting, flag tracking tags, and measuring docstring coverage.
-- Emphasise that no static tool can evaluate semantic truthfulness, relevance, or whether a comment is out of date; human judgment remains indispensable.
+Automated tools can check formatting and some documentation conventions. They are much less able to establish whether an explanation is true, relevant, or still current. Those questions require understanding the behaviour and the reason for it.
 :::
 
 ## AI as an Ally {.smaller}
@@ -2022,9 +1948,7 @@ LLM-suggested improvement:
 :::
 
 ::: {.notes}
-- Discuss leveraging modern AI coding assistants to improve comment quality.
-- Highlight AI strengths: identifying complex or under-commented blocks, drafting explanatory docstrings, and flagging unclear wording.
-- Walk through the flowchart showing human-AI collaboration: AI proposes and drafts, but the human engineer validates technical accuracy and domain intent.
+An AI assistant can help draft an explanation or identify a passage that is hard to follow. Its output still needs to be checked against the implementation and domain requirements. A fluent explanation can be incorrect, so drafting and verification remain separate responsibilities.
 :::
 
 ## Code Review {.smaller}
@@ -2072,9 +1996,7 @@ flowchart TD
 :::
 
 ::: {.notes}
-- Walk through the Mermaid flowchart detailing the role of code reviews in maintaining comment quality.
-- Explain how peer reviewers bring lower cognitive load and a fresh perspective to the pull request.
-- Reviewers are uniquely positioned to spot missing context, question unspoken assumptions, and detect obsolete comments before they merge into `main`.
+Code review provides a fresh reader before a change is accepted. A reviewer can ask about missing context, question an implicit assumption, or notice that an old comment no longer matches the implementation. Those questions improve both the explanation and the code.
 :::
 
 # Summary
@@ -2086,9 +2008,7 @@ flowchart TD
 :::
 
 ::: {.notes}
-- Transition to the concluding summary.
-- Reflect on Steve McConnell's famous principle: "Good code is its own best documentation."
-- Reiterate that writing clean, self-describing code is always step zero; comments are reserved for what the code itself cannot express.
+Clear, well-structured code is the starting point. Comments then preserve what naming and structure cannot express: the constraints, trade-offs, and reasoning behind the implementation.
 :::
 
 ## [Comment decision workflow]{.visually-hidden} {.smaller}
@@ -2125,9 +2045,7 @@ flowchart LR
 :::
 
 ::: {.notes}
-- Walk through the step-by-step decision flowchart for commenting.
-- Start at the top: is the code unclear? If yes, can we rename variables or refactor functions first?
-- If refactoring clarifies everything, do not add a comment. Only if non-obvious logic remains after refactoring should a comment explaining the "why" be added.
+The decision process begins by asking whether the code is unclear. If better names or a small refactoring solve the problem, make that change first. If important reasoning remains invisible, explain it in a comment. The comment should fill the remaining gap.
 :::
 
 ## Workflow in Action {.smaller}
@@ -2184,9 +2102,7 @@ def sum_values_above_threshold(data, threshold):
 :::
 
 ::: {.notes}
-- Demonstrate the decision workflow on a realistic code example.
-- Walk through the "before" snippet: cryptic variable names (`calc`, `d`, `t`, `r`) paired with six redundant comments that merely echo Python operations.
-- Show the "after" snippet: clean descriptive names and Pythonic idioms eliminate all redundant comments, leaving a single, high-value comment explaining the non-obvious business threshold.
+The before-and-after example applies that process. Descriptive names and straightforward code remove the need for several comments that only repeat operations. One comment remains because it explains a business threshold that the implementation alone cannot justify.
 :::
 
 ## Benefits: Context and Understanding {.smaller}
@@ -2228,9 +2144,7 @@ def sum_values_above_threshold(data, threshold):
 :::
 
 ::: {.notes}
-- Summarise the key organisational and cognitive benefits of thoughtful commenting.
-- Emphasise that writing comments forces the author to articulate design rationale, improving the code itself.
-- High-quality comments preserve institutional knowledge, accelerate onboarding, and drastically lower future maintenance overhead.
+Writing a useful explanation forces us to make our reasoning explicit. That can expose a design problem while the change is still easy to revise. The explanation then preserves knowledge for future maintainers and reduces the amount of investigation they must repeat.
 :::
 
 # Thank You
@@ -2257,9 +2171,7 @@ Check out my other [slide decks](https://www.indrapatil.com/presentations/) on s
 :::
 
 ::: {.notes}
-- Conclude the presentation and open the floor for questions and discussion.
-- Point attendees to the other presentation decks on software development best practices on indrapatil.com.
-- Mention social and contact links for following up after the talk.
+Thank you for listening. Questions and examples from your own projects are welcome. The links on this slide provide the source, related presentations, and ways to get in touch.
 :::
 
 ## _Aside:_ Cross-Language Examples {.smaller data-visibility="uncounted"}
@@ -2288,9 +2200,7 @@ Syntax varies by language; the distinction is universal.
 :::
 
 ::: {.notes}
-- Introduce this bonus reference slide comparing documentation and comment syntax across major programming languages.
-- Walk through the table highlighting Python, JavaScript/TypeScript, R, Rust, Go, and Ruby, noting their respective documentation tools (such as Sphinx, JSDoc, rustdoc, and roxygen2).
-- Emphasise that syntax differs across ecosystems, but the underlying distinction between public interface contracts and private implementation comments is universal.
+The syntax changes between Python, JavaScript, R, Rust, Go, and Ruby, as do the documentation tools. The underlying distinction stays useful: public documentation explains the contract to a caller, while implementation comments explain decisions to a maintainer.
 :::
 
 ## References {.smaller data-visibility="uncounted"}
@@ -2318,7 +2228,5 @@ For a more detailed discussion about how to comment, see the following reference
 :::
 
 ::: {.notes}
-- Present the bibliography and recommended reading list for attendees who want to dive deeper into the literature.
-- Highlight key texts: Kernighan and Plauger's classic "Elements of Programming Style", Steve McConnell's "Code Complete", and Boswell and Foucher's "The Art of Readable Code".
-- Point to industry style guides like the Google Python Style Guide for further team-level standards.
+The reading list includes The Elements of Programming Style, Code Complete, and The Art of Readable Code. The linked style guides provide more specific conventions for teams that want a shared standard.
 :::
