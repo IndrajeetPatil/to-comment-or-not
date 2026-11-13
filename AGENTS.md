@@ -50,6 +50,8 @@ just axe       # Preview with the axe accessibility checker enabled
   `revealjs`; restyle through `style.css`. Inline `style` backgrounds on fenced
   divs reuse colours already defined in `DESIGN.md` and `index.qmd`; do not
   invent new ones. New widgets follow the naming patterns already in `style.css`.
+- **Borderless text boxes.** Keep text boxes, callouts, and slide panels free of
+  coloured edges or side rules; use the established fills for emphasis.
 - **Sources.** Every factual claim has a source citation at the bottom of its
   slide in a small-font centred div. Keep this pattern.
 - **Spelling and punctuation.** Use British spelling in prose (colour, licence,

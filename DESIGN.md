@@ -38,10 +38,8 @@ components:
     backgroundColor: "{colors.canvas}"
     textColor: "{colors.text}"
   callout-tip:
-    borderColor: "{colors.tip-purple}"
     backgroundColor: "{colors.tip-bg}"
   callout-caution:
-    borderColor: "{colors.caution-gold}"
     backgroundColor: "{colors.caution-bg}"
 ---
 
@@ -74,13 +72,14 @@ The theme format is Quarto RevealJS (`theme: simple`). Custom styles are defined
 
 ## Layout & Components
 
-- **Callouts:** `.callout-tip` and `.callout-caution` with accessible left accent borders and tint backings.
+- **Callouts:** `.callout-tip` and `.callout-caution` use tint backings and icons without coloured borders.
 - **Code Comparison Tables:** `.smaller table` with code blocks styled on `#f8f9fa` backings for side-by-side good vs. bad commenting comparisons.
 - **Icons:** SVG mask icons (`.deck-icon`) using Font Awesome Free paths rendered via CSS masks in `currentColor`.
 
 ## Do's and Don'ts
 
 - **Do** use `.callout-tip` and `.callout-caution` for semantic highlighting.
+- **Don't** add coloured edges to text boxes, callouts, or slide panels; use the established fills for emphasis.
 - **Do** ensure code blocks inside tables maintain readability and responsive wrapping.
 - **Don't** use red/green pairings for good vs. bad comparisons; preserve the colorblind-friendly purple/gold system.
 - **Don't** hard-code ad-hoc colors directly in `index.qmd`.

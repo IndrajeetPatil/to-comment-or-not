@@ -292,7 +292,7 @@ if should_process(x):
 
 ::::
 
-::: {style="background-color: rgba(230, 171, 2, 0.15); border-left: 5px solid #E6AB02FF; padding: 20px; border-radius: 8px; font-size: 0.85em;"}
+::: {style="background-color: rgba(230, 171, 2, 0.15); padding: 20px; border-radius: 8px; font-size: 0.85em;"}
 
 :::: {.columns}
 
@@ -1815,7 +1815,7 @@ Formatting should make comments easy to associate with the code they describe. F
 
 # Tools & Techniques
 
-::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #666; margin: 20px 0; max-width: 80%; text-align: center; font-style: italic; color: #333;"}
+::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0; max-width: 80%; text-align: center; font-style: italic; color: #333;"}
 "Code never lies, comments sometimes do."
 
 — Ron Jeffries
@@ -1856,7 +1856,7 @@ Ron Jeffries' observation that code never lies but comments sometimes do capture
 
 . . .
 
-::: {style="background-color: #e3f2fd; border-left: 5px solid #2196F3; padding: 20px; border-radius: 8px;"}
+::: {style="background-color: #e3f2fd; padding: 20px; border-radius: 8px;"}
 
 **The fundamental limitation**
 
@@ -1906,7 +1906,7 @@ flowchart TD
 
 . . .
 
-::: {style="background-color: rgba(117, 112, 179, 0.15); border-left: 5px solid #7570B3FF; padding: 20px; border-radius: 8px;"}
+::: {style="background-color: rgba(117, 112, 179, 0.15); padding: 20px; border-radius: 8px;"}
 
 :::: {.columns}
 
@@ -2001,7 +2001,7 @@ Code review provides a fresh reader before a change is accepted. A reviewer can 
 
 # Summary
 
-::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #666; margin: 20px 0; max-width: 80%; text-align: center; font-style: italic; color: #333;"}
+::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0; max-width: 80%; text-align: center; font-style: italic; color: #333;"}
 "Good code is its own best documentation."
 
 — Steve McConnell
@@ -2038,7 +2038,7 @@ flowchart LR
 
 <br>
 
-::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #666; margin: 20px auto; max-width: 80%; text-align: center; font-style: italic; color: #333;"}
+::: {style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px auto; max-width: 80%; text-align: center; font-style: italic; color: #333;"}
 "Don't comment bad code — rewrite it."
 
 — Kernighan & Plaugher
