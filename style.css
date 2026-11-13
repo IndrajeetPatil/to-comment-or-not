@@ -62,9 +62,12 @@
   font-size: 1.0em !important;
 }
 
-/* Colorblind-friendly callout colors */
+/* Colourblind-friendly callout fills without coloured box edges. */
+.callout {
+  border: 0 !important;
+}
+
 .callout-tip {
-  border-left-color: #7570B3FF !important; /* Purple (good/correct) */
   background-color: rgba(117, 112, 179, 0.15) !important; /* Light purple background */
 }
 
@@ -79,7 +82,6 @@
 }
 
 .callout-caution {
-  border-left-color: #E6AB02FF !important; /* Gold/Yellow (warning/caution) */
   background-color: rgba(230, 171, 2, 0.15) !important; /* Light gold background */
 }
 
